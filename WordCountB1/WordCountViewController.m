@@ -59,7 +59,7 @@
 
 //    [UIView commitAnimations];
     
-    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.7 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.view.frame = CGRectMake(windowWidth-50,0, windowWidth, windowHeight);
         
         
@@ -91,7 +91,7 @@
     CGFloat windowHeight =self.view.frame.size.height;
     
     
-    [UIView animateWithDuration:1.0 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.7 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
         self.view.frame = CGRectMake(0,0, windowWidth, windowHeight);
         
         
