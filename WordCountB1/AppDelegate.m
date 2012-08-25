@@ -7,17 +7,23 @@
 //
 
 #import "AppDelegate.h"
-
-#import "ViewController.h"
-
+#import "WordListViewController.h"
+#import "WordCountViewController.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.viewController = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+    self.viewController = [[WordListViewController alloc] initWithNibName:@"WordListViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
+    
+    // Add WordCount VC on top (initial load)
+    WordCountViewController *wordCountVC = [[WordCountViewController alloc] initWithNibName:@"WordCountViewController" bundle:nil];
+    [self.viewController addChildViewController:wordCountVC];
+    [self.viewController.view addSubview:wordCountVC.view];
+    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

@@ -15,6 +15,16 @@
 		B09C694215E9251F00CF6560 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B09C694115E9251F00CF6560 /* AppDelegate.m */; };
 		B09C694515E9251F00CF6560 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B09C694415E9251F00CF6560 /* ViewController.m */; };
 		B09C694815E9251F00CF6560 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09C694615E9251F00CF6560 /* ViewController.xib */; };
+		B09C695115E925EF00CF6560 /* WordListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B09C694F15E925EF00CF6560 /* WordListViewController.m */; };
+		B09C695215E925EF00CF6560 /* WordListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09C695015E925EF00CF6560 /* WordListViewController.xib */; };
+		B09C695615E9271800CF6560 /* WordCountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B09C695415E9271800CF6560 /* WordCountViewController.m */; };
+		B09C695715E9271800CF6560 /* WordCountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09C695515E9271800CF6560 /* WordCountViewController.xib */; };
+		B09C695F15E9284E00CF6560 /* Finish-and-Send-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695915E9284E00CF6560 /* Finish-and-Send-Button.png */; };
+		B09C696015E9284E00CF6560 /* Next-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695A15E9284E00CF6560 /* Next-Button.png */; };
+		B09C696115E9284E00CF6560 /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695B15E9284E00CF6560 /* orangeButton.png */; };
+		B09C696215E9284E00CF6560 /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695C15E9284E00CF6560 /* topBar.png */; };
+		B09C696315E9284E00CF6560 /* Word-Counter-Element-without-button.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */; };
+		B09C696415E9284E00CF6560 /* Word-Counter-Element.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +41,18 @@
 		B09C694315E9251F00CF6560 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		B09C694415E9251F00CF6560 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		B09C694715E9251F00CF6560 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		B09C694E15E925EF00CF6560 /* WordListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordListViewController.h; sourceTree = "<group>"; };
+		B09C694F15E925EF00CF6560 /* WordListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordListViewController.m; sourceTree = "<group>"; };
+		B09C695015E925EF00CF6560 /* WordListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordListViewController.xib; sourceTree = "<group>"; };
+		B09C695315E9271800CF6560 /* WordCountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordCountViewController.h; sourceTree = "<group>"; };
+		B09C695415E9271800CF6560 /* WordCountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordCountViewController.m; sourceTree = "<group>"; };
+		B09C695515E9271800CF6560 /* WordCountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordCountViewController.xib; sourceTree = "<group>"; };
+		B09C695915E9284E00CF6560 /* Finish-and-Send-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Finish-and-Send-Button.png"; sourceTree = "<group>"; };
+		B09C695A15E9284E00CF6560 /* Next-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next-Button.png"; sourceTree = "<group>"; };
+		B09C695B15E9284E00CF6560 /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButton.png; sourceTree = "<group>"; };
+		B09C695C15E9284E00CF6560 /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
+		B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Counter-Element-without-button.png"; sourceTree = "<group>"; };
+		B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Counter-Element.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,12 +99,19 @@
 		B09C693715E9251F00CF6560 /* WordCountB1 */ = {
 			isa = PBXGroup;
 			children = (
+				B09C695815E9280800CF6560 /* Images */,
 				B09C694015E9251F00CF6560 /* AppDelegate.h */,
 				B09C694115E9251F00CF6560 /* AppDelegate.m */,
 				B09C694315E9251F00CF6560 /* ViewController.h */,
 				B09C694415E9251F00CF6560 /* ViewController.m */,
 				B09C694615E9251F00CF6560 /* ViewController.xib */,
 				B09C693815E9251F00CF6560 /* Supporting Files */,
+				B09C694E15E925EF00CF6560 /* WordListViewController.h */,
+				B09C694F15E925EF00CF6560 /* WordListViewController.m */,
+				B09C695015E925EF00CF6560 /* WordListViewController.xib */,
+				B09C695315E9271800CF6560 /* WordCountViewController.h */,
+				B09C695415E9271800CF6560 /* WordCountViewController.m */,
+				B09C695515E9271800CF6560 /* WordCountViewController.xib */,
 			);
 			path = WordCountB1;
 			sourceTree = "<group>";
@@ -96,6 +125,19 @@
 				B09C693F15E9251F00CF6560 /* WordCountB1-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B09C695815E9280800CF6560 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B09C695915E9284E00CF6560 /* Finish-and-Send-Button.png */,
+				B09C695A15E9284E00CF6560 /* Next-Button.png */,
+				B09C695B15E9284E00CF6560 /* orangeButton.png */,
+				B09C695C15E9284E00CF6560 /* topBar.png */,
+				B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */,
+				B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +193,14 @@
 			files = (
 				B09C693C15E9251F00CF6560 /* InfoPlist.strings in Resources */,
 				B09C694815E9251F00CF6560 /* ViewController.xib in Resources */,
+				B09C695215E925EF00CF6560 /* WordListViewController.xib in Resources */,
+				B09C695715E9271800CF6560 /* WordCountViewController.xib in Resources */,
+				B09C695F15E9284E00CF6560 /* Finish-and-Send-Button.png in Resources */,
+				B09C696015E9284E00CF6560 /* Next-Button.png in Resources */,
+				B09C696115E9284E00CF6560 /* orangeButton.png in Resources */,
+				B09C696215E9284E00CF6560 /* topBar.png in Resources */,
+				B09C696315E9284E00CF6560 /* Word-Counter-Element-without-button.png in Resources */,
+				B09C696415E9284E00CF6560 /* Word-Counter-Element.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +214,8 @@
 				B09C693E15E9251F00CF6560 /* main.m in Sources */,
 				B09C694215E9251F00CF6560 /* AppDelegate.m in Sources */,
 				B09C694515E9251F00CF6560 /* ViewController.m in Sources */,
+				B09C695115E925EF00CF6560 /* WordListViewController.m in Sources */,
+				B09C695615E9271800CF6560 /* WordCountViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
