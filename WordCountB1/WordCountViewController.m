@@ -8,6 +8,7 @@
 
 #import "WordCountViewController.h"
 #import "WordListViewController.h"
+#import "ReportViewController.h"
 
 @interface WordCountViewController ()
 
@@ -17,12 +18,23 @@
 
 @synthesize wordListView = _wordListView;
 @synthesize slideBackButton = _slideBackButton;
+@synthesize orange1 = _orange1;
+@synthesize orange2 = _orange2;
+@synthesize orange3 = _orange3;
+@synthesize orange4 = _orange4;
+@synthesize orangeImage = _orangeImage;
+
+ReportViewController* reportView ;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self.orangeImage = [UIImage imageNamed:@"orangeButton.png"];
+
+
     if (self) {
         // Custom initialization
+        [self buildWordButtons];
     }
     return self;
 }
@@ -32,7 +44,10 @@
     [super viewDidLoad];
     self.wordListView = self.view.superview;
     [self.slideBackButton setEnabled:NO];
-           [self buildWordButtons];
+   // [self buildWordButtons];
+    
+
+
 //    [self createTouchUpForWordCount];
     // Do any additional setup after loading the view from its nib.
 }
@@ -91,6 +106,9 @@
 
 -(void) buildWordButtons
 {
+    // TODO Extract the hard coded button positions into variables
+    // Should this be computed (Retina vs standard screen)
+    
     CGFloat yStartPosition = 60;
     
     UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(165, 70, 147, 135)];
@@ -138,24 +156,68 @@
     [label4 setBackgroundColor:[UIColor clearColor]];
     [button4 addSubview: label4];
     
-    UIButton *orange1 = [[UIButton alloc] initWithFrame:CGRectMake(45, 72, 64, 32.5)];
-    [orange1 setImage:[UIImage imageNamed:@"orangeButton.png"] forState:UIControlStateNormal];
-    [orange1 addTarget:self action:@selector(clickOrangeButton:orange1:) forControlEvents:UIControlEventTouchUpInside];
-    [button1 addSubview:orange1];
+    self.orange1 = [[UIButton alloc] initWithFrame:CGRectMake(45, 72, 64, 32.5)];
+    [self.orange1 setImage:self.orangeImage forState:UIControlStateNormal];
+    [self.orange1 addTarget:self action:@selector(countWord:) forControlEvents:UIControlEventTouchUpInside];
+    [button1 addSubview:self.orange1];
     
-    UIButton *orange2 = [[UIButton alloc] initWithFrame:CGRectMake(45, 72, 64, 32.5)];
-    [orange2 setImage:[UIImage imageNamed:@"orangeButton.png"] forState:UIControlStateNormal];
-    [orange2 addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-    [button2 addSubview:orange2];
+    self.orange2 = [[UIButton alloc] initWithFrame:CGRectMake(45, 72, 64, 32.5)];
+    [self.orange2 setImage:self.orangeImage forState:UIControlStateNormal];
+    [self.orange2 addTarget:self action:@selector(countWord:) forControlEvents:UIControlEventTouchUpInside];
+    [button2 addSubview:self.orange2];
     
-    UIButton *orange3 = [[UIButton alloc] initWithFrame:CGRectMake(45, 72, 64, 32.5)];
-    [orange3 setImage:[UIImage imageNamed:@"orangeButton.png"] forState:UIControlStateNormal];
-    [orange3 addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-    [button3 addSubview:orange3];
+    self.orange3 = [[UIButton alloc] initWithFrame:CGRectMake(45, 72, 64, 32.5)];
+    [self.orange3 setImage:self.orangeImage forState:UIControlStateNormal];
+    [self.orange3 addTarget:self action:@selector(countWord:) forControlEvents:UIControlEventTouchUpInside];
+    [button3 addSubview:self.orange3];
     
-    UIButton *orange4 = [[UIButton alloc] initWithFrame:CGRectMake(45, 72, 64, 32.5)];
-    [orange4 setImage:[UIImage imageNamed:@"orangeButton.png"] forState:UIControlStateNormal];
-    [orange4 addTarget:self action:nil forControlEvents:UIControlEventTouchUpInside];
-    [button4 addSubview:orange4];
+    self.orange4 = [[UIButton alloc] initWithFrame:CGRectMake(45, 72, 64, 32.5)];
+    [self.orange4 setImage:self.orangeImage forState:UIControlStateNormal];
+    [self.orange4 addTarget:self action:@selector(countWord:) forControlEvents:UIControlEventTouchUpInside];
+    [button4 addSubview:self.orange4];
+     reportView = [[ReportViewController alloc] initWithNibName:@"ReportViewController" bundle:nil];
+    [self hideReportView];
+    
+
 }
+
+-(void) hideReportView
+{   
+    reportView.view.frame = CGRectMake(320, 0, 320, 460);
+    [self addChildViewController:reportView];
+    [self.view addSubview:reportView.view];
+}
+
+- (IBAction)showReportView:(id)sender
+{
+    [UIView animateWithDuration:1.0 animations:^{
+        reportView.view.frame = CGRectMake(0, 0, 320, 460);
+    }];
+
+
+}
+
+-(void) countWord:(id)sender
+{
+    UIButton *sentButton = (UIButton *)sender;
+    
+    // Show the numbers for the word count
+    if (sentButton == self.orange1)
+    {
+        NSLog(@"yes");
+    }
+    [UIView animateWithDuration:.3 animations:^
+     {
+         sentButton.frame = CGRectMake(45, 90, 64, 14.5);
+     }completion:^(BOOL finished)
+     {
+         [UIView animateWithDuration:.3 animations:^
+          {
+                sentButton.frame = CGRectMake(45, 72, 64, 32.5);
+          }];
+       
+     }];
+   
+}
+
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B095816615EB46B500A5A85E /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B095816415EB46B500A5A85E /* ReportViewController.m */; };
+		B095816715EB46B500A5A85E /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B095816515EB46B500A5A85E /* ReportViewController.xib */; };
 		B09C693215E9251F00CF6560 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09C693115E9251F00CF6560 /* UIKit.framework */; };
 		B09C693415E9251F00CF6560 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09C693315E9251F00CF6560 /* Foundation.framework */; };
 		B09C693615E9251F00CF6560 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09C693515E9251F00CF6560 /* CoreGraphics.framework */; };
@@ -42,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B095816315EB46B500A5A85E /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
+		B095816415EB46B500A5A85E /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
+		B095816515EB46B500A5A85E /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportViewController.xib; sourceTree = "<group>"; };
 		B09C692D15E9251F00CF6560 /* WordCountB1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordCountB1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09C693115E9251F00CF6560 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B09C693315E9251F00CF6560 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -140,6 +145,9 @@
 				B09C695315E9271800CF6560 /* WordCountViewController.h */,
 				B09C695415E9271800CF6560 /* WordCountViewController.m */,
 				B09C695515E9271800CF6560 /* WordCountViewController.xib */,
+				B095816315EB46B500A5A85E /* ReportViewController.h */,
+				B095816415EB46B500A5A85E /* ReportViewController.m */,
+				B095816515EB46B500A5A85E /* ReportViewController.xib */,
 			);
 			path = WordCountB1;
 			sourceTree = "<group>";
@@ -257,6 +265,7 @@
 				EE8FC6FE15E95510006D3897 /* profileEdit@2x.png in Resources */,
 				EE8FC6FF15E95510006D3897 /* top_bar_bg.png in Resources */,
 				EE8FC70015E95510006D3897 /* top_bar_bg@2x.png in Resources */,
+				B095816715EB46B500A5A85E /* ReportViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +281,7 @@
 				B09C694515E9251F00CF6560 /* ViewController.m in Sources */,
 				B09C695115E925EF00CF6560 /* WordListViewController.m in Sources */,
 				B09C695615E9271800CF6560 /* WordCountViewController.m in Sources */,
+				B095816615EB46B500A5A85E /* ReportViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

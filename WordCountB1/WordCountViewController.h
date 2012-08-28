@@ -13,4 +13,14 @@
 
 @property (nonatomic, weak) UIView* wordListView;
 @property (nonatomic) UIButton* slideBackButton;
+
+@property (nonatomic, strong) UIButton* orange1;
+@property (nonatomic, strong) UIButton* orange2;
+@property (nonatomic, strong) UIButton* orange3;
+@property (nonatomic, strong) UIButton* orange4;
+
+@property (nonatomic, strong) UIImage* orangeImage;
+
+- (IBAction)showReportView:(id)sender;
+-(void) countWord:(id) sender;
 @end
