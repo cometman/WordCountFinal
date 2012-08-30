@@ -109,7 +109,7 @@ ReportViewController* reportView ;
     // TODO Extract the hard coded button positions into variables
     // Should this be computed (Retina vs standard screen)
     
-    CGFloat yStartPosition = 60;
+   // CGFloat yStartPosition = 60;
     
     UIButton *button1 = [[UIButton alloc] initWithFrame:CGRectMake(165, 70, 147, 135)];
     [button1 setImage:[UIImage imageNamed:@"Word-Counter-Element-without-button"] forState:UIControlStateNormal];
