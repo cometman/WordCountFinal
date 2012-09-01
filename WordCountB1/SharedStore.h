@@ -8,6 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SharedStore : NSObject
+@class WordListModel;
+
+@interface SharedStore : NSObject {
+    NSMutableArray *allLists;
+}
+
+@property (nonatomic, strong)NSString *currentList;
+
++ (SharedStore *)sharedList;
+
+- (NSArray *)allLists;
+- (WordListModel *)createList;
+
+- (NSString *)itemArchivePath;
+//- (BOOL)saveChanges;
 
 @end

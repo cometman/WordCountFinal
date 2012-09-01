@@ -7,6 +7,9 @@
 //
 
 #import "WordListViewController.h"
+#import "SharedStore.h"
+#import "WordListModel.h"
+#import "WordCountViewController.h"
 
 @interface WordListViewController ()
 
@@ -17,12 +20,17 @@
 @implementation WordListViewController
 
 @synthesize wordProfiles = _wordProfiles;
+@synthesize wordCountView = _wordCountView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Add WordCount VC on top (initial load)
+        WordCountViewController *wordCountVC = [[WordCountViewController alloc] initWithNibName:@"WordCountViewController" bundle:nil];
+        [self addChildViewController:wordCountVC];
+        _wordCountView = [wordCountVC view];
+        [self.view addSubview:_wordCountView];
     }
     return self;
 }
@@ -31,11 +39,16 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"profile_bg"]];
-    _wordProfiles = [@[
-    @[@"Holy Prayers",@"Lord",@"Father God",@"Jesus",@"Father"],
-    @[@"Brandon's List",@"Like",@"Basically",@"And",@"You Know"],
-    @[@"Clay's List",@"Groovy",@"Like Such As",@"And Then",@"Yup"],
-    @[@"Andres's List",@"I'm Mexican!",@"Crazy Apes",@"What?",@"Sure"]] mutableCopy];
+//    [[SharedStore sharedList] createList];
+//    [[SharedStore sharedList] createList];
+//    [[SharedStore sharedList] createList];
+    _wordProfiles = [[[SharedStore sharedList] allLists] mutableCopy];
+    
+//    _wordProfiles = [@[
+//    @[@"Holy Prayers",@"Lord",@"Father God",@"Jesus",@"Father"],
+//    @[@"Brandon's List",@"Like",@"Basically",@"And",@"You Know"],
+//    @[@"Clay's List",@"Groovy",@"Like Such As",@"And Then",@"Yup"],
+//    @[@"Andres's List",@"I'm Mexican!",@"Crazy Apes",@"What?",@"Sure"]] mutableCopy];
 
     if ([_wordProfiles count] <= 3) {
         UIImage *characters = [UIImage imageNamed:@"characters"];
@@ -107,8 +120,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] == [_wordProfiles count] + 2) {
-        return 145;
-    } else return 54;
+        return 145; // The height of the characters, plus a little padding
+    } else return 54; // Standard height of a row
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -117,6 +130,18 @@
         return dataRows + 3;
     else
         return dataRows + 2;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([indexPath row] == 0) {
+        [[SharedStore sharedList] createList];
+        NSLog(@"What");
+        [tableView reloadData];
+    } else {
+        NSLog(@"Current List (Before): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
+        [[NSUserDefaults standardUserDefaults] setObject:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text] forKey:@"currentList"];
+        NSLog(@"Current List (After): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
+    }
 }
 
 @end

@@ -29,6 +29,9 @@
 		B09C696215E9284E00CF6560 /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695C15E9284E00CF6560 /* topBar.png */; };
 		B09C696315E9284E00CF6560 /* Word-Counter-Element-without-button.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */; };
 		B09C696415E9284E00CF6560 /* Word-Counter-Element.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */; };
+		EE6D3C1415EF04290000362E /* HowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D3C1215EF04290000362E /* HowToViewController.m */; };
+		EE6D3C1515EF04290000362E /* HowToViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6D3C1315EF04290000362E /* HowToViewController.xib */; };
+		EE6D3C1915EF96210000362E /* WCWord.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D3C1815EF96210000362E /* WCWord.m */; };
 		EE8FC6F315E95510006D3897 /* cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = EE8FC6E515E95510006D3897 /* cell_bg.png */; };
 		EE8FC6F415E95510006D3897 /* cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE8FC6E615E95510006D3897 /* cell_bg@2x.png */; };
 		EE8FC6F515E95510006D3897 /* characters.png in Resources */ = {isa = PBXBuildFile; fileRef = EE8FC6E715E95510006D3897 /* characters.png */; };
@@ -78,6 +81,11 @@
 		B09C695C15E9284E00CF6560 /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
 		B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Counter-Element-without-button.png"; sourceTree = "<group>"; };
 		B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Counter-Element.png"; sourceTree = "<group>"; };
+		EE6D3C1115EF04290000362E /* HowToViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToViewController.h; sourceTree = "<group>"; };
+		EE6D3C1215EF04290000362E /* HowToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToViewController.m; sourceTree = "<group>"; };
+		EE6D3C1315EF04290000362E /* HowToViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HowToViewController.xib; sourceTree = "<group>"; };
+		EE6D3C1715EF96210000362E /* WCWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCWord.h; sourceTree = "<group>"; };
+		EE6D3C1815EF96210000362E /* WCWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCWord.m; sourceTree = "<group>"; };
 		EE8FC6E515E95510006D3897 /* cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_bg.png; sourceTree = "<group>"; };
 		EE8FC6E615E95510006D3897 /* cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_bg@2x.png"; sourceTree = "<group>"; };
 		EE8FC6E715E95510006D3897 /* characters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = characters.png; sourceTree = "<group>"; };
@@ -113,6 +121,8 @@
 			children = (
 				B095816C15EEEEEA00A5A85E /* WordListModel.h */,
 				B095816D15EEEEEA00A5A85E /* WordListModel.m */,
+				EE6D3C1715EF96210000362E /* WCWord.h */,
+				EE6D3C1815EF96210000362E /* WCWord.m */,
 				B095817115EEF46F00A5A85E /* SharedStore.h */,
 				B095817215EEF46F00A5A85E /* SharedStore.m */,
 			);
@@ -166,6 +176,9 @@
 				B095816315EB46B500A5A85E /* ReportViewController.h */,
 				B095816415EB46B500A5A85E /* ReportViewController.m */,
 				B095816515EB46B500A5A85E /* ReportViewController.xib */,
+				EE6D3C1115EF04290000362E /* HowToViewController.h */,
+				EE6D3C1215EF04290000362E /* HowToViewController.m */,
+				EE6D3C1315EF04290000362E /* HowToViewController.xib */,
 			);
 			path = WordCountB1;
 			sourceTree = "<group>";
@@ -284,6 +297,7 @@
 				EE8FC6FF15E95510006D3897 /* top_bar_bg.png in Resources */,
 				EE8FC70015E95510006D3897 /* top_bar_bg@2x.png in Resources */,
 				B095816715EB46B500A5A85E /* ReportViewController.xib in Resources */,
+				EE6D3C1515EF04290000362E /* HowToViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +316,8 @@
 				B095816615EB46B500A5A85E /* ReportViewController.m in Sources */,
 				B095816E15EEEEEA00A5A85E /* WordListModel.m in Sources */,
 				B095817315EEF46F00A5A85E /* SharedStore.m in Sources */,
+				EE6D3C1415EF04290000362E /* HowToViewController.m in Sources */,
+				EE6D3C1915EF96210000362E /* WCWord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

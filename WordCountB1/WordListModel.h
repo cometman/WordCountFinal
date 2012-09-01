@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-@interface WordListModel : NSObject
+typedef struct {__unsafe_unretained NSString *word; int count;} Word;
 
-@property (nonatomic) NSMutableDictionary *words;
+@interface WordListModel : NSObject <NSCoding>
+
+@property (nonatomic) NSMutableArray *words;
 @property (nonatomic) NSString *title;
+
+-(id)initWithWords:(NSMutableArray *)words andTitle:(NSString *)title;
 
 -(void) countWord:(NSString *) word;
 

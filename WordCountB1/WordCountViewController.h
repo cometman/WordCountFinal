@@ -23,4 +23,5 @@
 
 - (IBAction)showReportView:(id)sender;
 -(void) countWord:(id) sender;
+- (void)slideViewBack;
 @end
