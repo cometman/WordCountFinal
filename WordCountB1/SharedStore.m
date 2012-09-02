@@ -34,7 +34,7 @@
     return self;
 }
 
-- (NSArray *)allLists {
+- (NSMutableArray *)allLists {
     return allLists;
 }
 
@@ -48,6 +48,11 @@
     [allLists addObject:p];
     
     return p;
+}
+
+- (WordListModel *)createListWithList:(WordListModel *)newList {
+    [allLists insertObject:newList atIndex:0];
+    return newList;
 }
 
 - (NSString *)itemArchivePath {

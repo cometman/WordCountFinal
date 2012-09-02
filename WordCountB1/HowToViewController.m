@@ -8,6 +8,10 @@
 
 #import "HowToViewController.h"
 
+// Step 1 text: Find a repetitive friend
+// Step 2 text: Pull out the app and count
+// Step 3 text: Let everyone know about it
+
 @interface HowToViewController ()
 
 @end

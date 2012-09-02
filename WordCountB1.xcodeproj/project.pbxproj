@@ -32,6 +32,8 @@
 		EE6D3C1415EF04290000362E /* HowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D3C1215EF04290000362E /* HowToViewController.m */; };
 		EE6D3C1515EF04290000362E /* HowToViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6D3C1315EF04290000362E /* HowToViewController.xib */; };
 		EE6D3C1915EF96210000362E /* WCWord.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D3C1815EF96210000362E /* WCWord.m */; };
+		EE6D3C2115F2D2F50000362E /* NewListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D3C1F15F2D2F40000362E /* NewListViewController.m */; };
+		EE6D3C2215F2D2F50000362E /* NewListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6D3C2015F2D2F40000362E /* NewListViewController.xib */; };
 		EE8FC6F315E95510006D3897 /* cell_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = EE8FC6E515E95510006D3897 /* cell_bg.png */; };
 		EE8FC6F415E95510006D3897 /* cell_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EE8FC6E615E95510006D3897 /* cell_bg@2x.png */; };
 		EE8FC6F515E95510006D3897 /* characters.png in Resources */ = {isa = PBXBuildFile; fileRef = EE8FC6E715E95510006D3897 /* characters.png */; };
@@ -86,6 +88,9 @@
 		EE6D3C1315EF04290000362E /* HowToViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HowToViewController.xib; sourceTree = "<group>"; };
 		EE6D3C1715EF96210000362E /* WCWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WCWord.h; sourceTree = "<group>"; };
 		EE6D3C1815EF96210000362E /* WCWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WCWord.m; sourceTree = "<group>"; };
+		EE6D3C1E15F2D2F40000362E /* NewListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewListViewController.h; sourceTree = "<group>"; };
+		EE6D3C1F15F2D2F40000362E /* NewListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewListViewController.m; sourceTree = "<group>"; };
+		EE6D3C2015F2D2F40000362E /* NewListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewListViewController.xib; sourceTree = "<group>"; };
 		EE8FC6E515E95510006D3897 /* cell_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_bg.png; sourceTree = "<group>"; };
 		EE8FC6E615E95510006D3897 /* cell_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_bg@2x.png"; sourceTree = "<group>"; };
 		EE8FC6E715E95510006D3897 /* characters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = characters.png; sourceTree = "<group>"; };
@@ -170,6 +175,9 @@
 				B09C694E15E925EF00CF6560 /* WordListViewController.h */,
 				B09C694F15E925EF00CF6560 /* WordListViewController.m */,
 				B09C695015E925EF00CF6560 /* WordListViewController.xib */,
+				EE6D3C1E15F2D2F40000362E /* NewListViewController.h */,
+				EE6D3C1F15F2D2F40000362E /* NewListViewController.m */,
+				EE6D3C2015F2D2F40000362E /* NewListViewController.xib */,
 				B09C695315E9271800CF6560 /* WordCountViewController.h */,
 				B09C695415E9271800CF6560 /* WordCountViewController.m */,
 				B09C695515E9271800CF6560 /* WordCountViewController.xib */,
@@ -298,6 +306,7 @@
 				EE8FC70015E95510006D3897 /* top_bar_bg@2x.png in Resources */,
 				B095816715EB46B500A5A85E /* ReportViewController.xib in Resources */,
 				EE6D3C1515EF04290000362E /* HowToViewController.xib in Resources */,
+				EE6D3C2215F2D2F50000362E /* NewListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +327,7 @@
 				B095817315EEF46F00A5A85E /* SharedStore.m in Sources */,
 				EE6D3C1415EF04290000362E /* HowToViewController.m in Sources */,
 				EE6D3C1915EF96210000362E /* WCWord.m in Sources */,
+				EE6D3C2115F2D2F50000362E /* NewListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

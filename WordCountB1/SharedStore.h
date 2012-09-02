@@ -18,8 +18,9 @@
 
 + (SharedStore *)sharedList;
 
-- (NSArray *)allLists;
+- (NSMutableArray *)allLists;
 - (WordListModel *)createList;
+- (WordListModel *)createListWithList:(WordListModel *)newList;
 
 - (NSString *)itemArchivePath;
 //- (BOOL)saveChanges;
