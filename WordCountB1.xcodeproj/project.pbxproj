@@ -11,6 +11,7 @@
 		B095816715EB46B500A5A85E /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B095816515EB46B500A5A85E /* ReportViewController.xib */; };
 		B095816E15EEEEEA00A5A85E /* WordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B095816D15EEEEEA00A5A85E /* WordListModel.m */; };
 		B095817315EEF46F00A5A85E /* SharedStore.m in Sources */ = {isa = PBXBuildFile; fileRef = B095817215EEF46F00A5A85E /* SharedStore.m */; };
+		B095817915F3E1CC00A5A85E /* CountButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B095817815F3E1CC00A5A85E /* CountButton.m */; };
 		B09C693215E9251F00CF6560 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09C693115E9251F00CF6560 /* UIKit.framework */; };
 		B09C693415E9251F00CF6560 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09C693315E9251F00CF6560 /* Foundation.framework */; };
 		B09C693615E9251F00CF6560 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B09C693515E9251F00CF6560 /* CoreGraphics.framework */; };
@@ -53,6 +54,8 @@
 		B095816D15EEEEEA00A5A85E /* WordListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordListModel.m; sourceTree = "<group>"; };
 		B095817115EEF46F00A5A85E /* SharedStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedStore.h; sourceTree = "<group>"; };
 		B095817215EEF46F00A5A85E /* SharedStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedStore.m; sourceTree = "<group>"; };
+		B095817715F3E1CC00A5A85E /* CountButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountButton.h; sourceTree = "<group>"; };
+		B095817815F3E1CC00A5A85E /* CountButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountButton.m; sourceTree = "<group>"; };
 		B09C692D15E9251F00CF6560 /* WordCountB1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordCountB1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09C693115E9251F00CF6560 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		B09C693315E9251F00CF6560 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -166,6 +169,8 @@
 				B095816315EB46B500A5A85E /* ReportViewController.h */,
 				B095816415EB46B500A5A85E /* ReportViewController.m */,
 				B095816515EB46B500A5A85E /* ReportViewController.xib */,
+				B095817715F3E1CC00A5A85E /* CountButton.h */,
+				B095817815F3E1CC00A5A85E /* CountButton.m */,
 			);
 			path = WordCountB1;
 			sourceTree = "<group>";
@@ -302,6 +307,7 @@
 				B095816615EB46B500A5A85E /* ReportViewController.m in Sources */,
 				B095816E15EEEEEA00A5A85E /* WordListModel.m in Sources */,
 				B095817315EEF46F00A5A85E /* SharedStore.m in Sources */,
+				B095817915F3E1CC00A5A85E /* CountButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

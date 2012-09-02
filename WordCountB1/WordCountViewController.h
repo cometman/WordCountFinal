@@ -22,5 +22,5 @@
 @property (nonatomic, strong) UIImage* orangeImage;
 
 - (IBAction)showReportView:(id)sender;
--(void) countWord:(id) sender;
+
 @end
