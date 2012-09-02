@@ -7,22 +7,33 @@
 //
 
 #import "WordListViewController.h"
+#import "SharedStore.h"
+#import "WordListModel.h"
+#import "WordCountViewController.h"
+#import "NewListViewController.h"
+#import "WCWord.h"
 
 @interface WordListViewController ()
 
 @property (nonatomic, strong) NSMutableArray *wordProfiles;
+@property (nonatomic, strong) UIImageView *characterHolder;
 
 @end
 
 @implementation WordListViewController
 
 @synthesize wordProfiles = _wordProfiles;
+@synthesize wordCountView = _wordCountView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Add WordCount VC on top (initial load)
+        WordCountViewController *wordCountVC = [[WordCountViewController alloc] initWithNibName:@"WordCountViewController" bundle:nil];
+        [self addChildViewController:wordCountVC];
+        _wordCountView = [wordCountVC view];
+        [self.view addSubview:_wordCountView];
     }
     return self;
 }
@@ -31,17 +42,28 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"profile_bg"]];
-    _wordProfiles = [@[
-    @[@"Holy Prayers",@"Lord",@"Father God",@"Jesus",@"Father"],
-    @[@"Brandon's List",@"Like",@"Basically",@"And",@"You Know"],
-    @[@"Clay's List",@"Groovy",@"Like Such As",@"And Then",@"Yup"],
-    @[@"Andres's List",@"I'm Mexican!",@"Crazy Apes",@"What?",@"Sure"]] mutableCopy];
+    UIImage *characters = [UIImage imageNamed:@"characters"];
+    _characterHolder = [[UIImageView alloc] initWithFrame:CGRectMake(30, 326, 226, 135)];
+    _characterHolder.image = characters;
+    _characterHolder.hidden = YES;
+    [self.view addSubview:_characterHolder];
+    [[SharedStore sharedList] createList];
+    [[SharedStore sharedList] createList];
+    [[SharedStore sharedList] createList];
+//    [[SharedStore sharedList] createList];
+//    [[SharedStore sharedList] createList];
+//    [[SharedStore sharedList] createList];
+    _wordProfiles = [[[SharedStore sharedList] allLists] mutableCopy];
+    NSLog(@"%@", [[_wordProfiles objectAtIndex:0] title]);
+    
+//    _wordProfiles = [@[
+//    @[@"Holy Prayers",@"Lord",@"Father God",@"Jesus",@"Father"],
+//    @[@"Brandon's List",@"Like",@"Basically",@"And",@"You Know"],
+//    @[@"Clay's List",@"Groovy",@"Like Such As",@"And Then",@"Yup"],
+//    @[@"Andres's List",@"I'm Mexican!",@"Crazy Apes",@"What?",@"Sure"]] mutableCopy];
 
     if ([_wordProfiles count] <= 3) {
-        UIImage *characters = [UIImage imageNamed:@"characters"];
-        UIImageView *imageHolder = [[UIImageView alloc] initWithFrame:CGRectMake(30, 326, 226, 135)];
-        imageHolder.image = characters;
-        [self.view addSubview:imageHolder];
+        _characterHolder.hidden = NO;
     }
 
     // Do any additional setup after loading the view from its nib.
@@ -96,8 +118,17 @@
             break;
             
         default:
-            cell.textLabel.text = [NSString stringWithFormat:@"%@", [[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:0]];
-            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@", [[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:1],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:2],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:3],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:4]];
+//            cell.textLabel.text = [NSString stringWithFormat:@"%@", [[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:0]];
+//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@", [[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:1],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:2],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:3],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:4]];
+            NSLog(@"Row #: %d", [indexPath row]);
+            NSInteger targetList = [indexPath row] - 2;
+            cell.textLabel.text = [[_wordProfiles objectAtIndex:targetList] title];
+            NSString *wordsListedOut = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@",
+                                        [[[[_wordProfiles objectAtIndex:targetList] words] objectAtIndex:0] word],
+                                        [[[[_wordProfiles objectAtIndex:targetList] words] objectAtIndex:1] word],
+                                        [[[[_wordProfiles objectAtIndex:targetList] words] objectAtIndex:2] word],
+                                        [[[[_wordProfiles objectAtIndex:targetList] words] objectAtIndex:3] word]];
+            cell.detailTextLabel.text = wordsListedOut;
             cell.imageView.image = [UIImage imageNamed:@"profileEdit"];
             break;
     }
@@ -107,8 +138,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] == [_wordProfiles count] + 2) {
-        return 145;
-    } else return 54;
+        return 145; // The height of the characters, plus a little padding
+    } else return 54; // Standard height of a row
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -117,6 +148,37 @@
         return dataRows + 3;
     else
         return dataRows + 2;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([indexPath row] == 0) {
+        [tableView beginUpdates];
+        if([_wordProfiles count] == 3) {
+            NSIndexPath *ip = [[NSIndexPath alloc] init];
+            ip = [NSIndexPath indexPathForRow:6 inSection:0];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationNone];
+            _characterHolder.hidden = YES;
+        }
+        WordListModel *newFromUser = [[WordListModel alloc] initWithWords:[@[@"1",@"2",@"3",@"4"] mutableCopy] andTitle:@"Whatevs"];
+        [[SharedStore sharedList] createListWithList:newFromUser];
+//        [[SharedStore sharedList] createList];
+        _wordProfiles = [[[SharedStore sharedList] allLists] mutableCopy];
+        NSIndexPath *ip = [[NSIndexPath alloc] init];
+        ip = [NSIndexPath indexPathForRow:2 inSection:0];
+        [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationTop];
+        
+        [tableView endUpdates];
+//        [tableView reloadData];
+        NSLog(@"What");
+    } else {
+        NSLog(@"Current List (Before): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
+        [[NSUserDefaults standardUserDefaults] setObject:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text] forKey:@"currentList"];
+        NSLog(@"Current List (After): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
+    }
+}
+
+-(void)insertRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
+    
 }
 
 @end

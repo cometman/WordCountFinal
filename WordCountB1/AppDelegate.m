@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "WordListViewController.h"
 #import "WordCountViewController.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -17,11 +18,6 @@
     // Override point for customization after application launch.
     self.viewController = [[WordListViewController alloc] initWithNibName:@"WordListViewController" bundle:nil];
     self.window.rootViewController = self.viewController;
-    
-    // Add WordCount VC on top (initial load)
-    WordCountViewController *wordCountVC = [[WordCountViewController alloc] initWithNibName:@"WordCountViewController" bundle:nil];
-    [self.viewController addChildViewController:wordCountVC];
-    [self.viewController.view addSubview:wordCountVC.view];
     
     
     [self.window makeKeyAndVisible];

@@ -10,4 +10,6 @@
 
 @interface WordListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, strong) UIView* wordCountView;
+
 @end

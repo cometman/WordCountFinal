@@ -9,9 +9,12 @@
 #import "WordCountViewController.h"
 #import "WordListViewController.h"
 #import "ReportViewController.h"
+<<<<<<< HEAD
 #import "CountButton.h"
+=======
 #import "SharedStore.h"
 #import "WordListModel.h"
+>>>>>>> 5f45c5a8e3ca57f3834f73090348283ea23fc154
 
 @interface WordCountViewController ()
 
@@ -47,6 +50,8 @@ ReportViewController* reportView ;
     [super viewDidLoad];
     self.wordListView = self.view.superview;
     [self.slideBackButton setEnabled:NO];
+<<<<<<< HEAD
+=======
     NSString *currentListTitle = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"];
     if (!currentListTitle) {
         
@@ -57,6 +62,7 @@ ReportViewController* reportView ;
 
 //    [self createTouchUpForWordCount];
     // Do any additional setup after loading the view from its nib.
+>>>>>>> 5f45c5a8e3ca57f3834f73090348283ea23fc154
 }
 
 - (void)viewDidUnload

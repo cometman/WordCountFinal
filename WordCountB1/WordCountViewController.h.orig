@@ -22,6 +22,10 @@
 @property (nonatomic, strong) UIImage* orangeImage;
 
 - (IBAction)showReportView:(id)sender;
+<<<<<<< HEAD
+
+=======
 -(void) countWord:(id) sender;
 - (void)slideViewBack;
+>>>>>>> 5f45c5a8e3ca57f3834f73090348283ea23fc154
 @end
