@@ -25,17 +25,16 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setBackgroundImage:[UIImage imageNamed:@"Word-Counter-Element-without-button"] forState:UIControlStateNormal];
-        [self addTitleLabel];
         [self addButtonTrigger];
         [self addCountingLabels];
     }
     return self;
 }
 
--(void) addTitleLabel
+-(void) addTitleLabel:(NSString *)title
 {
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 107, 50, 25)];
-    [titleLabel setText:@"You Know"];
+    [titleLabel setText:title];
     [titleLabel setTextColor:[UIColor whiteColor]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [self addSubview: titleLabel];
@@ -87,4 +86,8 @@
     return labelFont;
 }
 
+-(void) countWord:(id)sender
+{
+    
+}
 @end

@@ -13,6 +13,7 @@
 @implementation SharedStore
 
 @synthesize currentList = _currentList;
+@synthesize defaultList = _defaultList;
 
 + (id)allocWithZone:(NSZone *)zone {
     return [self sharedList];
@@ -64,6 +65,24 @@
     return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
 }
 
+-(WordListModel *)getDefaultWordList
+{
+        WCWord *word = [[WCWord
+                      alloc] initWithWord:@"Like" andCount:0];
+        WCWord *word2 = [[WCWord
+                      alloc] initWithWord:@"Umm..." andCount:0];
+        WCWord *word3 = [[WCWord
+                          alloc] initWithWord:@"Basically" andCount:0];
+        WCWord *word4 = [[WCWord
+                      alloc] initWithWord:@"You Know" andCount:0];
+    
+        NSMutableArray *wordArray = [[NSMutableArray alloc] initWithObjects:word, word2, word3, word4, nil];
+    
+        self.defaultList = [[WordListModel alloc] initWithWords:wordArray andTitle:@"Default"];
+    
+    
+    return self.defaultList;
+}
 //- (BOOL)saveChanges {
 //    // Returns success or failure
 //    NSString *path = [self itemArchivePath];

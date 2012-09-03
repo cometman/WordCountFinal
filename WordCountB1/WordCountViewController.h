@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WordListModel.h"
 
 
 @interface WordCountViewController : UIViewController
@@ -18,8 +19,9 @@
 @property (nonatomic, strong) UIButton* orange2;
 @property (nonatomic, strong) UIButton* orange3;
 @property (nonatomic, strong) UIButton* orange4;
-
 @property (nonatomic, strong) UIImage* orangeImage;
+
+@property (nonatomic, strong) WordListModel* wordListModel;
 
 - (IBAction)showReportView:(id)sender;
 -(void) countWord:(id) sender;

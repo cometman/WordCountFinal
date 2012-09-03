@@ -17,5 +17,6 @@
 @property (nonatomic, strong) UIButton *buttonTrigger;
 
 -(void) countWord:(id) sender;
+-(void) addTitleLabel:(NSString *)title;
 
 @end

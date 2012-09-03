@@ -15,6 +15,7 @@
 }
 
 @property (nonatomic, strong)NSString *currentList;
+@property (nonatomic, strong)WordListModel *defaultList;
 
 + (SharedStore *)sharedList;
 
@@ -23,6 +24,7 @@
 - (WordListModel *)createListWithList:(WordListModel *)newList;
 
 - (NSString *)itemArchivePath;
+- (WordListModel *) getDefaultWordList;
 //- (BOOL)saveChanges;
 
 @end
