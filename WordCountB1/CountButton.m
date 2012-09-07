@@ -7,6 +7,7 @@
 //
 
 #import "CountButton.h"
+#import "WCWord.h"
 
 @implementation CountButton
 
@@ -15,6 +16,7 @@
 @synthesize tensLabel = _tensLabel;
 @synthesize countLabelX = _countLabelX;
 @synthesize buttonTrigger = _buttonTrigger;
+@synthesize currentWord = _currentWord;
 
 #define COUNT_LABEL_Y 35
 #define COUNT_LABEL_HEIGHT 25
@@ -45,6 +47,7 @@
      self.buttonTrigger = [[UIButton alloc] initWithFrame:CGRectMake(45, 72, 64, 32.5)];
     [self.buttonTrigger setImage:[UIImage imageNamed:@"orangeButton.png"] forState:UIControlStateNormal];
     //[buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UIControlEventTouchUpInside];
+
     [self addSubview:self.buttonTrigger];
 }
 
@@ -86,8 +89,8 @@
     return labelFont;
 }
 
--(void) countWord:(id)sender
+-(void) incrementCounterLabel
 {
-    
+    [self.onesLabel setText:[NSString stringWithFormat:@"%d", self.currentWord.count]];
 }
 @end

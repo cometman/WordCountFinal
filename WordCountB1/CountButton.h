@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WCWord.h"
 
 @interface CountButton : UIButton
 
@@ -15,8 +16,9 @@
 @property (nonatomic) UILabel* hundredsLabel;
 @property (nonatomic) CGFloat countLabelX;
 @property (nonatomic, strong) UIButton *buttonTrigger;
+@property (nonatomic) WCWord* currentWord;
 
--(void) countWord:(id) sender;
+-(void) incrementCounterLabel;
 -(void) addTitleLabel:(NSString *)title;
 
 @end

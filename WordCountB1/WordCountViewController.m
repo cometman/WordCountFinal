@@ -29,8 +29,14 @@
 @synthesize orange4 = _orange4;
 @synthesize orangeImage = _orangeImage;
 @synthesize wordListModel = _wordListModel;
+@synthesize  button1 = _button1;
+@synthesize w1 = _w1;
+@synthesize w2 = _w2;
+@synthesize w3 = _w3;
+@synthesize w4 = _w4;
 
 ReportViewController* reportView ;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,12 +57,12 @@ ReportViewController* reportView ;
 {
     SharedStore *store = [[SharedStore alloc] init];
     self.wordListModel = [store getDefaultWordList];
-    NSString* stringTest = [self.wordListModel.words lastObject];
-    NSLog(@"My test %@", stringTest);
-//    for (NSString* string in self.wordListModel.words)
-//    {
-//        NSLog(@"%@", string);
-//    }
+    
+    self.w1 = [self.wordListModel.words objectAtIndex:0];
+    self.w2 = [self.wordListModel.words objectAtIndex:1];
+    self.w3 = [self.wordListModel.words objectAtIndex:2];
+    self.w4 = [self.wordListModel.words objectAtIndex:3];
+
 }
 - (void)viewDidLoad
 {
@@ -119,32 +125,30 @@ ReportViewController* reportView ;
 
 -(void) buildWordButtons
 {
-    WCWord *wordInList = [self.wordListModel.words objectAtIndex:0];
-    CountButton* button1 = [[CountButton alloc] initWithFrame:CGRectMake(165, 70, 147, 135)];
-    [button1 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    [button1.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    [button1 addTitleLabel:wordInList.word];
-    [self.view addSubview:button1];
+
+    self.button1 = [[CountButton alloc] initWithFrame:CGRectMake(165, 70, 147, 135)];
+//    [button1 addTarget:self action:@selector(countWord1:) forControlEvents:UITouchPhaseEnded];
+    [self.button1.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+     [self.button1 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button1 addTitleLabel:self.w1.word];
+    [self.view addSubview:self.button1];
     
     CountButton *button2 = [[CountButton alloc] initWithFrame:CGRectMake(7, 70, 147, 135)];
-    [button2 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+//    [button2 addTarget:self action:@selector(countWord2:) forControlEvents:UITouchPhaseEnded];
     [button2.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    wordInList = [self.wordListModel.words objectAtIndex:1];
-    [button2 addTitleLabel:wordInList.word];
+    [button2 addTitleLabel:self.w2.word];
     [self.view addSubview:button2];
     
     CountButton *button3 = [[CountButton alloc] initWithFrame:CGRectMake(7, 235, 147, 135)];
-    [button3 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+//    [button3 addTarget:self action:@selector(countWord3:) forControlEvents:UITouchPhaseEnded];
     [button3.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    wordInList = [self.wordListModel.words objectAtIndex:2];
-    [button3 addTitleLabel:wordInList.word];
+    [button3 addTitleLabel:self.w3.word];
     [self.view addSubview:button3];
     
     CountButton *button4 = [[CountButton alloc] initWithFrame:CGRectMake(165, 235, 147, 135)];
-    [button4 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+//    [button4 addTarget:self action:@selector(countWord4:) forControlEvents:UITouchPhaseEnded];
     [button4.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    wordInList = [self.wordListModel.words objectAtIndex:3];
-    [button4 addTitleLabel:wordInList.word];
+    [button4 addTitleLabel:self.w4.word];
     [self.view addSubview:button4];
 }
 
@@ -175,46 +179,54 @@ ReportViewController* reportView ;
 }
 
 
--(void) countWord:(id)sender
+- (void) countWord:(id)sender
 {
-    // If the user clicked the whole button (we have to reference what to animate)
-    if ([sender isKindOfClass:[CountButton class]])
+  //  if (sender == self.button1)
+    //{
+//        if (sender == self.button1.buttonTrigger)
+//        {
+//            UIButton* countButton = sender;
+//            //[self animateOrangeButton: countButton];
+//        }
+    if (sender == self.button1 || sender == self.button1.buttonTrigger)
     {
-        NSLog(@"It is a button!");
-        CountButton *sentButton = (CountButton *)sender;
-        
-        NSLog(@"yes");
-        
-        [UIView animateWithDuration:.3 animations:^
-         {
-             sentButton.buttonTrigger.frame = CGRectMake(45, 90, 64, 14.5);
-         }completion:^(BOOL finished)
-         {
-             [UIView animateWithDuration:.3 animations:^
-              {
-                  sentButton.buttonTrigger.frame = CGRectMake(45, 72, 64, 32.5);
-              }];
-             
-         }];
-
+        [self animateOrangeButton: self.button1.buttonTrigger];
+        self.w1.count++;
+        [self countHelperForButton:self.button1];
     }
+
+  //  }
+     
+  
     
-    // If the user clicked just the orange trigger..
-    else {
-        UIButton *trigger = (UIButton *)sender;
-        [UIView animateWithDuration:.3 animations:^
-         {
-             trigger.frame = CGRectMake(45, 90, 64, 14.5);
-         }completion:^(BOOL finished)
-         {
-             [UIView animateWithDuration:.3 animations:^
-              {
-                  trigger.frame = CGRectMake(45, 72, 64, 32.5);
-              }];
-             
-         }];
 
-    }
 }
 
+-(void) countHelperForButton:(UIButton *)button
+{
+    if (self.w1.count <= 9)
+    {
+        [self.button1.onesLabel setText:[NSString stringWithFormat:@("%d"), self.w1.count]];
+    }
+    else {
+         [self.button1.tensLabel setText:[NSString stringWithFormat:@("%d"), self.w1.count%10]];
+    }
+    
+
+}
+
+-(void) animateOrangeButton:(UIButton *)buttonToAnimate
+{
+    [UIView animateWithDuration:.3 animations:^
+     {
+         buttonToAnimate.frame = CGRectMake(45, 90, 64, 14.5);
+     }completion:^(BOOL finished)
+     {
+         [UIView animateWithDuration:.3 animations:^
+          {
+              buttonToAnimate.frame = CGRectMake(45, 72, 64, 32.5);
+          }];
+         
+     }];
+}
 @end
