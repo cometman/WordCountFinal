@@ -12,6 +12,7 @@
 #import "WordCountViewController.h"
 #import "NewListViewController.h"
 #import "WCWord.h"
+#import "NewListViewController.h"
 
 @interface WordListViewController ()
 
@@ -81,6 +82,22 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+- (void)cancelInput:(id)sender {
+    [sender removeFromSuperview];
+}
+
+- (WordListModel *)retrieveNewListFromPopup {
+    UIButton *bgView = [[UIButton alloc] initWithFrame:[self.view bounds]];
+    bgView.backgroundColor = [UIColor blackColor];
+    bgView.alpha = 0.7;
+    [self.view addSubview:bgView];
+    [bgView addTarget:self action:@selector(cancelInput:) forControlEvents:UIControlEventTouchUpInside];
+    NewListViewController *addList = [[NewListViewController alloc] init];
+    addList.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self.view addSubview:addList.view];
+    return [[WordListModel alloc] initWithWords:[@[@"1",@"2",@"3",@"4"] mutableCopy] andTitle:@"Whatevs"];
+}
+
 #pragma mark - TableViewDataSource Methods
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -122,12 +139,14 @@
 //            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@", [[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:1],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:2],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:3],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:4]];
             NSLog(@"Row #: %d", [indexPath row]);
             NSInteger targetList = [indexPath row] - 2;
-            cell.textLabel.text = [[_wordProfiles objectAtIndex:targetList] title];
+            WordListModel *targetWordList = [_wordProfiles objectAtIndex:targetList];
+            NSLog(@"%@",targetWordList);
+            cell.textLabel.text = [targetWordList title];
             NSString *wordsListedOut = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@",
-                                        [[[[_wordProfiles objectAtIndex:targetList] words] objectAtIndex:0] word],
-                                        [[[[_wordProfiles objectAtIndex:targetList] words] objectAtIndex:1] word],
-                                        [[[[_wordProfiles objectAtIndex:targetList] words] objectAtIndex:2] word],
-                                        [[[[_wordProfiles objectAtIndex:targetList] words] objectAtIndex:3] word]];
+                                        [[targetWordList words] objectAtIndex:0],
+                                        [[targetWordList words] objectAtIndex:1],
+                                        [[targetWordList words] objectAtIndex:2],
+                                        [[targetWordList words] objectAtIndex:3]];
             cell.detailTextLabel.text = wordsListedOut;
             cell.imageView.image = [UIImage imageNamed:@"profileEdit"];
             break;
@@ -151,20 +170,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Selected row: %@", [tableView indexPathForSelectedRow]);
     if ([indexPath row] == 0) {
+//        WordListModel *newFromUser = [[WordListModel alloc] initWithWords:[@[@"1",@"2",@"3",@"4"] mutableCopy] andTitle:@"Whatevs"];
+        WordListModel *newFromUser = [self retrieveNewListFromPopup];
         [tableView beginUpdates];
         if([_wordProfiles count] == 3) {
-            NSIndexPath *ip = [[NSIndexPath alloc] init];
-            ip = [NSIndexPath indexPathForRow:6 inSection:0];
+//            NSIndexPath *ip = [[NSIndexPath alloc] init];
+            NSIndexPath *ip = [NSIndexPath indexPathForRow:6 inSection:0];
             [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationNone];
             _characterHolder.hidden = YES;
         }
-        WordListModel *newFromUser = [[WordListModel alloc] initWithWords:[@[@"1",@"2",@"3",@"4"] mutableCopy] andTitle:@"Whatevs"];
         [[SharedStore sharedList] createListWithList:newFromUser];
 //        [[SharedStore sharedList] createList];
         _wordProfiles = [[[SharedStore sharedList] allLists] mutableCopy];
-        NSIndexPath *ip = [[NSIndexPath alloc] init];
-        ip = [NSIndexPath indexPathForRow:2 inSection:0];
+//        NSIndexPath *ip = [[NSIndexPath alloc] init];
+        NSIndexPath *ip = [NSIndexPath indexPathForRow:2 inSection:0];
         [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationTop];
         
         [tableView endUpdates];

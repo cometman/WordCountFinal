@@ -13,6 +13,7 @@
 #import "SharedStore.h"
 #import "WordListModel.h"
 #import "WCWord.h"
+#import "HowToViewController.h"
 
 @interface WordCountViewController ()
 
@@ -157,6 +158,13 @@ ReportViewController* reportView ;
     reportView.view.frame = CGRectMake(320, 0, 320, 460);
     [self addChildViewController:reportView];
     [self.view addSubview:reportView.view];
+}
+
+- (IBAction)showHowTo:(UIButton *)sender {
+    HowToViewController *htc = [[HowToViewController alloc] initWithNibName:@"HowToViewController" bundle:[NSBundle mainBundle]];
+    UIView *howToView = htc.view;
+    [howToView setFrame:CGRectMake(20, 50, howToView.frame.size.width, howToView.frame.size.height)];
+    [self.view addSubview:howToView];
 }
 
 - (IBAction)showReportView:(id)sender

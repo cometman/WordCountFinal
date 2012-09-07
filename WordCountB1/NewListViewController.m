@@ -53,9 +53,11 @@
 }
 
 - (IBAction)saveList:(UIButton *)sender {
+    
 }
 
 - (IBAction)cancelList:(UIButton *)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (WordListModel *)newListWords {

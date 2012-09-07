@@ -22,6 +22,7 @@
 @property (nonatomic, strong) UIImage* orangeImage;
 
 @property (nonatomic, strong) WordListModel* wordListModel;
+- (IBAction)showHowTo:(UIButton *)sender;
 
 - (IBAction)showReportView:(id)sender;
 -(void) countWord:(id) sender;
