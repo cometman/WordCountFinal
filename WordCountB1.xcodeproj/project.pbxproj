@@ -30,6 +30,8 @@
 		B09C696215E9284E00CF6560 /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695C15E9284E00CF6560 /* topBar.png */; };
 		B09C696315E9284E00CF6560 /* Word-Counter-Element-without-button.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */; };
 		B09C696415E9284E00CF6560 /* Word-Counter-Element.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */; };
+		EE1ABAE615FBF30100C75E41 /* TDSemiModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1ABAE315FBF30100C75E41 /* TDSemiModalViewController.m */; };
+		EE1ABAE715FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1ABAE515FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m */; };
 		EE6D3C1415EF04290000362E /* HowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D3C1215EF04290000362E /* HowToViewController.m */; };
 		EE6D3C1515EF04290000362E /* HowToViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE6D3C1315EF04290000362E /* HowToViewController.xib */; };
 		EE6D3C1915EF96210000362E /* WCWord.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D3C1815EF96210000362E /* WCWord.m */; };
@@ -92,6 +94,11 @@
 		B09C695C15E9284E00CF6560 /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
 		B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Counter-Element-without-button.png"; sourceTree = "<group>"; };
 		B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Counter-Element.png"; sourceTree = "<group>"; };
+		EE1ABAE215FBF30100C75E41 /* TDSemiModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSemiModalViewController.h; sourceTree = "<group>"; };
+		EE1ABAE315FBF30100C75E41 /* TDSemiModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSemiModalViewController.m; sourceTree = "<group>"; };
+		EE1ABAE415FBF30100C75E41 /* UIViewController+TDSemiModalExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TDSemiModalExtension.h"; sourceTree = "<group>"; };
+		EE1ABAE515FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+TDSemiModalExtension.m"; sourceTree = "<group>"; };
+		EE1ABAE815FBF35700C75E41 /* TDSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSemiModal.h; sourceTree = "<group>"; };
 		EE6D3C1115EF04290000362E /* HowToViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HowToViewController.h; sourceTree = "<group>"; };
 		EE6D3C1215EF04290000362E /* HowToViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HowToViewController.m; sourceTree = "<group>"; };
 		EE6D3C1315EF04290000362E /* HowToViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HowToViewController.xib; sourceTree = "<group>"; };
@@ -211,6 +218,7 @@
 		B09C693815E9251F00CF6560 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EE1ABAE015FBF2E300C75E41 /* Imported External Classes */,
 				B09C693915E9251F00CF6560 /* WordCountB1-Info.plist */,
 				B09C693A15E9251F00CF6560 /* InfoPlist.strings */,
 				B09C693D15E9251F00CF6560 /* main.m */,
@@ -250,6 +258,18 @@
 				B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		EE1ABAE015FBF2E300C75E41 /* Imported External Classes */ = {
+			isa = PBXGroup;
+			children = (
+				EE1ABAE815FBF35700C75E41 /* TDSemiModal.h */,
+				EE1ABAE215FBF30100C75E41 /* TDSemiModalViewController.h */,
+				EE1ABAE315FBF30100C75E41 /* TDSemiModalViewController.m */,
+				EE1ABAE415FBF30100C75E41 /* UIViewController+TDSemiModalExtension.h */,
+				EE1ABAE515FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m */,
+			);
+			name = "Imported External Classes";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +378,8 @@
 				EE6D3C1415EF04290000362E /* HowToViewController.m in Sources */,
 				EE6D3C1915EF96210000362E /* WCWord.m in Sources */,
 				EE6D3C2115F2D2F50000362E /* NewListViewController.m in Sources */,
+				EE1ABAE615FBF30100C75E41 /* TDSemiModalViewController.m in Sources */,
+				EE1ABAE715FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

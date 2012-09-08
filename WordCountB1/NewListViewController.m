@@ -32,7 +32,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    // Need to set the subview dimensions or it will not always render correctly
+    // http://stackoverflow.com/questions/1088163
+    // Trying this commented out due to a warning that's produced. If things get hairy with sizes
+    // for the text fields or buttons, then add this in.
+//    for (UIView *subview in self.view) {
+//        subview.frame = self.view.bounds;
+//    }
 }
 
 - (void)viewDidUnload
@@ -42,6 +49,7 @@
     [self setWord2Box:nil];
     [self setWord3Box:nil];
     [self setWord4Box:nil];
+    self.delegate = nil;
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -53,11 +61,15 @@
 }
 
 - (IBAction)saveList:(UIButton *)sender {
-    
+    if ([self.delegate respondsToSelector:@selector(listCommit:)]) {
+        [self.delegate listCommit:self];
+    }
 }
 
 - (IBAction)cancelList:(UIButton *)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    if ([self.delegate respondsToSelector:@selector(listCancel:)]) {
+        [self.delegate listCancel:self];
+    }
 }
 
 - (WordListModel *)newListWords {

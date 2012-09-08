@@ -203,8 +203,4 @@
     }
 }
 
--(void)insertRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
-    
-}
-
 @end
