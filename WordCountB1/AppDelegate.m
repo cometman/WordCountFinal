@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "WordListViewController.h"
 #import "WordCountViewController.h"
+#import "SharedStore.h"
 
 @implementation AppDelegate
 
@@ -32,6 +33,12 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    BOOL success = [[SharedStore sharedList] saveChanges];
+    if (success) {
+        NSLog(@"Yay saved");
+    } else {
+        NSLog(@"Boo, not saved");
+    }
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }

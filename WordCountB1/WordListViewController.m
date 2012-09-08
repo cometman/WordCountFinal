@@ -54,6 +54,8 @@
 //    [[SharedStore sharedList] createList];
 //    [[SharedStore sharedList] createList];
 //    [[SharedStore sharedList] createList];
+//    [[SharedStore sharedList] createList];
+//    [[SharedStore sharedList] createList];
     _wordProfiles = [[[SharedStore sharedList] allLists] mutableCopy];
     NSLog(@"%@", [[_wordProfiles objectAtIndex:0] title]);
     
@@ -140,7 +142,7 @@
             NSLog(@"Row #: %d", [indexPath row]);
             NSInteger targetList = [indexPath row] - 2;
             WordListModel *targetWordList = [_wordProfiles objectAtIndex:targetList];
-            NSLog(@"%@",targetWordList);
+            NSLog(@"%d",targetWordList.words.count);
             cell.textLabel.text = [targetWordList title];
             NSString *wordsListedOut = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@",
                                         [[targetWordList words] objectAtIndex:0],

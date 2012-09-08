@@ -29,8 +29,15 @@
 
 - (id)init {
     self = [super init];
+//    if (self) {
+//        allLists = [[NSMutableArray alloc] init];
+//    }
     if (self) {
-        allLists = [[NSMutableArray alloc] init];
+        NSString *path = [self itemArchivePath];
+        allLists = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        
+        // If the array hadn't been saved previously, create a new empty one.
+        if (!allLists) allLists = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -47,6 +54,9 @@
                       [[WCWord alloc] initWithWord:@"You Know" andCount:23], nil];
     WordListModel *p = [[WordListModel alloc] initWithWords:[words mutableCopy] andTitle:@"WonderList"];
     [allLists addObject:p];
+//    BOOL success = [self saveChanges];
+//    if (success) NSLog(@"Successfully saved");
+//    else NSLog(@"Not successfully saved");
     
     return p;
 }
@@ -65,14 +75,20 @@
 
 - (WordListModel *)createListWithList:(WordListModel *)newList {
     [allLists insertObject:newList atIndex:0];
+    
+    BOOL success = [self saveChanges];
+    if (success) NSLog(@"Successfully saved");
+    else NSLog(@"Not successfully saved");
+    
     return newList;
 }
 
 - (NSString *)itemArchivePath {
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     
     // Get one and only document directory from that list
     NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+    NSLog(@"Called itemArchivePath: %@",documentDirectory);
     
     return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
 }
@@ -114,11 +130,12 @@
     currentWordListModel = [self getDefaultWordList];
     return currentWordListModel;
 }
-//- (BOOL)saveChanges {
-//    // Returns success or failure
-//    NSString *path = [self itemArchivePath];
-//    
-//    return [NSKeyedArchiver archiveRootObject:allLists toFile:path];
-//}
+
+- (BOOL)saveChanges {
+    // Returns success or failure
+    NSString *path = [self itemArchivePath];
+    
+    return [NSKeyedArchiver archiveRootObject:allLists toFile:path];
+}
 
 @end
