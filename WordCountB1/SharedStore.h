@@ -25,6 +25,6 @@
 
 - (NSString *)itemArchivePath;
 - (WordListModel *) getDefaultWordList;
-//- (BOOL)saveChanges;
+- (BOOL)saveChanges;
 
 @end

@@ -49,8 +49,8 @@
     _characterHolder.hidden = YES;
     [self.view addSubview:_characterHolder];
     [[SharedStore sharedList] createList];
-    [[SharedStore sharedList] createList];
-    [[SharedStore sharedList] createList];
+//    [[SharedStore sharedList] createList];
+//    [[SharedStore sharedList] createList];
 //    [[SharedStore sharedList] createList];
 //    [[SharedStore sharedList] createList];
 //    [[SharedStore sharedList] createList];
@@ -140,7 +140,7 @@
             NSLog(@"Row #: %d", [indexPath row]);
             NSInteger targetList = [indexPath row] - 2;
             WordListModel *targetWordList = [_wordProfiles objectAtIndex:targetList];
-            NSLog(@"%@",targetWordList);
+            NSLog(@"%d",targetWordList.words.count);
             cell.textLabel.text = [targetWordList title];
             NSString *wordsListedOut = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@",
                                         [[targetWordList words] objectAtIndex:0],
