@@ -2,12 +2,8 @@
 //  WordListModel.h
 //  WordCountB1
 //
-<<<<<<< HEAD
-// Anything i want
-=======
 //  Created by Clayton Selby on 8/29/12.
 //  Look out for steep dropoffs.
->>>>>>> Fixed broken Copyright.
 //
 
 #import <Foundation/Foundation.h>

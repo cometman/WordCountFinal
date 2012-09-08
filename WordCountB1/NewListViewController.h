@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TDSemiModal.h"
 
 @class WordListModel;
 
-@interface NewListViewController : UIViewController
+@interface NewListViewController : UIViewController {
+    id delegate;
+}
+
+@property (nonatomic, strong) IBOutlet id delegate;
+
 @property (weak, nonatomic) IBOutlet UITextField *titleBox;
 @property (weak, nonatomic) IBOutlet UITextField *word1Box;
 @property (weak, nonatomic) IBOutlet UITextField *word2Box;
@@ -21,4 +27,11 @@
 - (IBAction)saveList:(UIButton *)sender;
 - (IBAction)cancelList:(UIButton *)sender;
 - (WordListModel *)newListWords;
+@end
+
+@interface NSObject (TDNewListControllerDelegate)
+
+- (void)listCommit:(NewListViewController *)viewController;
+- (void)listCancel:(NewListViewController *)viewController;
+
 @end

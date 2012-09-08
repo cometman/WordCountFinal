@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TDSemiModal.h"
+#import "NewListViewController.h"
 
 @interface WordListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
