@@ -20,11 +20,11 @@
 }
 
 + (SharedStore *)sharedList {
-    static SharedStore *defaultList = nil;
-    if (!defaultList) {
-        defaultList = [[super allocWithZone:nil] init];
+    static SharedStore *ss = nil;
+    if (!ss) {
+        ss = [[super allocWithZone:nil] init];
     }
-    return defaultList;
+    return ss;
 }
 
 - (id)init {
@@ -57,6 +57,18 @@
 //    BOOL success = [self saveChanges];
 //    if (success) NSLog(@"Successfully saved");
 //    else NSLog(@"Not successfully saved");
+    
+    return p;
+}
+
+- (WordListModel *)createList2 {
+    NSArray *words = [[NSArray alloc] initWithObjects:
+                      [[WCWord alloc] initWithWord:@"Clay" andCount:1],
+                      [[WCWord alloc] initWithWord:@"ha" andCount:11],
+                      [[WCWord alloc] initWithWord:@"ab" andCount:20],
+                      [[WCWord alloc] initWithWord:@"ok" andCount:23], nil];
+    WordListModel *p = [[WordListModel alloc] initWithWords:[words mutableCopy] andTitle:@"A new one"];
+    [allLists addObject:p];
     
     return p;
 }
@@ -96,8 +108,27 @@
     
         self.defaultList = [[WordListModel alloc] initWithWords:wordArray andTitle:@"Default"];
     
+        return self.defaultList;
+}
+
+-(WordListModel *) getCurrentWordListModel
+{
+     WordListModel* currentWordListModel;
     
-    return self.defaultList;
+    // Loop through all the lists to find the current list object
+    for (int i = 0; i < [self.allLists count]; i++)
+    {
+        WordListModel *wordListModel = [self.allLists objectAtIndex:i];
+        if ([wordListModel.title isEqualToString:self.currentList])
+        {
+            currentWordListModel = wordListModel;
+             return currentWordListModel;
+        }
+    }   
+    
+    // If we do not find a list in the above loop, return the default list
+    currentWordListModel = [self getDefaultWordList];
+    return currentWordListModel;
 }
 
 - (BOOL)saveChanges {

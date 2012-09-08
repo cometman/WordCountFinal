@@ -49,10 +49,13 @@
     _characterHolder.hidden = YES;
     [self.view addSubview:_characterHolder];
     [[SharedStore sharedList] createList];
+<<<<<<< HEAD
     [[SharedStore sharedList] createList2];
     [[SharedStore sharedList] createList];
+=======
 //    [[SharedStore sharedList] createList];
 //    [[SharedStore sharedList] createList];
+>>>>>>> e49062ac21752d051f3130fa6a42f24596c9a58f
 //    [[SharedStore sharedList] createList];
 //    [[SharedStore sharedList] createList];
 //    [[SharedStore sharedList] createList];
@@ -201,6 +204,10 @@
     
         NSLog(@"Current List (After): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
     }
+}
+
+-(void)insertRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation {
+    
 }
 
 @end

@@ -15,10 +15,11 @@
 @property (nonatomic) UILabel* tensLabel;
 @property (nonatomic) UILabel* hundredsLabel;
 @property (nonatomic) CGFloat countLabelX;
+@property (nonatomic) UILabel* titleLabel;
 @property (nonatomic, strong) UIButton *buttonTrigger;
 @property (nonatomic) WCWord* currentWord;
 
 -(void) incrementCounterLabel;
--(void) addTitleLabel:(NSString *)title;
-
+-(void) addTitleLabel;
+-(void) changeWords:(WCWord *) word;
 @end

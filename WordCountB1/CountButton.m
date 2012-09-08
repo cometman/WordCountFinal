@@ -8,6 +8,8 @@
 
 #import "CountButton.h"
 #import "WCWord.h"
+#import "SharedStore.h"
+#import "WordListModel.h"
 
 @implementation CountButton
 
@@ -17,6 +19,7 @@
 @synthesize countLabelX = _countLabelX;
 @synthesize buttonTrigger = _buttonTrigger;
 @synthesize currentWord = _currentWord;
+@synthesize titleLabel = _titleLabel;
 
 #define COUNT_LABEL_Y 35
 #define COUNT_LABEL_HEIGHT 25
@@ -29,17 +32,20 @@
         [self setBackgroundImage:[UIImage imageNamed:@"Word-Counter-Element-without-button"] forState:UIControlStateNormal];
         [self addButtonTrigger];
         [self addCountingLabels];
+        [self addTitleLabel];
+        
+
     }
     return self;
 }
 
--(void) addTitleLabel:(NSString *)title
+-(void) addTitleLabel
 {
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 107, 50, 25)];
-    [titleLabel setText:title];
-    [titleLabel setTextColor:[UIColor whiteColor]];
-    [titleLabel setBackgroundColor:[UIColor clearColor]];
-    [self addSubview: titleLabel];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 107, 50, 25)];
+    [self.titleLabel setText:self.currentWord.word ];
+    [self.titleLabel setTextColor:[UIColor whiteColor]];
+    [self.titleLabel setBackgroundColor:[UIColor clearColor]];
+    [self addSubview: self.titleLabel];
 }
 
 -(void) addButtonTrigger
@@ -53,6 +59,7 @@
 
 -(void) addCountingLabels
 {
+    self.currentWord.count = 0;
     self.countLabelX = 100;
     
     self.onesLabel = [[UILabel alloc] initWithFrame: CGRectMake(self.countLabelX, COUNT_LABEL_Y, COUNT_LABEL_WIDTH, COUNT_LABEL_HEIGHT)];
@@ -92,5 +99,25 @@
 -(void) incrementCounterLabel
 {
     [self.onesLabel setText:[NSString stringWithFormat:@"%d", self.currentWord.count]];
+}
+
+-(void)changeWords:(WCWord *)newWord
+{
+    // Remove all the old components
+    [self.onesLabel removeFromSuperview];
+    [self.tensLabel removeFromSuperview];
+    [self.hundredsLabel removeFromSuperview];
+    //[self.titleLabel removeFromSuperview];
+    
+    // Set the new word
+    self.currentWord = newWord;
+    
+    // Add the new count labels
+    [self addCountingLabels];    
+ 
+    
+    // Add the new label
+ //   [self addTitleLabel:newWord.word];
+    
 }
 @end
