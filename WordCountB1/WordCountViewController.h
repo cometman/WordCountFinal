@@ -17,28 +17,20 @@
 @property (nonatomic) UIButton* slideBackButton;
 
 @property (nonatomic, strong) CountButton* button1;
-@property (nonatomic, strong) UIButton* orange1;
-@property (nonatomic, strong) UIButton* orange2;
-@property (nonatomic, strong) UIButton* orange3;
-@property (nonatomic, strong) UIButton* orange4;
-@property (nonatomic, strong) UIImage* orangeImage;
-
+@property (nonatomic, strong) CountButton* button2;
+@property (nonatomic, strong) CountButton* button3;
+@property (nonatomic, strong) CountButton* button4;
 
 @property (nonatomic, strong) WCWord *w1;
 @property (nonatomic, strong) WCWord *w2;
 @property (nonatomic, strong) WCWord *w3;
 @property (nonatomic, strong) WCWord *w4;
 
-@property (nonatomic, strong) WordListModel* wordListModel;
 - (IBAction)showHowTo:(UIButton *)sender;
 
 - (IBAction)showReportView:(id)sender;
 -(void) animateOrangeButton:(UIButton *)buttonToAnimate;
 
--(void) countWord1:(id) sender;
--(void) countWord2:(id) sender;
--(void) countWord3:(id) sender;
--(void) countWord4:(id) sender;
-
 - (void)slideViewBack;
+
 @end

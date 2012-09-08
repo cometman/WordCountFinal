@@ -21,10 +21,12 @@
 
 - (NSMutableArray *)allLists;
 - (WordListModel *)createList;
+- (WordListModel *)createList2;
 - (WordListModel *)createListWithList:(WordListModel *)newList;
 
 - (NSString *)itemArchivePath;
 - (WordListModel *) getDefaultWordList;
+- (WordListModel *) getCurrentWordListModel;
 //- (BOOL)saveChanges;
 
 @end

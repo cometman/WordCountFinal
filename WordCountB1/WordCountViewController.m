@@ -23,13 +23,10 @@
 
 @synthesize wordListView = _wordListView;
 @synthesize slideBackButton = _slideBackButton;
-@synthesize orange1 = _orange1;
-@synthesize orange2 = _orange2;
-@synthesize orange3 = _orange3;
-@synthesize orange4 = _orange4;
-@synthesize orangeImage = _orangeImage;
-@synthesize wordListModel = _wordListModel;
-@synthesize  button1 = _button1;
+@synthesize button1 = _button1;
+@synthesize button2 = _button2;
+@synthesize button3 = _button3;
+@synthesize button4 = _button4;
 @synthesize w1 = _w1;
 @synthesize w2 = _w2;
 @synthesize w3 = _w3;
@@ -41,44 +38,29 @@ ReportViewController* reportView ;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    self.orangeImage = [UIImage imageNamed:@"orangeButton.png"];
 
 
     if (self) {
         // Custom initialization
-        [self setWordModel];
-        [self buildWordButtons];
+       // [self setWordModel:nil];
+      //  [self buildWordButtons];
      
     }
     return self;
 }
 
-- (void) setWordModel
-{
-    SharedStore *store = [[SharedStore alloc] init];
-    self.wordListModel = [store getDefaultWordList];
-    
-    self.w1 = [self.wordListModel.words objectAtIndex:0];
-    self.w2 = [self.wordListModel.words objectAtIndex:1];
-    self.w3 = [self.wordListModel.words objectAtIndex:2];
-    self.w4 = [self.wordListModel.words objectAtIndex:3];
-
-}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.wordListView = self.view.superview;
     [self.slideBackButton setEnabled:NO];
-    NSString *currentListTitle = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"];
-    if (!currentListTitle) {
-        
-    }
-   // [self buildWordButtons];
+
+    self.w1 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:0];
+    self.w2 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:1];
+    self.w3 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:2];
+    self.w4 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:3];
     
-
-
-//    [self createTouchUpForWordCount];
-    // Do any additional setup after loading the view from its nib.
+    [self buildWordButtons];
 }
 
 - (void)viewDidUnload
@@ -108,6 +90,21 @@ ReportViewController* reportView ;
 
 -(void) slideViewBack
 {
+    self.w1 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:0];
+    self.w2 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:1];
+    self.w3 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:2];
+    self.w4 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:3];
+    
+    [self.button1 changeWords:self.w1];
+    [self.button2 changeWords:self.w2];
+    [self.button3 changeWords:self.w3];
+    [self.button4 changeWords:self.w4];
+    
+    [self.button1.titleLabel  setText:self.button1.currentWord.word];
+    [self.button2.titleLabel  setText:self.button2.currentWord.word];
+    [self.button3.titleLabel  setText:self.button3.currentWord.word];
+    [self.button4.titleLabel  setText:self.button4.currentWord.word];
+    
     [self.slideBackButton setEnabled:NO];
     CGFloat windowWidth = self.view.frame.size.width;
     CGFloat windowHeight =self.view.frame.size.height;
@@ -125,36 +122,33 @@ ReportViewController* reportView ;
 
 -(void) buildWordButtons
 {
-
     self.button1 = [[CountButton alloc] initWithFrame:CGRectMake(165, 70, 147, 135)];
-//    [button1 addTarget:self action:@selector(countWord1:) forControlEvents:UITouchPhaseEnded];
+    self.button1.currentWord = self.w1;
     [self.button1.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-     [self.button1 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    [self.button1 addTitleLabel:self.w1.word];
+    [self.button1 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button1.titleLabel setText:self.w1.word];
     [self.view addSubview:self.button1];
     
-    CountButton *button2 = [[CountButton alloc] initWithFrame:CGRectMake(7, 70, 147, 135)];
-//    [button2 addTarget:self action:@selector(countWord2:) forControlEvents:UITouchPhaseEnded];
-    [button2.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    [button2 addTitleLabel:self.w2.word];
-    [self.view addSubview:button2];
+    self.button2 = [[CountButton alloc] initWithFrame:CGRectMake(7, 70, 147, 135)];
+    self.button2.currentWord = self.w2;
+    [self.button2.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button2 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button2.titleLabel setText:self.w2.word];
+    [self.view addSubview:self.button2];
     
-    CountButton *button3 = [[CountButton alloc] initWithFrame:CGRectMake(7, 235, 147, 135)];
-//    [button3 addTarget:self action:@selector(countWord3:) forControlEvents:UITouchPhaseEnded];
-    [button3.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    [button3 addTitleLabel:self.w3.word];
-    [self.view addSubview:button3];
+    self.button3 = [[CountButton alloc] initWithFrame:CGRectMake(7, 235, 147, 135)];
+    self.button3.currentWord = self.w3;
+    [self.button3.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button3 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button3.titleLabel setText:self.w3.word];
+    [self.view addSubview:self.button3];
     
-    CountButton *button4 = [[CountButton alloc] initWithFrame:CGRectMake(165, 235, 147, 135)];
-//    [button4 addTarget:self action:@selector(countWord4:) forControlEvents:UITouchPhaseEnded];
-    [button4.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    [button4 addTitleLabel:self.w4.word];
-    [self.view addSubview:button4];
-}
-
--(void) createDefaultWordList
-{
-    
+    self.button4 = [[CountButton alloc] initWithFrame:CGRectMake(165, 235, 147, 135)];
+    self.button4.currentWord = self.w4;
+    [self.button4.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button4 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button4.titleLabel setText:self.w4.word];
+    [self.view addSubview:self.button4];
 }
 
 -(void) hideReportView
@@ -181,38 +175,56 @@ ReportViewController* reportView ;
 
 - (void) countWord:(id)sender
 {
-  //  if (sender == self.button1)
-    //{
-//        if (sender == self.button1.buttonTrigger)
-//        {
-//            UIButton* countButton = sender;
-//            //[self animateOrangeButton: countButton];
-//        }
     if (sender == self.button1 || sender == self.button1.buttonTrigger)
     {
         [self animateOrangeButton: self.button1.buttonTrigger];
         self.w1.count++;
         [self countHelperForButton:self.button1];
     }
-
-  //  }
-     
-  
-    
-
+    if (sender == self.button2 || sender == self.button2.buttonTrigger)
+    {
+        [self animateOrangeButton: self.button2.buttonTrigger];
+        self.w2.count++;
+        [self countHelperForButton:self.button2];
+    }
+    if (sender == self.button3 || sender == self.button3.buttonTrigger)
+    {
+        [self animateOrangeButton: self.button3.buttonTrigger];
+        self.w3.count++;
+        [self countHelperForButton:self.button3];
+    }
+    if (sender == self.button4 || sender == self.button4.buttonTrigger)
+    {
+        [self animateOrangeButton: self.button4.buttonTrigger];
+        self.w4.count++;
+        [self countHelperForButton:self.button4];
+    }
+   
 }
 
--(void) countHelperForButton:(UIButton *)button
+-(void) countHelperForButton:(CountButton *)button
 {
-    if (self.w1.count <= 9)
+    // Increment ones
+    if (button.currentWord.count % 10 != 0)
     {
-        [self.button1.onesLabel setText:[NSString stringWithFormat:@("%d"), self.w1.count]];
+        [button.onesLabel setText:[NSString stringWithFormat:@("%d"), button.currentWord.count % 10]];
     }
-    else {
-         [self.button1.tensLabel setText:[NSString stringWithFormat:@("%d"), self.w1.count%10]];
-    }
-    
+    // Increment tens
+    else if (button.currentWord.count % 100 != 0)
+    {
+        [button.onesLabel setText:[NSString stringWithFormat:@("%d"), 0]];        
+        int tenLabelValue = (button.currentWord.count % 100) / 10;
+        [button.tensLabel setText:[NSString stringWithFormat:@("%d"), tenLabelValue]];
 
+    }
+    // Increment hundreds
+    else
+    {
+        [button.onesLabel setText:[NSString stringWithFormat:@("%d"), 0]];
+        [button.tensLabel setText:[NSString stringWithFormat:@("%d"), 0]];
+        int hundresValueLabel = button.currentWord.count / 100;
+        [button.hundredsLabel setText:[NSString stringWithFormat:@("%d"), hundresValueLabel]];
+    }
 }
 
 -(void) animateOrangeButton:(UIButton *)buttonToAnimate

@@ -49,7 +49,7 @@
     _characterHolder.hidden = YES;
     [self.view addSubview:_characterHolder];
     [[SharedStore sharedList] createList];
-    [[SharedStore sharedList] createList];
+    [[SharedStore sharedList] createList2];
     [[SharedStore sharedList] createList];
 //    [[SharedStore sharedList] createList];
 //    [[SharedStore sharedList] createList];
@@ -194,6 +194,9 @@
     } else {
         NSLog(@"Current List (Before): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
         [[NSUserDefaults standardUserDefaults] setObject:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text] forKey:@"currentList"];
+        NSString *listHelper= [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"];
+        [[SharedStore sharedList]setCurrentList:listHelper];
+    
         NSLog(@"Current List (After): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
     }
 }
