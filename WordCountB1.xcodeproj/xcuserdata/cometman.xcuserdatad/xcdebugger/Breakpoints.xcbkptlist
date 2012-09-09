@@ -7,26 +7,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WordCountB1/WordCountViewController.m"
-         timestampString = "368836781.887945"
+         filePath = "WordCountB1/ReportViewController.m"
+         timestampString = "368846212.889269"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "103"
-         endingLineNumber = "103"
-         landmarkName = "-slideViewBack"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "WordCountB1/SharedStore.m"
-         timestampString = "368835562.304806"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "105"
-         endingLineNumber = "105"
-         landmarkName = "-getDefaultWordList"
+         startingLineNumber = "91"
+         endingLineNumber = "91"
+         landmarkName = "-buildCountButtons"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

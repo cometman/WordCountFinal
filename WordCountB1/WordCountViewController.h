@@ -30,6 +30,7 @@
 
 - (IBAction)showReportView:(id)sender;
 -(void) animateOrangeButton:(UIButton *)buttonToAnimate;
+- (IBAction)slideReportView:(id)sender;
 
 - (void)slideViewBack;
 
