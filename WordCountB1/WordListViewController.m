@@ -25,6 +25,7 @@
 
 @synthesize wordProfiles = _wordProfiles;
 @synthesize wordCountView = _wordCountView;
+@synthesize tableView = _tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -88,16 +89,15 @@
     [sender removeFromSuperview];
 }
 
-- (WordListModel *)retrieveNewListFromPopup {
-    UIButton *bgView = [[UIButton alloc] initWithFrame:[self.view bounds]];
-    bgView.backgroundColor = [UIColor blackColor];
-    bgView.alpha = 0.7;
-    [self.view addSubview:bgView];
-    [bgView addTarget:self action:@selector(cancelInput:) forControlEvents:UIControlEventTouchUpInside];
-    NewListViewController *addList = [[NewListViewController alloc] init];
-    addList.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self.view addSubview:addList.view];
-    return [[WordListModel alloc] initWithWords:[@[@"1",@"2",@"3",@"4"] mutableCopy] andTitle:@"Whatevs"];
+- (void)retrieveNewListFromPopup {
+    
+    // Present the New List SemiModal view
+    NewListViewController *newListView = [[NewListViewController alloc] initWithNibName:@"NewListViewController" bundle:nil];
+    
+//    newListView.delegate = self;
+    [self presentSemiModalViewController:newListView];
+
+//    return [[WordListModel alloc] initWithWords:[@[@"1",@"2",@"3",@"4"] mutableCopy] andTitle:@"Whatevs"];
 }
 
 #pragma mark - TableViewDataSource Methods
@@ -174,24 +174,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected row: %@", [tableView indexPathForSelectedRow]);
     if ([indexPath row] == 0) {
+        _tableView = tableView;
+        [self retrieveNewListFromPopup];
 //        WordListModel *newFromUser = [[WordListModel alloc] initWithWords:[@[@"1",@"2",@"3",@"4"] mutableCopy] andTitle:@"Whatevs"];
-        WordListModel *newFromUser = [self retrieveNewListFromPopup];
-        [tableView beginUpdates];
-        if([_wordProfiles count] == 3) {
-//            NSIndexPath *ip = [[NSIndexPath alloc] init];
-            NSIndexPath *ip = [NSIndexPath indexPathForRow:6 inSection:0];
-            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationNone];
-            _characterHolder.hidden = YES;
-        }
-        [[SharedStore sharedList] createListWithList:newFromUser];
-//        [[SharedStore sharedList] createList];
-        _wordProfiles = [[[SharedStore sharedList] allLists] mutableCopy];
-//        NSIndexPath *ip = [[NSIndexPath alloc] init];
-        NSIndexPath *ip = [NSIndexPath indexPathForRow:2 inSection:0];
-        [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationTop];
-        
-        [tableView endUpdates];
-//        [tableView reloadData];
         NSLog(@"What");
     } else {
         NSLog(@"Current List (Before): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
@@ -201,6 +186,89 @@
     
         NSLog(@"Current List (After): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
     }
+}
+
+#pragma mark - newListViewController delegate methods
+
+- (void)listCommit:(id)viewController {
+    [_tableView beginUpdates];
+    if([_wordProfiles count] == 3) {
+        NSIndexPath *ip = [NSIndexPath indexPathForRow:6 inSection:0];
+        [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationNone];
+        _characterHolder.hidden = YES;
+    }
+    _wordProfiles = [[[SharedStore sharedList] allLists] mutableCopy];
+    NSIndexPath *ip = [NSIndexPath indexPathForRow:2 inSection:0];
+    [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationTop];
+    [_tableView reloadData];
+    [_tableView endUpdates];
+}
+
+- (void)listCancel:(id)viewController {
+    
+}
+
+#pragma mark - Overriding SemiModal presentation methods
+
+- (void)presentSemiModalViewController:(NewListViewController *)vc {
+#define DEGREES_TO_RADIANS(x) (M_PI * (x)/180.0)
+    
+    UIView *modalView = vc.view;
+    UIView *coverView = vc.coverView;
+    
+    // Not sure what this does, but it was commented out in the file I stole from
+    // UIWindow *mainWindow = [(id)[[UIApplication sharedApplication] delegate] window];
+    
+    CGPoint middleCenter = self.view.center;
+    CGSize offSize = [UIScreen mainScreen].bounds.size;
+    
+    CGPoint offScreenCenter = CGPointZero;
+    
+    offScreenCenter = CGPointMake(offSize.width / 2.0, offSize.height *1.2);
+    [modalView setBounds:CGRectMake(0, 0, 320, 460)];
+    [coverView setFrame:CGRectMake(0, 0, 320, 460)];
+    
+    modalView.center = offScreenCenter;
+    
+    coverView.alpha = 0.0f;
+    
+    [self.view addSubview:coverView];
+    [self addChildViewController:vc];
+    [self.view addSubview:modalView];
+    
+    // Show it with a transition effect
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.6];
+    modalView.center = middleCenter;
+    coverView.alpha = 0.7;
+    [UIView commitAnimations];
+}
+
+- (void) dismissSemiModalViewController:(NewListViewController *)vc {
+    double animationDelay = 0.7;
+    UIView *modalView = vc.view;
+    UIView *coverView = vc.coverView;
+    
+    CGSize offSize = [UIScreen mainScreen].bounds.size;
+    
+    CGPoint offScreenCenter = CGPointZero;
+    
+    offScreenCenter = CGPointMake(offSize.width / 2.0, offSize.height * 1.5);
+    
+    [UIView beginAnimations:nil context:(__bridge void *)(modalView)];
+    [UIView setAnimationDuration:animationDelay];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(dismissSemiModalViewControllerEnded:finished:context:)];
+    modalView.center = offScreenCenter;
+    coverView.alpha = 0.0f;
+    [UIView commitAnimations];
+    
+    [coverView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:animationDelay];
+}
+
+- (void)dismissSemiModalViewControllerEnded:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+    UIView *modalView = (__bridge UIView *)context;
+    [modalView removeFromSuperview];
 }
 
 @end
