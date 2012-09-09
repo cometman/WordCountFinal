@@ -13,7 +13,11 @@
 @property (nonatomic) NSString* wordTitle;
 @property (nonatomic) NSString* wordCount;
 @property (nonatomic) UISlider* countSlider;
+@property (nonatomic) int sliderMax;
+@property (nonatomic) int sliderAmount;
 
 -(void) buildWordTitle:(NSString *)title;
+
+-(void) setSliderAmount:(int)sliderAmount;
 
 @end

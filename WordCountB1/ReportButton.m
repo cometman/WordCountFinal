@@ -13,6 +13,8 @@
 @synthesize wordTitle = _wordTitle;
 @synthesize wordCount = _wordCount;
 @synthesize countSlider = _countSlider;
+@synthesize sliderMax = _sliderMax;
+@synthesize sliderAmount = _sliderAmount;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -20,7 +22,6 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self setupButtonFrame];
-        [self buildSliderObject];
     }
     return self;
 }
@@ -42,6 +43,10 @@
 -(void) buildSliderObject
 {
     self.countSlider = [[UISlider alloc] initWithFrame:CGRectMake(20, self.frame.size.height/2-5, self.frame.size.width - 30, 20)];
+    [self.countSlider setMinimumValue:0];
+    [self.countSlider setMaximumValue:self.sliderMax];
+    [self.countSlider setValue:self.sliderAmount];
+    [self.countSlider setUserInteractionEnabled:false];
     [self addSubview:self.countSlider];
 }
 
@@ -55,5 +60,10 @@
     [self addSubview:titleLabel];
 }
 
+-(void)setSliderAmount:(int)sliderAmount
+{
+    _sliderAmount = sliderAmount;
+    [self buildSliderObject];
+}
 
 @end

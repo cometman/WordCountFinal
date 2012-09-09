@@ -235,7 +235,8 @@ ReportViewController* reportView ;
 }
 
 - (IBAction)slideReportView:(id)sender {
-    [reportView buildCountButtons];
+    NSMutableArray* words = [[NSMutableArray alloc] initWithObjects:self.w1, self.w2, self.w3, self.w4, nil];
+    [reportView buildCountButtons:words];
     
     [UIView animateWithDuration:1.0 animations:^{
         reportView.view.frame = CGRectMake(0, 0, 320, 460);

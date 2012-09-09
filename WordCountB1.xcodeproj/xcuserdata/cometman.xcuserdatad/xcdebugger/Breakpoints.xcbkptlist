@@ -7,13 +7,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WordCountB1/ReportViewController.m"
-         timestampString = "368846212.889269"
+         filePath = "WordCountB1/ReportButton.m"
+         timestampString = "368919272.830552"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "91"
-         endingLineNumber = "91"
-         landmarkName = "-buildCountButtons"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
+         landmarkName = "-setSliderAmount:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

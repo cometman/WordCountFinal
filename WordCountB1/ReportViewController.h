@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ReportButton.h"
+#import "WordListModel.h"
 
 @interface ReportViewController : UIViewController
 @property (nonatomic) ReportButton* button1;
@@ -17,6 +18,6 @@
 
 
 
-- (void) buildCountButtons;
+- (void) buildCountButtons:(NSMutableArray *)words;
 
 @end

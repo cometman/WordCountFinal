@@ -27,7 +27,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self buildCountButtons];
+       // [self buildCountButtons:[[SharedStore sharedList] getCurrentWordListModel]];
     }
     return self;
 }
@@ -63,15 +63,15 @@
     [self.button3 removeFromSuperview];
     [self.button4 removeFromSuperview];
 }
-- (void) buildCountButtons
+- (void) buildCountButtons:(NSMutableArray* )words
 {
     [self cleanView];
     // Grab the current words
     WordListModel* wordListModel = [[SharedStore sharedList] getCurrentWordListModel];
-    WCWord* w1 = [wordListModel.words objectAtIndex:0];
-    WCWord* w2 = [wordListModel.words objectAtIndex:1];
-    WCWord* w3 = [wordListModel.words objectAtIndex:2];
-    WCWord* w4 = [wordListModel.words objectAtIndex:3];
+    WCWord* w1 = [words objectAtIndex:0];
+    WCWord* w2 = [words objectAtIndex:1];
+    WCWord* w3 = [words objectAtIndex:2];
+    WCWord* w4 = [words objectAtIndex:3];
     
     CGFloat xStart = 10;
     CGFloat yStart = 50;
@@ -97,6 +97,35 @@
     [self.button2 buildWordTitle:title2];
     [self.button3 buildWordTitle:title3];
     [self.button4 buildWordTitle:title4];
+    
+    int sliderMax = [self computeSliderMax:words];
+    
+    self.button1.sliderMax = sliderMax;
+    self.button1.sliderAmount = w1.count;
+    
+    self.button2.sliderMax = sliderMax;
+    self.button2.sliderAmount = w2.count;
+    
+    self.button3.sliderMax = sliderMax;
+    self.button3.sliderAmount = w3.count;
+    
+    self.button4.sliderMax = sliderMax;
+    self.button4.sliderAmount = w4.count;
 }
 
+-(int) computeSliderMax:(NSMutableArray *)words
+{
+    int max = 0;
+    
+    for (int i = 0; i < 4; i++)
+    {
+        WCWord* word = [words objectAtIndex:i];
+        if (word.count > max)
+        {
+            max = word.count;
+        }
+    }
+    
+    return max;
+}
 @end
