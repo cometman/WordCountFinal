@@ -17,6 +17,8 @@
 
 @property (nonatomic, strong) IBOutlet id delegate;
 
+@property (nonatomic, strong) UIView *coverView;
+
 @property (weak, nonatomic) IBOutlet UITextField *titleBox;
 @property (weak, nonatomic) IBOutlet UITextField *word1Box;
 @property (weak, nonatomic) IBOutlet UITextField *word2Box;
@@ -24,14 +26,17 @@
 @property (weak, nonatomic) IBOutlet UITextField *word4Box;
 @property (strong, nonatomic) WordListModel *inputList;
 
-- (IBAction)saveList:(UIButton *)sender;
-- (IBAction)cancelList:(UIButton *)sender;
+- (IBAction)stubSave:(id)sender;
+
+- (IBAction)saveList:(id)sender;
+- (IBAction)cancelList:(id)sender;
 - (WordListModel *)newListWords;
+
 @end
 
-@interface NSObject (TDNewListControllerDelegate)
+@protocol TDNewListControllerDelegate <NSObject>
 
-- (void)listCommit:(NewListViewController *)viewController;
-- (void)listCancel:(NewListViewController *)viewController;
+- (void)listCommit:(id)viewController;
+- (void)listCancel:(id)viewController;
 
 @end
