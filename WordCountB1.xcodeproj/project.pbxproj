@@ -30,6 +30,7 @@
 		B09C696215E9284E00CF6560 /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695C15E9284E00CF6560 /* topBar.png */; };
 		B09C696315E9284E00CF6560 /* Word-Counter-Element-without-button.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */; };
 		B09C696415E9284E00CF6560 /* Word-Counter-Element.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */; };
+		B0F606E515FC191000810431 /* ReportButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F606E415FC191000810431 /* ReportButton.m */; };
 		EE1ABAE615FBF30100C75E41 /* TDSemiModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1ABAE315FBF30100C75E41 /* TDSemiModalViewController.m */; };
 		EE1ABAE715FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1ABAE515FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m */; };
 		EE6D3C1415EF04290000362E /* HowToViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE6D3C1215EF04290000362E /* HowToViewController.m */; };
@@ -94,6 +95,8 @@
 		B09C695C15E9284E00CF6560 /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
 		B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Counter-Element-without-button.png"; sourceTree = "<group>"; };
 		B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Counter-Element.png"; sourceTree = "<group>"; };
+		B0F606E315FC191000810431 /* ReportButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportButton.h; sourceTree = "<group>"; };
+		B0F606E415FC191000810431 /* ReportButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportButton.m; sourceTree = "<group>"; };
 		EE1ABAE215FBF30100C75E41 /* TDSemiModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSemiModalViewController.h; sourceTree = "<group>"; };
 		EE1ABAE315FBF30100C75E41 /* TDSemiModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDSemiModalViewController.m; sourceTree = "<group>"; };
 		EE1ABAE415FBF30100C75E41 /* UIViewController+TDSemiModalExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+TDSemiModalExtension.h"; sourceTree = "<group>"; };
@@ -152,6 +155,7 @@
 				EE6D3C1815EF96210000362E /* WCWord.m */,
 				B095817115EEF46F00A5A85E /* SharedStore.h */,
 				B095817215EEF46F00A5A85E /* SharedStore.m */,
+				B09C695815E9280800CF6560 /* Images */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -187,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				B095817015EEEF0900A5A85E /* Models */,
-				B09C695815E9280800CF6560 /* Images */,
 				B09C694015E9251F00CF6560 /* AppDelegate.h */,
 				B09C694115E9251F00CF6560 /* AppDelegate.m */,
 				B09C694315E9251F00CF6560 /* ViewController.h */,
@@ -211,6 +214,8 @@
 				EE6D3C1115EF04290000362E /* HowToViewController.h */,
 				EE6D3C1215EF04290000362E /* HowToViewController.m */,
 				EE6D3C1315EF04290000362E /* HowToViewController.xib */,
+				B0F606E315FC191000810431 /* ReportButton.h */,
+				B0F606E415FC191000810431 /* ReportButton.m */,
 			);
 			path = WordCountB1;
 			sourceTree = "<group>";
@@ -380,6 +385,7 @@
 				EE6D3C2115F2D2F50000362E /* NewListViewController.m in Sources */,
 				EE1ABAE615FBF30100C75E41 /* TDSemiModalViewController.m in Sources */,
 				EE1ABAE715FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m in Sources */,
+				B0F606E515FC191000810431 /* ReportButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

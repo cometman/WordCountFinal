@@ -41,9 +41,7 @@ ReportViewController* reportView ;
 
 
     if (self) {
-        // Custom initialization
-       // [self setWordModel:nil];
-      //  [self buildWordButtons];
+        reportView = [[ReportViewController alloc] initWithNibName:@"ReportViewController" bundle:nil];
      
     }
     return self;
@@ -61,6 +59,7 @@ ReportViewController* reportView ;
     self.w4 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:3];
     
     [self buildWordButtons];
+    [self hideReportView];
 }
 
 - (void)viewDidUnload
@@ -165,13 +164,6 @@ ReportViewController* reportView ;
     [self.view addSubview:howToView];
 }
 
-- (IBAction)showReportView:(id)sender
-{
-    [UIView animateWithDuration:1.0 animations:^{
-        reportView.view.frame = CGRectMake(0, 0, 320, 460);
-    }];
-}
-
 
 - (void) countWord:(id)sender
 {
@@ -240,5 +232,13 @@ ReportViewController* reportView ;
           }];
          
      }];
+}
+
+- (IBAction)slideReportView:(id)sender {
+    [reportView buildCountButtons];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        reportView.view.frame = CGRectMake(0, 0, 320, 460);
+    }];
 }
 @end
