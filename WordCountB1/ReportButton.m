@@ -41,7 +41,7 @@
 }
 -(void) buildSliderObject
 {
-    self.countSlider = [[UISlider alloc] initWithFrame:CGRectMake(20, self.frame.size.height/2-10, self.frame.size.width - 30, 20)];
+    self.countSlider = [[UISlider alloc] initWithFrame:CGRectMake(20, self.frame.size.height/2-5, self.frame.size.width - 30, 20)];
     [self addSubview:self.countSlider];
 }
 
