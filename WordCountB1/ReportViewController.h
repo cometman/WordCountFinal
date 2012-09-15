@@ -17,6 +17,7 @@
 @property (nonatomic) ReportButton* button4;
 
 
+- (IBAction)shareOnFacebook:(id)sender;
 
 - (void) buildCountButtons:(NSMutableArray *)words;
 

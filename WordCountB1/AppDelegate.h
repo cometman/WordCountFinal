@@ -17,4 +17,11 @@
 
 @property (strong, nonatomic) WordListViewController *viewController;
 
+@property (strong, nonatomic) UINavigationController* navController;
+
+-(void) openSession;
+-(void)performLogin:(id)sender;
+-(void)showLoginView;
+-(void) fbLogOut;
+
 @end

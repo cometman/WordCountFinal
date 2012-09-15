@@ -134,6 +134,10 @@
 - (BOOL)saveChanges {
     // Returns success or failure
     NSString *path = [self itemArchivePath];
+    NSLog(@"%@", path);
+    NSFileManager* test = [NSFileManager defaultManager];
+//    NSError* myError = [[NSError alloc] init];
+    [test removeItemAtPath:path error:nil];
     
     return [NSKeyedArchiver archiveRootObject:allLists toFile:path];
 }

@@ -11,6 +11,8 @@
 #import "WordListModel.h"
 #import "SharedStore.h"
 #import "WCWord.h"
+#import "FaceBookViewController.h"
+#import "AppDelegate.h"
 
 @interface ReportViewController ()
 
@@ -63,6 +65,21 @@
     [self.button3 removeFromSuperview];
     [self.button4 removeFromSuperview];
 }
+- (IBAction)shareOnFacebook:(id)sender {
+    FaceBookViewController* faceBookViewController = [[FaceBookViewController alloc] initWithNibName:@"FaceBookViewController" bundle:nil];
+
+    [self presentModalViewController:faceBookViewController animated:YES];
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+        // Yes, so just open the session (this won't display any UX).
+        [appDelegate openSession];
+    } else {
+        // No, display the login page.
+        [appDelegate showLoginView];
+    }
+}
+
 - (void) buildCountButtons:(NSMutableArray* )words
 {
     [self cleanView];

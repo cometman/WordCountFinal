@@ -49,23 +49,8 @@
     _characterHolder.image = characters;
     _characterHolder.hidden = YES;
     [self.view addSubview:_characterHolder];
-    [[SharedStore sharedList] createList];
-    [[SharedStore sharedList] createList2];
-    [[SharedStore sharedList] createList];
-//    [[SharedStore sharedList] createList];
-//    [[SharedStore sharedList] createList];
-//    [[SharedStore sharedList] createList];
-//    [[SharedStore sharedList] createList];
-//    [[SharedStore sharedList] createList];
     _wordProfiles = [[[SharedStore sharedList] allLists] mutableCopy];
-    NSLog(@"%@", [[_wordProfiles objectAtIndex:0] title]);
     
-//    _wordProfiles = [@[
-//    @[@"Holy Prayers",@"Lord",@"Father God",@"Jesus",@"Father"],
-//    @[@"Brandon's List",@"Like",@"Basically",@"And",@"You Know"],
-//    @[@"Clay's List",@"Groovy",@"Like Such As",@"And Then",@"Yup"],
-//    @[@"Andres's List",@"I'm Mexican!",@"Crazy Apes",@"What?",@"Sure"]] mutableCopy];
-
     if ([_wordProfiles count] <= 3) {
         _characterHolder.hidden = NO;
     }
@@ -183,6 +168,8 @@
         [[NSUserDefaults standardUserDefaults] setObject:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text] forKey:@"currentList"];
         NSString *listHelper= [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"];
         [[SharedStore sharedList]setCurrentList:listHelper];
+        
+        [[SharedStore sharedList] saveChanges];
     
         NSLog(@"Current List (After): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
     }
@@ -205,7 +192,7 @@
 }
 
 - (void)listCancel:(id)viewController {
-    
+    [self dismissSemiModalViewController:viewController];
 }
 
 #pragma mark - Overriding SemiModal presentation methods

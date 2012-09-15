@@ -39,6 +39,8 @@
 {
     [super viewDidLoad];
     
+    [self.view respondsToSelector:UITouchPhaseBegan];
+    
     // Need to set the subview dimensions or it will not always render correctly
     // http://stackoverflow.com/questions/1088163
     // Trying this commented out due to a warning that's produced. If things get hairy with sizes
@@ -46,6 +48,7 @@
 //    for (UIView *subview in self.view) {
 //        subview.frame = self.view.bounds;
 //    }
+    self.delegate = self.parentViewController;
     self.coverView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     _coverView.backgroundColor = [UIColor blackColor];
     
@@ -93,13 +96,43 @@
 }
 
 - (IBAction)cancelList:(id)sender {
-    if ([self.delegate respondsToSelector:@selector(listCancel:)]) {
-        [self.delegate listCancel:self];
-    }
+//    if ([self.delegate respondsToSelector:@selector(listCancel:)]) {
+//        [self.delegate listCancel:self];
+//    }
+    [self dismissSemiModalViewController:self];
 }
-
 - (WordListModel *)newListWords {
     return [[WordListModel alloc] initWithWords:[@[_word1Box.text, _word2Box.text, _word3Box.text, _word4Box.text] mutableCopy] andTitle:_titleBox.text];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.titleBox resignFirstResponder];
+    [self.word1Box resignFirstResponder];
+    [self.word2Box resignFirstResponder];
+    [self.word3Box resignFirstResponder];
+    [self.word4Box resignFirstResponder];
+}
+
+- (void) dismissSemiModalViewController:(NewListViewController *)vc {
+    double animationDelay = 0.7;
+    UIView *modalView = vc.view;
+    UIView *coverView = vc.coverView;
+    
+    CGSize offSize = [UIScreen mainScreen].bounds.size;
+    
+    CGPoint offScreenCenter = CGPointZero;
+    
+    offScreenCenter = CGPointMake(offSize.width / 2.0, offSize.height * 1.5);
+    
+    [UIView beginAnimations:nil context:(__bridge void *)(modalView)];
+    [UIView setAnimationDuration:animationDelay];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(dismissSemiModalViewControllerEnded:finished:context:)];
+    modalView.center = offScreenCenter;
+    coverView.alpha = 0.0f;
+    [UIView commitAnimations];
+    
+    [coverView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:animationDelay];
+}
 @end
