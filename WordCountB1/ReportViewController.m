@@ -84,7 +84,6 @@
 {
     [self cleanView];
     // Grab the current words
-    WordListModel* wordListModel = [[SharedStore sharedList] getCurrentWordListModel];
     WCWord* w1 = [words objectAtIndex:0];
     WCWord* w2 = [words objectAtIndex:1];
     WCWord* w3 = [words objectAtIndex:2];
@@ -105,16 +104,6 @@
     [self.view addSubview:self.button3];
     [self.view addSubview:self.button4];
     
-    NSString* title1 = [NSString stringWithFormat:@"1.  %@", w1.word];
-    NSString* title2 = [NSString stringWithFormat:@"2.  %@", w2.word];
-    NSString* title3 = [NSString stringWithFormat:@"3.  %@", w3.word];
-    NSString* title4 = [NSString stringWithFormat:@"4.  %@", w4.word];
-    
-    [self.button1 buildWordTitle: title1];
-    [self.button2 buildWordTitle:title2];
-    [self.button3 buildWordTitle:title3];
-    [self.button4 buildWordTitle:title4];
-    
     int sliderMax = [self computeSliderMax:words];
     
     self.button1.sliderMax = sliderMax;
@@ -128,6 +117,16 @@
     
     self.button4.sliderMax = sliderMax;
     self.button4.sliderAmount = w4.count;
+    
+    NSString* title1 = [NSString stringWithFormat:@"1.  %@", w1.word];
+    NSString* title2 = [NSString stringWithFormat:@"2.  %@", w2.word];
+    NSString* title3 = [NSString stringWithFormat:@"3.  %@", w3.word];
+    NSString* title4 = [NSString stringWithFormat:@"4.  %@", w4.word];
+    
+    [self.button1 buildWordTitle: title1];
+    [self.button2 buildWordTitle:title2];
+    [self.button3 buildWordTitle:title3];
+    [self.button4 buildWordTitle:title4];
 }
 
 -(int) computeSliderMax:(NSMutableArray *)words

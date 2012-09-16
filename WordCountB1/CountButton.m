@@ -59,7 +59,7 @@
 
 -(void) addCountingLabels
 {
-    self.currentWord.count = 0;
+//    self.currentWord.count = 0;
     self.countLabelX = 100;
     
     self.onesLabel = [[UILabel alloc] initWithFrame: CGRectMake(self.countLabelX, COUNT_LABEL_Y, COUNT_LABEL_WIDTH, COUNT_LABEL_HEIGHT)];
@@ -111,6 +111,7 @@
     
     // Set the new word
     self.currentWord = newWord;
+    self.currentWord.count = 0;
     
     // Add the new count labels
     [self addCountingLabels];    

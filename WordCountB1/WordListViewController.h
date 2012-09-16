@@ -10,10 +10,9 @@
 #import "TDSemiModal.h"
 #import "NewListViewController.h"
 
-@interface WordListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, TDNewListControllerDelegate>
+@interface WordListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UIView* wordCountView;
-@property (nonatomic, strong) UITableView *tableView;
 
 - (void)presentSemiModalViewController:(NewListViewController *)vc;
 - (void)dismissSemiModalViewController:(NewListViewController *)vc;

@@ -17,12 +17,22 @@
 -(id)initWithWords:(NSMutableArray *)words andTitle:(NSString *)title {
     self = [super init];
     if (self) {
-        _words = words;
         _title = title;
+        _words = words;
+//        [_words addObject:[[WCWord alloc] initWithWord:[words objectAtIndex:0] andCount:0]];
+//        [_words addObject:[[WCWord alloc] initWithWord:[words objectAtIndex:1] andCount:0]];
+//        [_words addObject:[[WCWord alloc] initWithWord:[words objectAtIndex:2] andCount:0]];
+//        [_words addObject:[[WCWord alloc] initWithWord:[words objectAtIndex:3] andCount:0]];
     }
     return self;
 }
 
+//NSArray *words = [[NSArray alloc] initWithObjects:
+//                  [[WCWord alloc] initWithWord:@"Jimmy" andCount:1],
+//                  [[WCWord alloc] initWithWord:@"Like" andCount:11],
+//                  [[WCWord alloc] initWithWord:@"Whatever" andCount:20],
+//                  [[WCWord alloc] initWithWord:@"You Know" andCount:23], nil];
+//WordListModel *p = [[WordListModel alloc] initWithWords:[words mutableCopy] andTitle:@"WonderList"];
 
 -(void)countWord:(NSString *)targetWord {
     for (WCWord *item in _words) {

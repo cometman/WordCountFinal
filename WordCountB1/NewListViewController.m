@@ -9,6 +9,7 @@
 #import "NewListViewController.h"
 #import "WordListModel.h"
 #import "SharedStore.h"
+#import "WCWord.h"
 
 @interface NewListViewController ()
 
@@ -25,6 +26,7 @@
 @synthesize word2Box = _word2Box;
 @synthesize word3Box = _word3Box;
 @synthesize word4Box = _word4Box;
+@synthesize tableView = _tableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,23 +77,23 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)stubSave:(id)sender {
-    NSLog(@"Save List");
-}
-
 - (IBAction)saveList:(id)sender {
     NSLog(@"Save List");
+    WCWord *word1 = [[WCWord alloc] initWithWord:_word1Box.text andCount:0];
+    WCWord *word2 = [[WCWord alloc] initWithWord:_word2Box.text andCount:0];
+    WCWord *word3 = [[WCWord alloc] initWithWord:_word3Box.text andCount:0];
+    WCWord *word4 = [[WCWord alloc] initWithWord:_word4Box.text andCount:0];
     WordListModel *newFromUser = [[WordListModel alloc] initWithWords:[NSMutableArray arrayWithObjects:
-                                                                       _word1Box.text,
-                                                                       _word2Box.text,
-                                                                       _word3Box.text,
-                                                                       _word4Box.text, nil]
+                                                                       word1,
+                                                                       word2,
+                                                                       word3,
+                                                                       word4, nil]
                                                              andTitle:_titleBox.text];
     [[SharedStore sharedList] createListWithList:newFromUser];
-    if ([self.delegate respondsToSelector:@selector(listCommit:)]) {
-        [self.delegate listCommit:self];
-    }
     
+    [self dismissSemiModalViewController:self];
+    [self.tableView reloadData];
+    NSLog(@"Testing %d", [[self.tableView indexPathsForVisibleRows] count]);
     
 }
 
@@ -135,4 +137,6 @@
     
     [coverView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:animationDelay];
 }
+
+
 @end

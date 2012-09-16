@@ -25,7 +25,8 @@
 
 @synthesize wordProfiles = _wordProfiles;
 @synthesize wordCountView = _wordCountView;
-@synthesize tableView = _tableView;
+
+NewListViewController *newListView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +37,7 @@
         [self addChildViewController:wordCountVC];
         _wordCountView = [wordCountVC view];
         [self.view addSubview:_wordCountView];
+        [[SharedStore sharedList] createList];
     }
     return self;
 }
@@ -43,13 +45,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    newListView = [[NewListViewController alloc] initWithNibName:@"NewListViewController" bundle:nil];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"profile_bg"]];
     UIImage *characters = [UIImage imageNamed:@"characters"];
     _characterHolder = [[UIImageView alloc] initWithFrame:CGRectMake(30, 326, 226, 135)];
     _characterHolder.image = characters;
     _characterHolder.hidden = YES;
     [self.view addSubview:_characterHolder];
-    _wordProfiles = [[[SharedStore sharedList] allLists] mutableCopy];
+    _wordProfiles = [[SharedStore sharedList] allLists];
     
     if ([_wordProfiles count] <= 3) {
         _characterHolder.hidden = NO;
@@ -77,9 +80,11 @@
 - (void)retrieveNewListFromPopup {
     
     // Present the New List SemiModal view
-    NewListViewController *newListView = [[NewListViewController alloc] initWithNibName:@"NewListViewController" bundle:nil];
+  
+    
     
 //    newListView.delegate = self;
+   
     [self presentSemiModalViewController:newListView];
 
 //    return [[WordListModel alloc] initWithWords:[@[@"1",@"2",@"3",@"4"] mutableCopy] andTitle:@"Whatevs"];
@@ -120,7 +125,8 @@
             cell.detailTextLabel.text = @"Like  -  Umm  -  Basically  -  You Know";
             cell.imageView.image = [UIImage imageNamed:@"default_star"];
             break;
-            
+        case 5:
+            _characterHolder.hidden = YES;
         default:
 //            cell.textLabel.text = [NSString stringWithFormat:@"%@", [[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:0]];
 //            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@", [[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:1],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:2],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:3],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:4]];
@@ -130,10 +136,10 @@
             NSLog(@"%d",targetWordList.words.count);
             cell.textLabel.text = [targetWordList title];
             NSString *wordsListedOut = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@",
-                                        [[targetWordList words] objectAtIndex:0],
-                                        [[targetWordList words] objectAtIndex:1],
-                                        [[targetWordList words] objectAtIndex:2],
-                                        [[targetWordList words] objectAtIndex:3]];
+                                        [[[targetWordList words] objectAtIndex:0] word],
+                                        [[[targetWordList words] objectAtIndex:1] word],
+                                        [[[targetWordList words] objectAtIndex:2] word],
+                                        [[[targetWordList words] objectAtIndex:3] word]];
             cell.detailTextLabel.text = wordsListedOut;
             cell.imageView.image = [UIImage imageNamed:@"profileEdit"];
             break;
@@ -159,36 +165,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Selected row: %@", [tableView indexPathForSelectedRow]);
     if ([indexPath row] == 0) {
-        _tableView = tableView;
+        newListView.tableView = tableView;
         [self retrieveNewListFromPopup];
-//        WordListModel *newFromUser = [[WordListModel alloc] initWithWords:[@[@"1",@"2",@"3",@"4"] mutableCopy] andTitle:@"Whatevs"];
-        NSLog(@"What");
     } else {
         NSLog(@"Current List (Before): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
         [[NSUserDefaults standardUserDefaults] setObject:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text] forKey:@"currentList"];
         NSString *listHelper= [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"];
         [[SharedStore sharedList]setCurrentList:listHelper];
-        
-        [[SharedStore sharedList] saveChanges];
     
         NSLog(@"Current List (After): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
     }
-}
-
-#pragma mark - newListViewController delegate methods
-
-- (void)listCommit:(id)viewController {
-    [_tableView beginUpdates];
-    if([_wordProfiles count] == 3) {
-        NSIndexPath *ip = [NSIndexPath indexPathForRow:6 inSection:0];
-        [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationNone];
-        _characterHolder.hidden = YES;
-    }
-    _wordProfiles = [[[SharedStore sharedList] allLists] mutableCopy];
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:2 inSection:0];
-    [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:ip] withRowAnimation:UITableViewRowAnimationTop];
-    [_tableView reloadData];
-    [_tableView endUpdates];
 }
 
 - (void)listCancel:(id)viewController {

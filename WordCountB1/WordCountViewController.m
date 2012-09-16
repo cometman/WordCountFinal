@@ -89,6 +89,7 @@ ReportViewController* reportView ;
 
 -(void) slideViewBack
 {
+
     self.w1 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:0];
     self.w2 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:1];
     self.w3 = [[[[SharedStore sharedList] getCurrentWordListModel] words] objectAtIndex:2];

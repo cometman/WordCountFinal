@@ -24,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UITextField *word2Box;
 @property (weak, nonatomic) IBOutlet UITextField *word3Box;
 @property (weak, nonatomic) IBOutlet UITextField *word4Box;
+@property (strong, nonatomic) UITableView* tableView;
+
 @property (strong, nonatomic) WordListModel *inputList;
 
 - (IBAction)stubSave:(id)sender;
@@ -36,7 +38,7 @@
 
 @protocol TDNewListControllerDelegate <NSObject>
 
-- (void)listCommit:(id)viewController;
+//- (void)listCommit:(id)viewController;
 - (void)listCancel:(id)viewController;
 
 @end
