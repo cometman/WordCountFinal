@@ -33,13 +33,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WordCountB1/WordListViewController.m"
-         timestampString = "369449495.112472"
+         filePath = "WordCountB1/ReportViewController.m"
+         timestampString = "369461131.558478"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "143"
-         endingLineNumber = "143"
-         landmarkName = "-tableView:cellForRowAtIndexPath:"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
+         landmarkName = "-shareOnFacebook:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

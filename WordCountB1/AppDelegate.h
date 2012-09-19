@@ -23,5 +23,6 @@
 -(void)performLogin:(id)sender;
 -(void)showLoginView;
 -(void) fbLogOut;
+-(void) postTweet:(NSString *)tweetText andImage:(UIImage *)tweetImage;
 
 @end

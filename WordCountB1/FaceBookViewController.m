@@ -37,7 +37,7 @@
         self.friendPickerController.title = @"Select friends";
     }
     
-    [self.friendPickerController loadData];
+   
     [self.navigationController pushViewController:self.friendPickerController
                                          animated:true];
     self.friendPickerController.view.frame = CGRectMake(0, 45, 320, 425);
@@ -45,8 +45,11 @@
     self.friendPickerController.delegate =self;
     self.friendPickerController.allowsMultipleSelection = NO;
     [self.view addSubview:self.friendPickerController.view];
+     [self.friendPickerController loadData];
+    [self.friendPickerController updateView];
     
 }
+
 
 - (void)viewDidUnload
 {

@@ -12,6 +12,8 @@
 		B0784BD715FD49AA00EF1335 /* FaceBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0784BD515FD49AA00EF1335 /* FaceBookViewController.xib */; };
 		B0784BDE15FD508900EF1335 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0784BDD15FD508900EF1335 /* libsqlite3.0.dylib */; };
 		B0784BE015FD517800EF1335 /* wordCountSocl.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0784BDF15FD517800EF1335 /* wordCountSocl.plist */; };
+		B0784BEC160589A000EF1335 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0784BEB160589A000EF1335 /* Twitter.framework */; };
+		B0784BEE16058B1800EF1335 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0784BED16058B1700EF1335 /* Accounts.framework */; };
 		B095816615EB46B500A5A85E /* ReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B095816415EB46B500A5A85E /* ReportViewController.m */; };
 		B095816715EB46B500A5A85E /* ReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B095816515EB46B500A5A85E /* ReportViewController.xib */; };
 		B095816E15EEEEEA00A5A85E /* WordListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B095816D15EEEEEA00A5A85E /* WordListModel.m */; };
@@ -72,6 +74,8 @@
 		B0784BD515FD49AA00EF1335 /* FaceBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FaceBookViewController.xib; sourceTree = "<group>"; };
 		B0784BDD15FD508900EF1335 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		B0784BDF15FD517800EF1335 /* wordCountSocl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = wordCountSocl.plist; path = ../wordCountSocl.plist; sourceTree = "<group>"; };
+		B0784BEB160589A000EF1335 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		B0784BED16058B1700EF1335 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		B095816315EB46B500A5A85E /* ReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportViewController.h; sourceTree = "<group>"; };
 		B095816415EB46B500A5A85E /* ReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportViewController.m; sourceTree = "<group>"; };
 		B095816515EB46B500A5A85E /* ReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportViewController.xib; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0784BEE16058B1800EF1335 /* Accounts.framework in Frameworks */,
+				B0784BEC160589A000EF1335 /* Twitter.framework in Frameworks */,
 				B0784BDE15FD508900EF1335 /* libsqlite3.0.dylib in Frameworks */,
 				B0784BD215FD489F00EF1335 /* FacebookSDK.framework in Frameworks */,
 				B09C693215E9251F00CF6560 /* UIKit.framework in Frameworks */,
@@ -176,8 +182,6 @@
 		B09C692215E9251F00CF6560 = {
 			isa = PBXGroup;
 			children = (
-				B0784BDD15FD508900EF1335 /* libsqlite3.0.dylib */,
-				B0784BD115FD489F00EF1335 /* FacebookSDK.framework */,
 				B09C693715E9251F00CF6560 /* WordCountB1 */,
 				B09C693015E9251F00CF6560 /* Frameworks */,
 				B09C692E15E9251F00CF6560 /* Products */,
@@ -195,6 +199,10 @@
 		B09C693015E9251F00CF6560 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0784BED16058B1700EF1335 /* Accounts.framework */,
+				B0784BEB160589A000EF1335 /* Twitter.framework */,
+				B0784BDD15FD508900EF1335 /* libsqlite3.0.dylib */,
+				B0784BD115FD489F00EF1335 /* FacebookSDK.framework */,
 				B09C693115E9251F00CF6560 /* UIKit.framework */,
 				B09C693315E9251F00CF6560 /* Foundation.framework */,
 				B09C693515E9251F00CF6560 /* CoreGraphics.framework */,

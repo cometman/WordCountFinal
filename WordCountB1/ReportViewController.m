@@ -74,6 +74,7 @@
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
         // Yes, so just open the session (this won't display any UX).
         [appDelegate openSession];
+        
     } else {
         // No, display the login page.
         [appDelegate showLoginView];
@@ -127,6 +128,11 @@
     [self.button2 buildWordTitle:title2];
     [self.button3 buildWordTitle:title3];
     [self.button4 buildWordTitle:title4];
+}
+
+- (IBAction)postATweet:(id)sender {
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    [appDelegate postTweet:@"Stuff is magical" andImage:nil];
 }
 
 -(int) computeSliderMax:(NSMutableArray *)words

@@ -20,5 +20,6 @@
 - (IBAction)shareOnFacebook:(id)sender;
 
 - (void) buildCountButtons:(NSMutableArray *)words;
+- (IBAction)postATweet:(id)sender;
 
 @end

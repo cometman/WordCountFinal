@@ -13,6 +13,8 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import "FaceBookViewController.h"
 #import "FriendTableViewController.h"
+#import <Twitter/Twitter.h>
+#import <Accounts/Accounts.h>
 
 @implementation AppDelegate
 
@@ -177,4 +179,53 @@
     }
 }
 
+
+
+#pragma mark - TWITTER IMPL
+
+-(void) postTweet:(NSString *)tweetText andImage:(UIImage *)tweetImage
+{
+    NSURL *url = [NSURL URLWithString:@"https://upload.twitter.com/1/statuses/update_with_media.json"];
+    
+    // Create the post request for the target app
+    TWRequest *request = [[TWRequest alloc] initWithURL:url parameters:nil requestMethod:TWRequestMethodPOST];
+    
+    ACAccountStore *store = [[ACAccountStore alloc] init];
+    ACAccountType *twitterAccountType = [store accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+    
+    // Request permission to access Twitter accts.
+    [store requestAccessToAccountsWithType:twitterAccountType withCompletionHandler:^(BOOL granted, NSError *error)
+     {
+         if (!granted)
+         {
+             NSLog(@"User rejected account access");
+         }
+         else
+         {
+             NSArray* twitterAccounts = [store accountsWithAccountType:twitterAccountType];
+             
+             if ([twitterAccounts count] > 0)
+             {
+                 ACAccount *account = [twitterAccounts objectAtIndex:0];
+                 
+                 [request setAccount:account];
+                 
+                 NSString *status = tweetText;
+                 
+                 [request addMultiPartData:[status dataUsingEncoding:NSUTF8StringEncoding] withName:@"status" type:@"multipart/form-data"];
+             
+                 // Perform the twitter request
+                 
+                 [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                     NSDictionary *dict = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
+                     NSLog(@"%@", dict);
+                     
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         // Do cool stuff
+                     });
+                 }];
+             }
+         }
+     }];
+}
 @end
