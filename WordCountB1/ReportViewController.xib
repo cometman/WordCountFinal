@@ -108,6 +108,10 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="680807960"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">twitter.png</string>
+						</object>
 						<reference key="IBUIFontDescription" ref="748233438"/>
 						<reference key="IBUIFont" ref="87130865"/>
 					</object>
@@ -131,6 +135,10 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="680807960"/>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">facebook.png</string>
+						</object>
 						<reference key="IBUIFontDescription" ref="748233438"/>
 						<reference key="IBUIFont" ref="87130865"/>
 					</object>
@@ -299,7 +307,9 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="Next-Button.png">{113, 61}</string>
+			<string key="facebook.png">{313, 44}</string>
 			<string key="topBar.png">{320, 45}</string>
+			<string key="twitter.png">{313, 44}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1498</string>
 	</data>

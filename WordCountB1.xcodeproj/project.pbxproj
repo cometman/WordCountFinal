@@ -37,6 +37,38 @@
 		B09C696215E9284E00CF6560 /* topBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695C15E9284E00CF6560 /* topBar.png */; };
 		B09C696315E9284E00CF6560 /* Word-Counter-Element-without-button.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */; };
 		B09C696415E9284E00CF6560 /* Word-Counter-Element.png in Resources */ = {isa = PBXBuildFile; fileRef = B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */; };
+		B0B4BCBC160C105300BD8981 /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BC9C160C105300BD8981 /* facebook.png */; };
+		B0B4BCBD160C105300BD8981 /* facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BC9D160C105300BD8981 /* facebook@2x.png */; };
+		B0B4BCBE160C105300BD8981 /* navBarSquare.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BC9E160C105300BD8981 /* navBarSquare.png */; };
+		B0B4BCBF160C105300BD8981 /* navBarSquare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BC9F160C105300BD8981 /* navBarSquare@2x.png */; };
+		B0B4BCC0160C105300BD8981 /* orangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCA0160C105300BD8981 /* orangeButton@2x.png */; };
+		B0B4BCC1160C105300BD8981 /* popupConfirmButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCA1160C105300BD8981 /* popupConfirmButton.png */; };
+		B0B4BCC2160C105300BD8981 /* popupConfirmButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCA2160C105300BD8981 /* popupConfirmButton@2x.png */; };
+		B0B4BCC3160C105300BD8981 /* popupDeclineButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCA3160C105300BD8981 /* popupDeclineButton.png */; };
+		B0B4BCC4160C105300BD8981 /* popupDeclineButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCA4160C105300BD8981 /* popupDeclineButton@2x.png */; };
+		B0B4BCC5160C105300BD8981 /* popupExit.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCA5160C105300BD8981 /* popupExit.png */; };
+		B0B4BCC6160C105300BD8981 /* popupExit@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCA6160C105300BD8981 /* popupExit@2x.png */; };
+		B0B4BCC7160C105300BD8981 /* reportBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCA7160C105300BD8981 /* reportBackground.png */; };
+		B0B4BCC8160C105300BD8981 /* reportBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCA8160C105300BD8981 /* reportBackground@2x.png */; };
+		B0B4BCC9160C105300BD8981 /* reportElementBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCA9160C105300BD8981 /* reportElementBackground.png */; };
+		B0B4BCCA160C105300BD8981 /* reportElementBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCAA160C105300BD8981 /* reportElementBackground@2x.png */; };
+		B0B4BCCB160C105300BD8981 /* reportSliderMax.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCAB160C105300BD8981 /* reportSliderMax.png */; };
+		B0B4BCCC160C105300BD8981 /* reportSliderMax@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCAC160C105300BD8981 /* reportSliderMax@2x.png */; };
+		B0B4BCCD160C105300BD8981 /* reportSliderMin.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCAD160C105300BD8981 /* reportSliderMin.png */; };
+		B0B4BCCE160C105300BD8981 /* reportSliderMin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCAE160C105300BD8981 /* reportSliderMin@2x.png */; };
+		B0B4BCCF160C105300BD8981 /* reportSliderThumb.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCAF160C105300BD8981 /* reportSliderThumb.png */; };
+		B0B4BCD0160C105300BD8981 /* reportSliderThumb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB0160C105300BD8981 /* reportSliderThumb@2x.png */; };
+		B0B4BCD1160C105300BD8981 /* topBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB1160C105300BD8981 /* topBar@2x.png */; };
+		B0B4BCD2160C105300BD8981 /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB2160C105300BD8981 /* twitter.png */; };
+		B0B4BCD3160C105300BD8981 /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB3160C105300BD8981 /* twitter@2x.png */; };
+		B0B4BCD4160C105300BD8981 /* viewReport.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB4160C105300BD8981 /* viewReport.png */; };
+		B0B4BCD5160C105300BD8981 /* viewReport@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB5160C105300BD8981 /* viewReport@2x.png */; };
+		B0B4BCD6160C105300BD8981 /* Word-Count-App-Character-Designs_2.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB6160C105300BD8981 /* Word-Count-App-Character-Designs_2.png */; };
+		B0B4BCD7160C105300BD8981 /* Word-Count-App-Character-Designs_3.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB7160C105300BD8981 /* Word-Count-App-Character-Designs_3.png */; };
+		B0B4BCD8160C105300BD8981 /* Word-Count-App-Character-Designs.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB8160C105300BD8981 /* Word-Count-App-Character-Designs.png */; };
+		B0B4BCD9160C105300BD8981 /* Word-Count-iPhone-App-Design-Concept(Word-List)-copy.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB9160C105300BD8981 /* Word-Count-iPhone-App-Design-Concept(Word-List)-copy.png */; };
+		B0B4BCDA160C105300BD8981 /* wordCounterElement.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCBA160C105300BD8981 /* wordCounterElement.png */; };
+		B0B4BCDB160C105300BD8981 /* wordCounterElement@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCBB160C105300BD8981 /* wordCounterElement@2x.png */; };
 		B0F606E515FC191000810431 /* ReportButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F606E415FC191000810431 /* ReportButton.m */; };
 		EE1ABAE615FBF30100C75E41 /* TDSemiModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1ABAE315FBF30100C75E41 /* TDSemiModalViewController.m */; };
 		EE1ABAE715FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1ABAE515FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m */; };
@@ -110,6 +142,38 @@
 		B09C695C15E9284E00CF6560 /* topBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topBar.png; sourceTree = "<group>"; };
 		B09C695D15E9284E00CF6560 /* Word-Counter-Element-without-button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Counter-Element-without-button.png"; sourceTree = "<group>"; };
 		B09C695E15E9284E00CF6560 /* Word-Counter-Element.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Counter-Element.png"; sourceTree = "<group>"; };
+		B0B4BC9C160C105300BD8981 /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		B0B4BC9D160C105300BD8981 /* facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook@2x.png"; sourceTree = "<group>"; };
+		B0B4BC9E160C105300BD8981 /* navBarSquare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navBarSquare.png; sourceTree = "<group>"; };
+		B0B4BC9F160C105300BD8981 /* navBarSquare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBarSquare@2x.png"; sourceTree = "<group>"; };
+		B0B4BCA0160C105300BD8981 /* orangeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeButton@2x.png"; sourceTree = "<group>"; };
+		B0B4BCA1160C105300BD8981 /* popupConfirmButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popupConfirmButton.png; sourceTree = "<group>"; };
+		B0B4BCA2160C105300BD8981 /* popupConfirmButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popupConfirmButton@2x.png"; sourceTree = "<group>"; };
+		B0B4BCA3160C105300BD8981 /* popupDeclineButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popupDeclineButton.png; sourceTree = "<group>"; };
+		B0B4BCA4160C105300BD8981 /* popupDeclineButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popupDeclineButton@2x.png"; sourceTree = "<group>"; };
+		B0B4BCA5160C105300BD8981 /* popupExit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = popupExit.png; sourceTree = "<group>"; };
+		B0B4BCA6160C105300BD8981 /* popupExit@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "popupExit@2x.png"; sourceTree = "<group>"; };
+		B0B4BCA7160C105300BD8981 /* reportBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reportBackground.png; sourceTree = "<group>"; };
+		B0B4BCA8160C105300BD8981 /* reportBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reportBackground@2x.png"; sourceTree = "<group>"; };
+		B0B4BCA9160C105300BD8981 /* reportElementBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reportElementBackground.png; sourceTree = "<group>"; };
+		B0B4BCAA160C105300BD8981 /* reportElementBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reportElementBackground@2x.png"; sourceTree = "<group>"; };
+		B0B4BCAB160C105300BD8981 /* reportSliderMax.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reportSliderMax.png; sourceTree = "<group>"; };
+		B0B4BCAC160C105300BD8981 /* reportSliderMax@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reportSliderMax@2x.png"; sourceTree = "<group>"; };
+		B0B4BCAD160C105300BD8981 /* reportSliderMin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reportSliderMin.png; sourceTree = "<group>"; };
+		B0B4BCAE160C105300BD8981 /* reportSliderMin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reportSliderMin@2x.png"; sourceTree = "<group>"; };
+		B0B4BCAF160C105300BD8981 /* reportSliderThumb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reportSliderThumb.png; sourceTree = "<group>"; };
+		B0B4BCB0160C105300BD8981 /* reportSliderThumb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "reportSliderThumb@2x.png"; sourceTree = "<group>"; };
+		B0B4BCB1160C105300BD8981 /* topBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "topBar@2x.png"; sourceTree = "<group>"; };
+		B0B4BCB2160C105300BD8981 /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
+		B0B4BCB3160C105300BD8981 /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
+		B0B4BCB4160C105300BD8981 /* viewReport.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = viewReport.png; sourceTree = "<group>"; };
+		B0B4BCB5160C105300BD8981 /* viewReport@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "viewReport@2x.png"; sourceTree = "<group>"; };
+		B0B4BCB6160C105300BD8981 /* Word-Count-App-Character-Designs_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Count-App-Character-Designs_2.png"; sourceTree = "<group>"; };
+		B0B4BCB7160C105300BD8981 /* Word-Count-App-Character-Designs_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Count-App-Character-Designs_3.png"; sourceTree = "<group>"; };
+		B0B4BCB8160C105300BD8981 /* Word-Count-App-Character-Designs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Count-App-Character-Designs.png"; sourceTree = "<group>"; };
+		B0B4BCB9160C105300BD8981 /* Word-Count-iPhone-App-Design-Concept(Word-List)-copy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Word-Count-iPhone-App-Design-Concept(Word-List)-copy.png"; sourceTree = "<group>"; };
+		B0B4BCBA160C105300BD8981 /* wordCounterElement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wordCounterElement.png; sourceTree = "<group>"; };
+		B0B4BCBB160C105300BD8981 /* wordCounterElement@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordCounterElement@2x.png"; sourceTree = "<group>"; };
 		B0F606E315FC191000810431 /* ReportButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportButton.h; sourceTree = "<group>"; };
 		B0F606E415FC191000810431 /* ReportButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportButton.m; sourceTree = "<group>"; };
 		EE1ABAE215FBF30100C75E41 /* TDSemiModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSemiModalViewController.h; sourceTree = "<group>"; };
@@ -262,6 +326,38 @@
 		B09C695815E9280800CF6560 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B0B4BC9C160C105300BD8981 /* facebook.png */,
+				B0B4BC9D160C105300BD8981 /* facebook@2x.png */,
+				B0B4BC9E160C105300BD8981 /* navBarSquare.png */,
+				B0B4BC9F160C105300BD8981 /* navBarSquare@2x.png */,
+				B0B4BCA0160C105300BD8981 /* orangeButton@2x.png */,
+				B0B4BCA1160C105300BD8981 /* popupConfirmButton.png */,
+				B0B4BCA2160C105300BD8981 /* popupConfirmButton@2x.png */,
+				B0B4BCA3160C105300BD8981 /* popupDeclineButton.png */,
+				B0B4BCA4160C105300BD8981 /* popupDeclineButton@2x.png */,
+				B0B4BCA5160C105300BD8981 /* popupExit.png */,
+				B0B4BCA6160C105300BD8981 /* popupExit@2x.png */,
+				B0B4BCA7160C105300BD8981 /* reportBackground.png */,
+				B0B4BCA8160C105300BD8981 /* reportBackground@2x.png */,
+				B0B4BCA9160C105300BD8981 /* reportElementBackground.png */,
+				B0B4BCAA160C105300BD8981 /* reportElementBackground@2x.png */,
+				B0B4BCAB160C105300BD8981 /* reportSliderMax.png */,
+				B0B4BCAC160C105300BD8981 /* reportSliderMax@2x.png */,
+				B0B4BCAD160C105300BD8981 /* reportSliderMin.png */,
+				B0B4BCAE160C105300BD8981 /* reportSliderMin@2x.png */,
+				B0B4BCAF160C105300BD8981 /* reportSliderThumb.png */,
+				B0B4BCB0160C105300BD8981 /* reportSliderThumb@2x.png */,
+				B0B4BCB1160C105300BD8981 /* topBar@2x.png */,
+				B0B4BCB2160C105300BD8981 /* twitter.png */,
+				B0B4BCB3160C105300BD8981 /* twitter@2x.png */,
+				B0B4BCB4160C105300BD8981 /* viewReport.png */,
+				B0B4BCB5160C105300BD8981 /* viewReport@2x.png */,
+				B0B4BCB6160C105300BD8981 /* Word-Count-App-Character-Designs_2.png */,
+				B0B4BCB7160C105300BD8981 /* Word-Count-App-Character-Designs_3.png */,
+				B0B4BCB8160C105300BD8981 /* Word-Count-App-Character-Designs.png */,
+				B0B4BCB9160C105300BD8981 /* Word-Count-iPhone-App-Design-Concept(Word-List)-copy.png */,
+				B0B4BCBA160C105300BD8981 /* wordCounterElement.png */,
+				B0B4BCBB160C105300BD8981 /* wordCounterElement@2x.png */,
 				EE6D3C9815F971750000362E /* howToStep1.png */,
 				EE6D3C9915F971750000362E /* howToStep1@2x.png */,
 				EE6D3C9A15F971750000362E /* howToStep2.png */,
@@ -391,6 +487,38 @@
 				EE6D3CA315F971750000362E /* howToStep3@2x.png in Resources */,
 				B0784BD715FD49AA00EF1335 /* FaceBookViewController.xib in Resources */,
 				B0784BE015FD517800EF1335 /* wordCountSocl.plist in Resources */,
+				B0B4BCBC160C105300BD8981 /* facebook.png in Resources */,
+				B0B4BCBD160C105300BD8981 /* facebook@2x.png in Resources */,
+				B0B4BCBE160C105300BD8981 /* navBarSquare.png in Resources */,
+				B0B4BCBF160C105300BD8981 /* navBarSquare@2x.png in Resources */,
+				B0B4BCC0160C105300BD8981 /* orangeButton@2x.png in Resources */,
+				B0B4BCC1160C105300BD8981 /* popupConfirmButton.png in Resources */,
+				B0B4BCC2160C105300BD8981 /* popupConfirmButton@2x.png in Resources */,
+				B0B4BCC3160C105300BD8981 /* popupDeclineButton.png in Resources */,
+				B0B4BCC4160C105300BD8981 /* popupDeclineButton@2x.png in Resources */,
+				B0B4BCC5160C105300BD8981 /* popupExit.png in Resources */,
+				B0B4BCC6160C105300BD8981 /* popupExit@2x.png in Resources */,
+				B0B4BCC7160C105300BD8981 /* reportBackground.png in Resources */,
+				B0B4BCC8160C105300BD8981 /* reportBackground@2x.png in Resources */,
+				B0B4BCC9160C105300BD8981 /* reportElementBackground.png in Resources */,
+				B0B4BCCA160C105300BD8981 /* reportElementBackground@2x.png in Resources */,
+				B0B4BCCB160C105300BD8981 /* reportSliderMax.png in Resources */,
+				B0B4BCCC160C105300BD8981 /* reportSliderMax@2x.png in Resources */,
+				B0B4BCCD160C105300BD8981 /* reportSliderMin.png in Resources */,
+				B0B4BCCE160C105300BD8981 /* reportSliderMin@2x.png in Resources */,
+				B0B4BCCF160C105300BD8981 /* reportSliderThumb.png in Resources */,
+				B0B4BCD0160C105300BD8981 /* reportSliderThumb@2x.png in Resources */,
+				B0B4BCD1160C105300BD8981 /* topBar@2x.png in Resources */,
+				B0B4BCD2160C105300BD8981 /* twitter.png in Resources */,
+				B0B4BCD3160C105300BD8981 /* twitter@2x.png in Resources */,
+				B0B4BCD4160C105300BD8981 /* viewReport.png in Resources */,
+				B0B4BCD5160C105300BD8981 /* viewReport@2x.png in Resources */,
+				B0B4BCD6160C105300BD8981 /* Word-Count-App-Character-Designs_2.png in Resources */,
+				B0B4BCD7160C105300BD8981 /* Word-Count-App-Character-Designs_3.png in Resources */,
+				B0B4BCD8160C105300BD8981 /* Word-Count-App-Character-Designs.png in Resources */,
+				B0B4BCD9160C105300BD8981 /* Word-Count-iPhone-App-Design-Concept(Word-List)-copy.png in Resources */,
+				B0B4BCDA160C105300BD8981 /* wordCounterElement.png in Resources */,
+				B0B4BCDB160C105300BD8981 /* wordCounterElement@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

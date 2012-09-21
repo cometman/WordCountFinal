@@ -37,7 +37,10 @@
 
 -(void) setupButtonFrame
 {
-    [self setBackgroundColor:[UIColor grayColor]];
+    //[self setBackgroundColor:[UIColor grayColor]];
+    UIImage* reportImageBackground = [UIImage imageNamed:@"reportElementBackground.png"];
+    [self setImage:reportImageBackground forState:UIControlStateNormal];
+    [self setUserInteractionEnabled:NO];
     
 }
 -(void) buildSliderObject
@@ -47,6 +50,7 @@
     [self.countSlider setMaximumValue:self.sliderMax];
     [self.countSlider setValue:self.sliderAmount];
     [self.countSlider setUserInteractionEnabled:false];
+    [self.countSlider setBackgroundColor:[UIColor clearColor]];
     [self addSubview:self.countSlider];
 }
 
@@ -55,9 +59,11 @@
 {
     UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 400, 10)];
     [titleLabel setText:title];
-    [titleLabel setTextColor:[UIColor blackColor]];
+    [titleLabel setTextColor:[UIColor grayColor]];
+    [titleLabel setFont:[UIFont boldSystemFontOfSize:13]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
-    [self addSubview:titleLabel];
+    [self insertSubview:titleLabel aboveSubview:self.countSlider];
+    //[self bringSubviewToFront:titleLabel];
 }
 
 -(void)setSliderAmount:(int)sliderAmount

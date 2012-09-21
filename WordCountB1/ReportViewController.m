@@ -92,8 +92,8 @@
     
     CGFloat xStart = 10;
     CGFloat yStart = 50;
-    CGFloat buttonheight = 68;
-    CGFloat ySpacer = 78;
+    CGFloat buttonheight = 78;
+    CGFloat ySpacer = 75;
     
     self.button1 = [[ReportButton alloc] initWithFrame:CGRectMake(xStart, yStart, self.view.frame.size.width - 20, buttonheight)];
     self.button2 = [[ReportButton alloc] initWithFrame:CGRectMake(xStart, yStart+=ySpacer, self.view.frame.size.width - 20, buttonheight)];
