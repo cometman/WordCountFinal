@@ -37,12 +37,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+ 
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -71,13 +74,21 @@
     [self presentModalViewController:faceBookViewController animated:YES];
     AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
     
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
+    {
         // Yes, so just open the session (this won't display any UX).
         [appDelegate openSession];
+        [faceBookViewController createFriendController];
         
-    } else {
+    }
+    else if (FBSession.activeSession.state == FBSessionStateOpen) 
+    {
+        [faceBookViewController createFriendController];
+    }
+    else {
         // No, display the login page.
-        [appDelegate showLoginView];
+      [appDelegate showLoginView];
+        
     }
 }
 

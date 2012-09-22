@@ -19,10 +19,11 @@
 
 @property (strong, nonatomic) UINavigationController* navController;
 
+extern NSString *const SCSessionStateChangedNotification;
+
 -(void) openSession;
 -(void)performLogin:(id)sender;
 -(void)showLoginView;
--(void) fbLogOut;
 -(void) postTweet:(NSString *)tweetText andImage:(UIImage *)tweetImage;
 
 @end

@@ -21,6 +21,9 @@
 
 @synthesize navController = _navController;
 
+NSString *const SCSessionStateChangedNotification =
+@"com.facebook.Scrumptious:SCSessionStateChangedNotification";
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -33,6 +36,7 @@
     
     [self.window makeKeyAndVisible];
     
+
     return YES;
 }
 
@@ -52,7 +56,7 @@
     }
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    [FBSession.activeSession close];
+    //[FBSession.activeSession close];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -76,7 +80,7 @@
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
         sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    NSLog(@"Returned");
+
     return [FBSession.activeSession handleOpenURL:url];
 }
 
@@ -88,6 +92,7 @@
                       error:(NSError *)error
 {
     switch (state) {
+            // If the facebook session is open and valid...
         case FBSessionStateOpen: {
             UIViewController *topViewController =
             [self.navController topViewController];
@@ -96,7 +101,10 @@
                  isKindOfClass:[FaceBookViewController class]]) {
                 [self grabUserInfo];
                 NSLog(@"We are ok here");
-//                [topViewController dismissModalViewControllerAnimated:YES];
+                [[NSNotificationCenter defaultCenter]
+                 postNotificationName:SCSessionStateChangedNotification
+                 object:session];
+                //[topViewController dismissModalViewControllerAnimated:YES];
             }
   //  [self showLoginView];
         }
@@ -155,6 +163,7 @@
 
 - (void)showLoginView
 {
+    // If the FB session is not active, take the user through the login process
     if (!FBSession.activeSession.isOpen)
     {
         [FBSession openActiveSessionWithPermissions:nil
@@ -163,20 +172,10 @@
          ^(FBSession *session,
            FBSessionState state, NSError *error) {
              [self sessionStateChanged:session state:state error:error];
+          
          }];
     }
-    else{
-        [self grabUserInfo];
-    }
-}
  
-
--(void)fbLogOut
-{
-    if (FBSession.activeSession.isOpen)
-    {
-        [FBSession.activeSession closeAndClearTokenInformation];
-    }
 }
 
 

@@ -24,7 +24,7 @@
 @implementation WordListViewController
 
 @synthesize wordProfiles = _wordProfiles;
-@synthesize wordCountView = _wordCountView;
+@synthesize wordCountVC = _wordCountVC;
 
 NewListViewController *newListView;
 
@@ -33,10 +33,9 @@ NewListViewController *newListView;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Add WordCount VC on top (initial load)
-        WordCountViewController *wordCountVC = [[WordCountViewController alloc] initWithNibName:@"WordCountViewController" bundle:nil];
-        [self addChildViewController:wordCountVC];
-        _wordCountView = [wordCountVC view];
-        [self.view addSubview:_wordCountView];
+        self.wordCountVC = [[WordCountViewController alloc] initWithNibName:@"WordCountViewController" bundle:nil];
+        [self addChildViewController:self.wordCountVC];
+        [self.view addSubview:self.wordCountVC.view];
         [[SharedStore sharedList] createList];
     }
     return self;
@@ -172,6 +171,8 @@ NewListViewController *newListView;
         [[NSUserDefaults standardUserDefaults] setObject:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text] forKey:@"currentList"];
         NSString *listHelper= [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"];
         [[SharedStore sharedList]setCurrentList:listHelper];
+        
+        [self.wordCountVC slideViewBack];
     
         NSLog(@"Current List (After): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
     }

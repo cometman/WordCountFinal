@@ -31,29 +31,42 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Add the observor to tell whne the user logs into Facebook
+    
+    [[NSNotificationCenter defaultCenter]
+     addObserver:self
+     selector:@selector(createFriendController)
+     name:SCSessionStateChangedNotification
+     object:nil];
+
+    
+}
+
+
+-(void) createFriendController
+{
     if (!self.friendPickerController) {
         self.friendPickerController = [[FBFriendPickerViewController alloc]
                                        initWithNibName:nil bundle:nil];
         self.friendPickerController.title = @"Select friends";
     }
     
-   
+    
     [self.navigationController pushViewController:self.friendPickerController
                                          animated:true];
     self.friendPickerController.view.frame = CGRectMake(0, 45, 320, 425);
-   // self.friendPickerController.contentSizeForViewInPopover = CGSizeMake(self.view.frame.size.width, 350);
+    // self.friendPickerController.contentSizeForViewInPopover = CGSizeMake(self.view.frame.size.width, 350);
     self.friendPickerController.delegate =self;
     self.friendPickerController.allowsMultipleSelection = NO;
     [self.view addSubview:self.friendPickerController.view];
-     [self.friendPickerController loadData];
+    [self.friendPickerController loadData];
     [self.friendPickerController updateView];
-    
 }
-
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -64,11 +77,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (IBAction)logOut:(id)sender {
-    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate fbLogOut];
-    //[appDelegate showLoginView];
-}
 
 - (IBAction)cancel:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
