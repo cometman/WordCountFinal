@@ -18,6 +18,11 @@
 
 @implementation HowToViewController
 
+@synthesize coverView = _coverView;
+@synthesize wordCountVCReference = _wordCountVCReference;
+@synthesize clearViewBG = _clearViewBG;
+@synthesize howToScrollView = _howToScrollView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,11 +35,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    
+    
+    UITapGestureRecognizer *touchHowToScrollView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userTappedScrollView:)];
+    
+    UITapGestureRecognizer *touchBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userTappedBackground:)];
+//    self.delegate = self.parentViewController;
+    self.coverView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
+    _coverView.backgroundColor = [UIColor blackColor];
+    [self.howToScrollView addGestureRecognizer:touchHowToScrollView];
+    [self.clearViewBG addGestureRecognizer:touchBackground];
+    self.howToScrollView.userInteractionEnabled = YES;
+    
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.coverView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 }
 
+-(void) userTappedScrollView:(UITapGestureRecognizer *)gestureRecognizer
+{
+    NSLog(@"Test");
+}
+
+-(void) userTappedBackground:(UITapGestureRecognizer *)gestureRecognizer
+{
+    NSLog(@"Background");
+     [self.wordCountVCReference dismissSemiModalViewController:self];
+}
 - (void)viewDidUnload
 {
+    [self setHowToScrollView:nil];
+    [self setClearViewBG:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

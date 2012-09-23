@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WordCountViewController.h"
 
 @interface HowToViewController : UIViewController
+
+@property (nonatomic, strong) WordCountViewController *wordCountVCReference;
+@property (nonatomic, strong) UIView *coverView;
+@property (weak, nonatomic) IBOutlet UIView *howToScrollView;
+@property (strong, nonatomic) IBOutlet UIView *clearViewBG;
+
+
 
 @end

@@ -20,7 +20,7 @@
 
 @synthesize delegate;
 
-@synthesize coverView = _coverView; // What is this?
+@synthesize coverView = _coverView;
 
 @synthesize titleBox = _titleBox;
 @synthesize word1Box = _word1Box;

@@ -7,13 +7,13 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "WordCountB1/AppDelegate.m"
-         timestampString = "370052873.761788"
+         filePath = "WordCountB1/HowToViewController.m"
+         timestampString = "370061604.033569"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "84"
-         endingLineNumber = "84"
-         landmarkName = "-application:openURL:sourceApplication:annotation:"
+         startingLineNumber = "63"
+         endingLineNumber = "63"
+         landmarkName = "-userTappedAnother:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

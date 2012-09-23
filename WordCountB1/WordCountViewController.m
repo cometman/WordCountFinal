@@ -33,6 +33,9 @@
 @synthesize w4 = _w4;
 
 ReportViewController* reportView ;
+HowToViewController* howToView;
+
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -42,6 +45,7 @@ ReportViewController* reportView ;
 
     if (self) {
         reportView = [[ReportViewController alloc] initWithNibName:@"ReportViewController" bundle:nil];
+        howToView = [[HowToViewController alloc] initWithNibName:@"HowToViewController" bundle:nil];
      
     }
     return self;
@@ -159,10 +163,7 @@ ReportViewController* reportView ;
 }
 
 - (IBAction)showHowTo:(UIButton *)sender {
-    HowToViewController *htc = [[HowToViewController alloc] initWithNibName:@"HowToViewController" bundle:[NSBundle mainBundle]];
-    UIView *howToView = htc.view;
-    [howToView setFrame:CGRectMake(20, 50, howToView.frame.size.width, howToView.frame.size.height)];
-    [self.view addSubview:howToView];
+    [self presentSemiModalViewController:howToView];
 }
 
 
@@ -243,4 +244,70 @@ ReportViewController* reportView ;
         reportView.view.frame = CGRectMake(0, 0, 320, 460);
     }];
 }
+
+#pragma mark - Overriding SemiModal presentation methods for HowToViewController
+
+- (void)presentSemiModalViewController:(HowToViewController *)vc {
+#define DEGREES_TO_RADIANS(x) (M_PI * (x)/180.0)
+    
+    UIView *modalView = vc.view;
+    UIView *coverView = vc.coverView;
+    
+    // Not sure what this does, but it was commented out in the file I stole from
+    // UIWindow *mainWindow = [(id)[[UIApplication sharedApplication] delegate] window];
+    
+    CGPoint middleCenter = self.view.center;
+    CGSize offSize = [UIScreen mainScreen].bounds.size;
+    
+    CGPoint offScreenCenter = CGPointZero;
+    
+    offScreenCenter = CGPointMake(offSize.width / 2.0, offSize.height *1.2);
+    [modalView setBounds:CGRectMake(0, 0, 320, 460)];
+    [coverView setFrame:CGRectMake(0, 0, 320, 460)];
+    
+    modalView.center = offScreenCenter;
+    
+    coverView.alpha = 0.0f;
+    
+    [self.view addSubview:coverView];
+    [self addChildViewController:vc];
+    [self.view addSubview:modalView];
+    
+    // Show it with a transition effect
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.6];
+    modalView.center = middleCenter;
+    coverView.alpha = 0.7;
+    [UIView commitAnimations];
+    
+    vc.wordCountVCReference = self;
+}
+
+- (void) dismissSemiModalViewController:(HowToViewController *)vc {
+    double animationDelay = 0.7;
+    UIView *modalView = vc.view;
+    UIView *coverView = vc.coverView;
+    
+    CGSize offSize = [UIScreen mainScreen].bounds.size;
+    
+    CGPoint offScreenCenter = CGPointZero;
+    
+    offScreenCenter = CGPointMake(offSize.width / 2.0, offSize.height * 1.5);
+    
+    [UIView beginAnimations:nil context:(__bridge void *)(modalView)];
+    [UIView setAnimationDuration:animationDelay];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(dismissSemiModalViewControllerEnded:finished:context:)];
+    modalView.center = offScreenCenter;
+    coverView.alpha = 0.0f;
+    [UIView commitAnimations];
+    
+    [coverView performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:animationDelay];
+}
+
+- (void)dismissSemiModalViewControllerEnded:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
+    UIView *modalView = (__bridge UIView *)context;
+    [modalView removeFromSuperview];
+}
+
 @end

@@ -10,6 +10,7 @@
 #import "WordListModel.h"
 #import "CountButton.h"
 
+@class HowToViewController;
 
 @interface WordCountViewController : UIViewController
 
@@ -31,6 +32,8 @@
 - (IBAction)showReportView:(id)sender;
 -(void) animateOrangeButton:(UIButton *)buttonToAnimate;
 - (IBAction)slideReportView:(id)sender;
+
+- (void) dismissSemiModalViewController:(HowToViewController *)vc;
 
 - (void)slideViewBack;
 
