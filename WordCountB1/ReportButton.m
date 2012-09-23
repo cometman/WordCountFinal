@@ -47,6 +47,16 @@
 {
     self.countSlider = [[UISlider alloc] initWithFrame:CGRectMake(20, self.frame.size.height/2-5, self.frame.size.width - 30, 20)];
     [self.countSlider setMinimumValue:0];
+    UIImage *minImage = [[UIImage imageNamed:@"reportSliderMin"]
+                         resizableImageWithCapInsets:UIEdgeInsetsMake(0, 6, 0, 0)];
+    UIImage *maxImage = [[UIImage imageNamed:@"reportSliderMax"]
+                         resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 6)];
+    UIImage *thumbImage = [UIImage imageNamed:@"reportSliderThumb"];
+    
+    [[UISlider appearance] setMaximumTrackImage:maxImage forState:UIControlStateNormal];
+    [[UISlider appearance] setMinimumTrackImage:minImage forState:UIControlStateNormal];
+    [[UISlider appearance] setThumbImage:thumbImage forState:UIControlStateNormal];
+    
     [self.countSlider setMaximumValue:self.sliderMax];
     [self.countSlider setValue:self.sliderAmount];
     [self.countSlider setUserInteractionEnabled:false];

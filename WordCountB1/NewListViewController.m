@@ -12,6 +12,7 @@
 #import "WCWord.h"
 
 @interface NewListViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 @end
 
@@ -27,6 +28,7 @@
 @synthesize word3Box = _word3Box;
 @synthesize word4Box = _word4Box;
 @synthesize tableView = _tableView;
+@synthesize saveButton = _saveButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,6 +58,19 @@
     
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.coverView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    // Disable save button if there is no title
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    self.titleBox.text = nil;
+    self.titleBox.placeholder = @"Word List Title";
+    self.word1Box.text = nil;
+    self.word2Box.text = nil;
+    self.word3Box.text = nil;
+    self.word4Box.text = nil;
 }
 
 - (void)viewDidUnload
@@ -67,6 +82,7 @@
     [self setWord4Box:nil];
     self.delegate = nil;
     self.coverView = nil;
+    [self setSaveButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -78,22 +94,26 @@
 }
 
 - (IBAction)saveList:(id)sender {
-    NSLog(@"Save List");
-    WCWord *word1 = [[WCWord alloc] initWithWord:_word1Box.text andCount:0];
-    WCWord *word2 = [[WCWord alloc] initWithWord:_word2Box.text andCount:0];
-    WCWord *word3 = [[WCWord alloc] initWithWord:_word3Box.text andCount:0];
-    WCWord *word4 = [[WCWord alloc] initWithWord:_word4Box.text andCount:0];
-    WordListModel *newFromUser = [[WordListModel alloc] initWithWords:[NSMutableArray arrayWithObjects:
-                                                                       word1,
-                                                                       word2,
-                                                                       word3,
-                                                                       word4, nil]
-                                                             andTitle:_titleBox.text];
-    [[SharedStore sharedList] createListWithList:newFromUser];
-    
-    [self dismissSemiModalViewController:self];
-    [self.tableView reloadData];
-    NSLog(@"Testing %d", [[self.tableView indexPathsForVisibleRows] count]);
+    if (self.titleBox.text == nil) {
+        self.titleBox.placeholder = @"You have to enter a title to save";
+    } else {
+        NSLog(@"Save List");
+        WCWord *word1 = [[WCWord alloc] initWithWord:_word1Box.text andCount:0];
+        WCWord *word2 = [[WCWord alloc] initWithWord:_word2Box.text andCount:0];
+        WCWord *word3 = [[WCWord alloc] initWithWord:_word3Box.text andCount:0];
+        WCWord *word4 = [[WCWord alloc] initWithWord:_word4Box.text andCount:0];
+        WordListModel *newFromUser = [[WordListModel alloc] initWithWords:[NSMutableArray arrayWithObjects:
+                                                                           word1,
+                                                                           word2,
+                                                                           word3,
+                                                                           word4, nil]
+                                                                 andTitle:_titleBox.text];
+        [[SharedStore sharedList] createListWithList:newFromUser];
+        
+        [self dismissSemiModalViewController:self];
+        [self.tableView reloadData];
+        NSLog(@"Testing %d", [[self.tableView indexPathsForVisibleRows] count]);
+    }
     
 }
 

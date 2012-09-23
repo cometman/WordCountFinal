@@ -36,7 +36,6 @@ NewListViewController *newListView;
         self.wordCountVC = [[WordCountViewController alloc] initWithNibName:@"WordCountViewController" bundle:nil];
         [self addChildViewController:self.wordCountVC];
         [self.view addSubview:self.wordCountVC.view];
-        [[SharedStore sharedList] createList];
     }
     return self;
 }

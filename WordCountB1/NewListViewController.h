@@ -28,8 +28,6 @@
 
 @property (strong, nonatomic) WordListModel *inputList;
 
-- (IBAction)stubSave:(id)sender;
-
 - (IBAction)saveList:(id)sender;
 - (IBAction)cancelList:(id)sender;
 - (WordListModel *)newListWords;
