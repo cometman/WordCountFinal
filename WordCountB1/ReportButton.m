@@ -79,6 +79,8 @@
 -(void)setSliderAmount:(int)sliderAmount
 {
     _sliderAmount = sliderAmount;
+    [self.countSlider setMaximumValueImage:[UIImage imageNamed:@"orangeButton"]];
+    //[self.countSlider
     [self buildSliderObject];
 }
 
