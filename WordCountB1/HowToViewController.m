@@ -22,26 +22,29 @@
 @synthesize wordCountVCReference = _wordCountVCReference;
 @synthesize clearViewBG = _clearViewBG;
 @synthesize howToScrollView = _howToScrollView;
+@synthesize howToImage = _howToImage;
+@synthesize howToImageView = _howToImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+         [self createHowToWithStep1];
         // Custom initialization
     }
     return self;
 }
 
+/*
+ * Important Note:  In order to get this method to work we had to add touch events to the both UIView siblings.  If wee added to just one, the event would register on the backgorund touch as well as the how-to content area touch
+ *
+ */
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
-    
     UITapGestureRecognizer *touchHowToScrollView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userTappedScrollView:)];
     
     UITapGestureRecognizer *touchBackground = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(userTappedBackground:)];
-//    self.delegate = self.parentViewController;
     self.coverView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     _coverView.backgroundColor = [UIColor blackColor];
     [self.howToScrollView addGestureRecognizer:touchHowToScrollView];
@@ -50,6 +53,8 @@
     
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.coverView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+   
 }
 
 -(void) userTappedScrollView:(UITapGestureRecognizer *)gestureRecognizer
@@ -76,4 +81,10 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void)createHowToWithStep1
+{
+    self.howToImageView = [[UIImageView alloc] init];
+    [self.howToImageView setImage:[UIImage imageNamed:@"howToStep1"]];
+    [self.howToScrollView addSubview:self.howToImageView];
+}
 @end

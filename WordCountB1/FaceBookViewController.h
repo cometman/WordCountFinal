@@ -16,6 +16,7 @@
 
 - (IBAction)logOut:(id)sender;
 - (IBAction)cancel:(id)sender;
+-(void) postToFacebook;
 -(void) createFriendController;
 
 @end

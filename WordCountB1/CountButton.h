@@ -22,4 +22,5 @@
 -(void) incrementCounterLabel;
 -(void) addTitleLabel;
 -(void) changeWords:(WCWord *) word;
+-(void) setLabelsAndCountToZero;
 @end

@@ -73,4 +73,14 @@
     return self;
 }
 
+-(void) resetWordCounts
+{
+    for (WCWord* word in self.words)
+    {
+        if (word)
+        {
+            word.count = 0;
+        }
+    }
+}
 @end

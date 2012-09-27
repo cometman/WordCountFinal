@@ -20,6 +20,8 @@
 - (IBAction)shareOnFacebook:(id)sender;
 
 - (void) buildCountButtons:(NSMutableArray *)words;
+- (void) takeViewScreenShot;
 - (IBAction)postATweet:(id)sender;
+- (IBAction)pushFinishButton:(id)sender;
 
 @end

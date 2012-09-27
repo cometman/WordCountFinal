@@ -13,6 +13,8 @@
 #import "WCWord.h"
 #import "FaceBookViewController.h"
 #import "AppDelegate.h"
+#import "WordCountViewController.h"
+#import "WordListViewController.h"
 
 @interface ReportViewController ()
 
@@ -49,6 +51,15 @@
  
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+-(void) viewDidAppear:(BOOL)animated
+{
+    if (animated == NO)
+    {
+
+        [self cancelReportView:self];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -147,6 +158,19 @@
     [appDelegate postTweet:@"Stuff is magical" andImage:nil];
 }
 
+- (IBAction)pushFinishButton:(id)sender {
+    [[[SharedStore sharedList] getCurrentWordListModel] resetWordCounts];
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    
+    WordListViewController* wordList = appDelegate.viewController;
+    [wordList.wordCountVC.button1 setLabelsAndCountToZero];
+    [wordList.wordCountVC.button2 setLabelsAndCountToZero];
+    [wordList.wordCountVC.button3 setLabelsAndCountToZero];
+    [wordList.wordCountVC.button4 setLabelsAndCountToZero];
+    
+    [self cancelReportView:self];
+}
+
 -(int) computeSliderMax:(NSMutableArray *)words
 {
     int max = 0;
@@ -161,5 +185,10 @@
     }
     
     return max;
+}
+
+-(void) takeViewScreenShot
+{
+   
 }
 @end

@@ -136,7 +136,8 @@ NSString *const SCSessionStateChangedNotification =
 
 - (void)openSession
 {
-    [FBSession openActiveSessionWithPermissions:nil
+    NSArray* permissions = [[NSArray alloc] initWithObjects:@"publish_actions", nil];
+    [FBSession openActiveSessionWithPermissions:permissions
                                    allowLoginUI:YES
                               completionHandler:
      ^(FBSession *session,

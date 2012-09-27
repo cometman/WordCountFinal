@@ -68,6 +68,7 @@ HowToViewController* howToView;
 
 - (void)viewDidUnload
 {
+    [[SharedStore sharedList] getCurrentWordListModel];
     [super viewDidUnload];
 }
 

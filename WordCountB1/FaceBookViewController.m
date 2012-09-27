@@ -9,6 +9,9 @@
 #import "FaceBookViewController.h"
 #import "AppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
+#import "ReportViewController.h"
+#import "WordCountViewController.h"
+#import "WordListViewController.h"
 
 @interface FaceBookViewController ()
 
@@ -91,13 +94,9 @@
         self.selectedUser = [friendPicker.selection objectAtIndex:0];
         if (self.selectedUser)
         {
-            NSLog(@"Friend: %@", [self.selectedUser first_name]) ;
-            NSString *messageString = [@"Post word count to " stringByAppendingString:[self.selectedUser first_name]];
-            UIAlertView *confirmScreen = [[UIAlertView alloc] initWithTitle:@"Confirm post" message:messageString delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"yes", nil];
-            [confirmScreen show];
+             [self postToFacebook];
         }
     }
-
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -105,5 +104,54 @@
     {
         NSLog(@"Clicked submit!");
     }
+}
+
+-(void)postToFacebook
+{
+    NSMutableDictionary* params =
+    [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+     @"http://wordcount.jumpingbungee.com", @"link",
+     @"https://developers.facebook.com/attachment/iossdk_logo.png", @"picture",
+     @"Danielle posted a Word Count for Clay!", @"name",
+     @"How many times can someone say 'like' in a sentence?", @"caption",
+     @"The Facebook SDK for iOS makes it easier and faster to develop Facebook integrated iOS apps.", @"description",
+     nil];
+    
+    // Code to post to a facebook wall
+    // For production, uncomment this!
+    /*
+    [FBRequestConnection
+     startWithGraphPath:@"me/feed"
+     parameters:params
+     HTTPMethod:@"POST"
+     completionHandler:^(FBRequestConnection *connection,
+                         id result,
+                         NSError *error) {
+         NSString *alertText;
+         if (error) {
+             alertText = [NSString stringWithFormat:
+                          @"error: domain = %@, code = %d",
+                          error.domain, error.code];
+         } else {
+             alertText = [NSString stringWithFormat:
+                          @"Posted action, id: %@",
+                          [result objectForKey:@"id"]];
+         }
+         // Show the result in an alert
+         [[[UIAlertView alloc] initWithTitle:@"Result"
+                                     message:alertText
+                                    delegate:self
+                           cancelButtonTitle:@"OK!"
+                           otherButtonTitles:nil]
+          show];
+     }];
+     
+     */
+
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"Found the report view class");
+    
+    
+    
 }
 @end

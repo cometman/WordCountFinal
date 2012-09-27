@@ -20,6 +20,7 @@ typedef struct {__unsafe_unretained NSString *word; int count;} Word;
 -(id)initWithWords:(NSMutableArray *)words andTitle:(NSString *)title;
 
 -(void) countWord:(NSString *) word;
+-(void) resetWordCounts;
 
 
 @end

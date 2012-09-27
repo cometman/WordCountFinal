@@ -41,7 +41,7 @@
 
 -(void) addTitleLabel
 {
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 107, 50, 25)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 107, 100, 25)];
     [self.titleLabel setText:self.currentWord.word ];
     [self.titleLabel setTextColor:[UIColor whiteColor]];
     [self.titleLabel setBackgroundColor:[UIColor clearColor]];
@@ -120,5 +120,13 @@
     // Add the new label
  //   [self addTitleLabel:newWord.word];
     
+}
+
+-(void) setLabelsAndCountToZero
+{
+    self.currentWord.count = 0;
+    [self.onesLabel setText:@"0"];
+    [self.tensLabel setText:@"0"];
+    [self.hundredsLabel setText:@"0"];
 }
 @end
