@@ -81,7 +81,7 @@ HowToViewController* howToView;
     CGFloat windowWidth = self.view.frame.size.width;
     CGFloat windowHeight =self.view.frame.size.height;
 
-    [UIView animateWithDuration:0.7 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:0.33 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
             self.view.frame = CGRectMake(windowWidth-50,0, windowWidth, windowHeight);
 
     } completion:^ (BOOL completed) {
@@ -114,7 +114,7 @@ HowToViewController* howToView;
     CGFloat windowWidth = self.view.frame.size.width;
     CGFloat windowHeight =self.view.frame.size.height;
     
-    [UIView animateWithDuration:0.7 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+    [UIView animateWithDuration:.33 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
         self.view.frame = CGRectMake(0,0, windowWidth, windowHeight);
     } completion:nil];
 }
@@ -129,29 +129,29 @@ HowToViewController* howToView;
 {
     self.button1 = [[CountButton alloc] initWithFrame:CGRectMake(165, 70, 147, 135)];
     self.button1.currentWord = self.w1;
-    [self.button1.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    [self.button1 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button1.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UIGestureRecognizerStateBegan];
+    [self.button1 addTarget:self action:@selector(countWord:) forControlEvents:UIGestureRecognizerStateBegan];
     [self.button1.titleLabel setText:self.w1.word];
     [self.view addSubview:self.button1];
     
     self.button2 = [[CountButton alloc] initWithFrame:CGRectMake(7, 70, 147, 135)];
     self.button2.currentWord = self.w2;
-    [self.button2.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    [self.button2 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button2.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UIGestureRecognizerStateBegan];
+    [self.button2 addTarget:self action:@selector(countWord:) forControlEvents:UIGestureRecognizerStateBegan];
     [self.button2.titleLabel setText:self.w2.word];
     [self.view addSubview:self.button2];
     
     self.button3 = [[CountButton alloc] initWithFrame:CGRectMake(7, 235, 147, 135)];
     self.button3.currentWord = self.w3;
-    [self.button3.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    [self.button3 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button3.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UIGestureRecognizerStateBegan];
+    [self.button3 addTarget:self action:@selector(countWord:) forControlEvents:UIGestureRecognizerStateBegan];
     [self.button3.titleLabel setText:self.w3.word];
     [self.view addSubview:self.button3];
     
     self.button4 = [[CountButton alloc] initWithFrame:CGRectMake(165, 235, 147, 135)];
     self.button4.currentWord = self.w4;
-    [self.button4.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
-    [self.button4 addTarget:self action:@selector(countWord:) forControlEvents:UITouchPhaseEnded];
+    [self.button4.buttonTrigger addTarget:self action:@selector(countWord:) forControlEvents:UIGestureRecognizerStateBegan];
+    [self.button4 addTarget:self action:@selector(countWord:) forControlEvents:UIGestureRecognizerStateBegan];
     [self.button4.titleLabel setText:self.w4.word];
     [self.view addSubview:self.button4];
 }
@@ -170,10 +170,15 @@ HowToViewController* howToView;
 
 - (void) countWord:(id)sender
 {
+    
+    
     if (sender == self.button1 || sender == self.button1.buttonTrigger)
     {
+        [self.w1 incrementCount];
         [self animateOrangeButton: self.button1.buttonTrigger];
-        self.w1.count++;
+       // self.w1.count++;
+        
+        NSLog(@"Count currently %i", self.w1.count);
         [self countHelperForButton:self.button1];
     }
     if (sender == self.button2 || sender == self.button2.buttonTrigger)
@@ -194,7 +199,6 @@ HowToViewController* howToView;
         self.w4.count++;
         [self countHelperForButton:self.button4];
     }
-   
 }
 
 -(void) countHelperForButton:(CountButton *)button
@@ -224,12 +228,14 @@ HowToViewController* howToView;
 
 -(void) animateOrangeButton:(UIButton *)buttonToAnimate
 {
-    [UIView animateWithDuration:.3 animations:^
+   
+    
+    [UIView animateWithDuration:.13 animations:^
      {
          buttonToAnimate.frame = CGRectMake(45, 90, 64, 14.5);
      }completion:^(BOOL finished)
      {
-         [UIView animateWithDuration:.3 animations:^
+         [UIView animateWithDuration:.13 animations:^
           {
               buttonToAnimate.frame = CGRectMake(45, 72, 64, 32.5);
           }];
@@ -241,7 +247,7 @@ HowToViewController* howToView;
     NSMutableArray* words = [[NSMutableArray alloc] initWithObjects:self.w1, self.w2, self.w3, self.w4, nil];
     [reportView buildCountButtons:words];
     
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:.33 animations:^{
         reportView.view.frame = CGRectMake(0, 0, 320, 460);
     }];
 }

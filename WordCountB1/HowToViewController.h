@@ -13,12 +13,21 @@
 
 @property (nonatomic, strong) WordCountViewController *wordCountVCReference;
 @property (nonatomic, strong) UIView *coverView;
-@property (weak, nonatomic) IBOutlet UIView *howToScrollView;
+@property (strong, nonatomic) IBOutlet UIView *howToScrollView;
 @property (strong, nonatomic) IBOutlet UIView *clearViewBG;
 
-@property (nonatomic, weak) UIImage* howToImage;
-@property (nonatomic, weak) UIImageView* howToImageView;
+@property (nonatomic, strong) UIImage* howToImage;
+@property (nonatomic, strong) UIImageView* howToImageView;
+@property (nonatomic, strong) UIImageView* howToImageView2;
+@property (nonatomic, strong) UIImageView* howToImageView3;
+
+@property (nonatomic, strong) UIImage* howToImage1;
+@property (nonatomic, strong) UIImage* howToImage2;
+@property (nonatomic, strong) UIImage* howToImage3;
+
+@property (weak, nonatomic) IBOutlet UIPageControl *pageIndicator;
 
 -(void) createHowToWithStep1;
-
+-(void) slideHowToLeft;
+-(void) slideHowToRight;
 @end

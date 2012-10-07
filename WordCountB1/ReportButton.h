@@ -15,6 +15,7 @@
 @property (nonatomic) UISlider* countSlider;
 @property (nonatomic) int sliderMax;
 @property (nonatomic) int sliderAmount;
+@property (nonatomic, strong)  UIImage *thumbImage;
 
 -(void) buildWordTitle:(NSString *)title;
 

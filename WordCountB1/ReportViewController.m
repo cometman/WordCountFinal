@@ -67,7 +67,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 - (IBAction)cancelReportView:(id)sender {
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:.33 animations:^{
          self.view.frame = CGRectMake(320, 0, 320, 460);
     }];
    
