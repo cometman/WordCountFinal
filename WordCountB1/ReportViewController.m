@@ -15,6 +15,8 @@
 #import "AppDelegate.h"
 #import "WordCountViewController.h"
 #import "WordListViewController.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 @interface ReportViewController ()
 
@@ -55,11 +57,7 @@
 
 -(void) viewDidAppear:(BOOL)animated
 {
-    if (animated == NO)
-    {
-
-        [self cancelReportView:self];
-    }
+   
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -81,27 +79,36 @@
     [self.button4 removeFromSuperview];
 }
 - (IBAction)shareOnFacebook:(id)sender {
-    FaceBookViewController* faceBookViewController = [[FaceBookViewController alloc] initWithNibName:@"FaceBookViewController" bundle:nil];
+    [self.view addSubview:[self testMethodForDrawing]];
 
-    [self presentModalViewController:faceBookViewController animated:YES];
-    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
-    {
-        // Yes, so just open the session (this won't display any UX).
-        [appDelegate openSession];
-        [faceBookViewController createFriendController];
-        
-    }
-    else if (FBSession.activeSession.state == FBSessionStateOpen) 
-    {
-        [faceBookViewController createFriendController];
-    }
-    else {
-        // No, display the login page.
-      [appDelegate showLoginView];
-        
-    }
+//    FaceBookViewController* faceBookViewController = [[FaceBookViewController alloc] initWithNibName:@"FaceBookViewController" bundle:nil];
+//    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+//    
+//    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
+//    {
+//        // Yes, so just open the session (this won't display any UX).
+//        [appDelegate openSession];
+//       // [faceBookViewController createFriendController];
+//        [faceBookViewController createFriendController];
+//        NSLog(@"Token created and loaded");
+//        [self presentModalViewController:faceBookViewController animated:YES];
+//
+//    }
+//    
+//    else if (FBSession.activeSession.state == FBSessionStateOpen)
+//    {
+//        NSLog(@" Token loaded!");
+//      
+//        [faceBookViewController createFriendController];
+//        
+//        [self presentModalViewController:faceBookViewController animated:YES];
+//    }
+//
+//    else {
+//        // No, display the login page
+//      [appDelegate showLoginView];
+//        
+//    }
 }
 
 - (void) buildCountButtons:(NSMutableArray* )words
@@ -187,8 +194,50 @@
     return max;
 }
 
--(void) takeViewScreenShot
+
+-(UIScrollView*) testMethodForDrawing
 {
-   
+    UIScrollView* testView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
+    UIImageView* testImageView = [[UIImageView alloc] initWithImage:[self createFaceBookPostImage]];
+    [testView addSubview:testImageView];
+ 
+    [testView setScrollEnabled:YES];
+    return testView;
 }
+-(UIImage*) createFaceBookPostImage
+{    
+    // The base canvas image
+    UIImage* baseImage = [UIImage imageNamed:@"facebookPost01"];
+    UIGraphicsBeginImageContext(baseImage.size);
+    
+
+    // Set the full canvas context
+    CGRect aRectangle = CGRectMake(0,0, baseImage.size.width, baseImage.size.height);
+    [baseImage drawInRect:aRectangle];
+   
+    // Set the individual slider button contexts
+    UIImageView* blankImage = [[UIImageView alloc] initWithFrame:CGRectMake(100, 50,self.button1.bounds.size.width , self.button1.bounds.size.height)];
+    [blankImage addSubview:self.button1];
+    [blankImage.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImageView* blankImage2 = [[UIImageView alloc] initWithFrame:CGRectMake(100, 150,self.button2.bounds.size.width , self.button2.bounds.size.height)];
+    [blankImage2 addSubview:self.button2];
+    [blankImage2.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImageView* blankImage3 = [[UIImageView alloc] initWithFrame:CGRectMake(100, 250,self.button3.bounds.size.width , self.button3.bounds.size.height)];
+    [blankImage3 addSubview:self.button3];
+    [blankImage3.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImageView* blankImage4 = [[UIImageView alloc] initWithFrame:CGRectMake(100, 350,self.button4.bounds.size.width , self.button4.bounds.size.height)];
+    [blankImage4 addSubview:self.button4];
+    [blankImage4.layer renderInContext:UIGraphicsGetCurrentContext()];
+
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return screenshot;
+}
+
+
+
 @end

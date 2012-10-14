@@ -93,6 +93,8 @@ NewListViewController *newListView;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
     // Special case for last cell to hold the characters
     if ([_wordProfiles count] > 3 && ([indexPath row] == [_wordProfiles count] + 2)) {
         UIView *lastCell = [[UIView alloc] initWithFrame:CGRectMake(0, 0, cell.frame.size.width, cell.frame.size.height)];

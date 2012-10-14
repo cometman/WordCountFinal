@@ -18,14 +18,13 @@
 
 @implementation AppDelegate
 
-
 @synthesize navController = _navController;
-
-NSString *const SCSessionStateChangedNotification =
-@"com.facebook.Scrumptious:SCSessionStateChangedNotification";
+@synthesize permissions = _permissions;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.permissions = [[NSArray alloc] initWithObjects:@"publish_actions", @"publish_stream", nil];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.viewController = [[WordListViewController alloc] initWithNibName:@"WordListViewController" bundle:nil];
@@ -49,11 +48,7 @@ NSString *const SCSessionStateChangedNotification =
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     BOOL success = [[SharedStore sharedList] saveChanges];
-    if (success) {
-        NSLog(@"Yay saved");
-    } else {
-        NSLog(@"Boo, not saved");
-    }
+    
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     //[FBSession.activeSession close];
@@ -77,6 +72,7 @@ NSString *const SCSessionStateChangedNotification =
 }
 
 // Facebook passes control to Safari for user to be authenticated, when the app is called back this method handles the incoming URL
+
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
         sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
@@ -94,19 +90,11 @@ NSString *const SCSessionStateChangedNotification =
     switch (state) {
             // If the facebook session is open and valid...
         case FBSessionStateOpen: {
-            UIViewController *topViewController =
-            [self.navController topViewController];
-            if ([[topViewController modalViewController]
+            FaceBookViewController* faceBookViewController = [[FaceBookViewController alloc] initWithNibName:@"FaceBookViewController" bundle:nil];
+            [faceBookViewController createFriendController];
+            NSLog(@"Token created and loaded");
+            [self.viewController presentModalViewController:faceBookViewController animated:YES];   
 
-                 isKindOfClass:[FaceBookViewController class]]) {
-                [self grabUserInfo];
-                NSLog(@"We are ok here");
-                [[NSNotificationCenter defaultCenter]
-                 postNotificationName:SCSessionStateChangedNotification
-                 object:session];
-                //[topViewController dismissModalViewControllerAnimated:YES];
-            }
-  //  [self showLoginView];
         }
             break;
         case FBSessionStateClosed:
@@ -136,8 +124,7 @@ NSString *const SCSessionStateChangedNotification =
 
 - (void)openSession
 {
-    NSArray* permissions = [[NSArray alloc] initWithObjects:@"publish_actions", nil];
-    [FBSession openActiveSessionWithPermissions:permissions
+    [FBSession openActiveSessionWithPermissions:nil
                                    allowLoginUI:YES
                               completionHandler:
      ^(FBSession *session,
@@ -146,35 +133,42 @@ NSString *const SCSessionStateChangedNotification =
      }];
 }
 
-// TODO delete me?
-- (void) grabUserInfo
-{
-    [[FBRequest requestForMe] startWithCompletionHandler:
-              ^(FBRequestConnection *connection,
-                NSDictionary<FBGraphUser> *user,
-                NSError *error) {
-                  if (!error) {
-                      
-                      NSLog(@"Hi, %@", user.name);
-     
-                  }
-              }];
-    
-}
-
 - (void)showLoginView
 {
     // If the FB session is not active, take the user through the login process
     if (!FBSession.activeSession.isOpen)
     {
-        [FBSession openActiveSessionWithPermissions:nil
-                                       allowLoginUI:YES
-                                  completionHandler:
-         ^(FBSession *session,
-           FBSessionState state, NSError *error) {
-             [self sessionStateChanged:session state:state error:error];
-          
-         }];
+        NSArray* readPermission = [NSArray arrayWithObject:@"user_photos"];
+        
+        [FBSession openActiveSessionWithReadPermissions:readPermission allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+            
+            if (error)
+            {
+                NSLog(@" problem making sessions %@", [error description]);
+            }
+            
+        }];
+        
+        [FBSession openActiveSessionWithPublishPermissions:self.permissions defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:NO completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+            if (error)
+            {
+                NSLog(@"Error: %@", [error description]);
+            }
+            [self sessionStateChanged:session state:status error:error];
+        }];
+//        [FBSession openActiveSessionWithPermissions:nil
+//                                       allowLoginUI:YES
+//                                  completionHandler:
+//         ^(FBSession *session,
+//           FBSessionState state, NSError *error) {
+//             
+//             if (error)
+//             {
+//                 NSLog(@" problem making sessions %@", [error description]);
+//             }
+//             [self sessionStateChanged:session state:state error:error];
+//          
+//         }];
     }
  
 }

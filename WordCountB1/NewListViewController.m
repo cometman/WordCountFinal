@@ -56,10 +56,20 @@
     self.coverView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].applicationFrame];
     _coverView.backgroundColor = [UIColor blackColor];
     
+    [self.titleBox addTarget:self action:@selector(hitReturnButton:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.word1Box addTarget:self action:@selector(hitReturnButton:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.word2Box addTarget:self action:@selector(hitReturnButton:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.word3Box addTarget:self action:@selector(hitReturnButton:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.word4Box addTarget:self action:@selector(hitReturnButton:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.coverView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     // Disable save button if there is no title
+}
+
+- (void)hitReturnButton:(id)sender {
+    [sender resignFirstResponder];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -97,6 +107,18 @@
     if (self.titleBox.text == nil) {
         self.titleBox.placeholder = @"You have to enter a title to save";
     } else {
+        if (self.word1Box.text == nil) {
+            self.word1Box.text = @"Like";
+        }
+        if (self.word2Box.text == nil) {
+            self.word2Box.text = @"Umm";
+        }
+        if (self.word3Box.text == nil) {
+            self.word3Box.text = @"Basically";
+        }
+        if (self.word4Box.text == nil) {
+            self.word4Box.text = @"You Know";
+        }
         NSLog(@"Save List");
         WCWord *word1 = [[WCWord alloc] initWithWord:_word1Box.text andCount:0];
         WCWord *word2 = [[WCWord alloc] initWithWord:_word2Box.text andCount:0];

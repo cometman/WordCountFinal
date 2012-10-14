@@ -72,10 +72,8 @@
     [self.countSlider setValue:self.sliderAmount];
     [self.countSlider setUserInteractionEnabled:false];
     [self.countSlider setBackgroundColor:[UIColor clearColor]];
-    [[UISlider appearance] setThumbImage:[self burnText:[NSString stringWithFormat:@"%i", (int)self.countSlider.value] intoImage:self.thumbImage] forState:UIControlStateNormal];
+    [self.countSlider setThumbImage:[self burnText:[NSString stringWithFormat:@"%i", (int)self.countSlider.value] intoImage:self.thumbImage] forState:UIControlStateNormal];
     [self addSubview:self.countSlider];
-    
-    //UIImage* temp = [self burnText:@"4" intoImage:self.thumbImage];
     
     //    [[UISlider appearance] setThumbImage:[self burnText:@"5" intoImage:thumbImage]  forState:UIControlStateNormal];
 }

@@ -35,25 +35,16 @@
 {
     [super viewDidLoad];
     
-    // Add the observor to tell whne the user logs into Facebook
-    
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(createFriendController)
-     name:SCSessionStateChangedNotification
-     object:nil];
-
-    
 }
 
 
 -(void) createFriendController
 {
-    if (!self.friendPickerController) {
-        self.friendPickerController = [[FBFriendPickerViewController alloc]
+
+    self.friendPickerController = [[FBFriendPickerViewController alloc]
                                        initWithNibName:nil bundle:nil];
-        self.friendPickerController.title = @"Select friends";
-    }
+    self.friendPickerController.title = @"Select friends";
+    
     
     
     [self.navigationController pushViewController:self.friendPickerController
@@ -108,20 +99,36 @@
 
 -(void)postToFacebook
 {
-    NSMutableDictionary* params =
-    [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-     @"http://wordcount.jumpingbungee.com", @"link",
-     @"https://developers.facebook.com/attachment/iossdk_logo.png", @"picture",
-     @"Danielle posted a Word Count for Clay!", @"name",
-     @"How many times can someone say 'like' in a sentence?", @"caption",
-     @"The Facebook SDK for iOS makes it easier and faster to develop Facebook integrated iOS apps.", @"description",
-     nil];
+
+
+//    [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+//     @"http://wordcount.jumpingbungee.com", @"link",
+//     @"https://developers.facebook.com/attachment/iossdk_logo.png", @"picture",
+//     @"Danielle posted a Word Count for Clay!", @"name",
+//     @"How many times can someone say 'like' in a sentence?", @"caption",
+//     @"The Facebook SDK for iOS makes it easier and faster to develop Facebook integrated iOS apps.", @"description",
+//     nil];
+ 
+    UIImage* testImage = [UIImage imageNamed:@"facebook"];
+    NSString* captionForPhoto = @"Check out how many times Brandon said Like! http://google.com (Word Count for iOS)";
     
+    NSData* pngFormat = UIImagePNGRepresentation(testImage);
+//    NSString* userId = @"69101985";
+    NSString* userId = @"100004512909286";
+    
+    NSArray* photoTags = [NSArray arrayWithObjects:userId, nil];
+    NSMutableDictionary* params =     [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                      pngFormat, @"picture",
+                                       captionForPhoto, @"caption",
+                                       nil];
     // Code to post to a facebook wall
     // For production, uncomment this!
-    /*
+//    NSString* userId = [self.selectedUser objectForKey:@"id"];
+   
+    __block NSString* resultID;
+    NSLog(@"User %@", userId);
     [FBRequestConnection
-     startWithGraphPath:@"me/feed"
+     startWithGraphPath:[NSString stringWithFormat:@"me/photos"]
      parameters:params
      HTTPMethod:@"POST"
      completionHandler:^(FBRequestConnection *connection,
@@ -136,22 +143,51 @@
              alertText = [NSString stringWithFormat:
                           @"Posted action, id: %@",
                           [result objectForKey:@"id"]];
+             
+                          
          }
-         // Show the result in an alert
-         [[[UIAlertView alloc] initWithTitle:@"Result"
-                                     message:alertText
-                                    delegate:self
-                           cancelButtonTitle:@"OK!"
-                           otherButtonTitles:nil]
-          show];
+       
+        [self tagPicturewithId:[result objectForKey:@"id"] andUserId:userId];
+         //resultID = [result stringForKey:@"id"];
+         NSLog(@"Value %@", [result objectForKey:@"id"]);
+         
+         
+
+
      }];
-     
-     */
+
+    
+//    NSDictionary* tagParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:userId, @"id", nil];
+    
+//    NSString* currentToken = [[FBSession activeSession] accessToken];
+    //
 
     [self dismissViewControllerAnimated:YES completion:nil];
     NSLog(@"Found the report view class");
-    
-    
+
     
 }
+
+-(void) tagPicturewithId:(NSString*) pictureId andUserId:(NSString *)userId
+{
+         NSLog(@"picture id second:  %@ and userID %@", pictureId, userId);
+
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                   userId,@"id",
+                                   nil];
+    
+    [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%@/tags/%@",pictureId, userId] parameters:nil HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection,
+                                                                                                                                                                      id result,
+                                                                                                                                                                      NSError *error) {
+        if (error) {
+            NSLog(@" Error in tagging %@", [error description]);
+        }
+    }];
+
+}
+
+
+
+
+
 @end

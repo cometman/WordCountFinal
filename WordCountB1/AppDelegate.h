@@ -19,6 +19,8 @@
 
 @property (strong, nonatomic) UINavigationController* navController;
 
+@property (strong, nonatomic) NSArray* permissions;
+
 extern NSString *const SCSessionStateChangedNotification;
 
 -(void) openSession;
