@@ -20,6 +20,7 @@
 
 @synthesize navController = _navController;
 @synthesize permissions = _permissions;
+@synthesize facebookPostImage = _facebookPostImage;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

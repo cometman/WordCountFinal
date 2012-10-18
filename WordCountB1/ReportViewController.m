@@ -15,7 +15,13 @@
 #import "AppDelegate.h"
 #import "WordCountViewController.h"
 #import "WordListViewController.h"
+#import <QuartzCore/CoreAnimation.h>
 #import <QuartzCore/QuartzCore.h>
+
+
+//CALayer.h
+//CAScrollLayer.h
+//CATransform3D.h
 
 
 @interface ReportViewController ()
@@ -28,6 +34,7 @@
 @synthesize button2 = _button2;
 @synthesize button3 = _button3;
 @synthesize button4 = _button4;
+@synthesize faceBookViewController = _faceBookViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,36 +86,37 @@
     [self.button4 removeFromSuperview];
 }
 - (IBAction)shareOnFacebook:(id)sender {
-    [self.view addSubview:[self testMethodForDrawing]];
+    
+    self.faceBookViewController = [[FaceBookViewController alloc] initWithNibName:@"FaceBookViewController" bundle:nil];
+    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
+    
+    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
+    {
+        [self createFaceBookPostImage];
+        // Yes, so just open the session (this won't display any UX).
+        [appDelegate openSession];
+       // [faceBookViewController createFriendController];
+        [self.faceBookViewController createFriendController];
+        NSLog(@"Token created and loaded");
+        [self presentModalViewController:self.faceBookViewController animated:YES];
 
-//    FaceBookViewController* faceBookViewController = [[FaceBookViewController alloc] initWithNibName:@"FaceBookViewController" bundle:nil];
-//    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-//    
-//    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
-//    {
-//        // Yes, so just open the session (this won't display any UX).
-//        [appDelegate openSession];
-//       // [faceBookViewController createFriendController];
-//        [faceBookViewController createFriendController];
-//        NSLog(@"Token created and loaded");
-//        [self presentModalViewController:faceBookViewController animated:YES];
-//
-//    }
-//    
-//    else if (FBSession.activeSession.state == FBSessionStateOpen)
-//    {
-//        NSLog(@" Token loaded!");
-//      
-//        [faceBookViewController createFriendController];
-//        
-//        [self presentModalViewController:faceBookViewController animated:YES];
-//    }
-//
-//    else {
-//        // No, display the login page
-//      [appDelegate showLoginView];
-//        
-//    }
+    }
+    
+    else if (FBSession.activeSession.state == FBSessionStateOpen)
+    {
+        NSLog(@" Token loaded!");
+        [self createFaceBookPostImage];
+        [self.faceBookViewController createFriendController];
+        [self presentModalViewController:self.faceBookViewController animated:YES];
+    }
+
+    else {
+        // No, display the login page
+        [self createFaceBookPostImage];
+        [appDelegate showLoginView];
+        
+    }
+    
 }
 
 - (void) buildCountButtons:(NSMutableArray* )words
@@ -195,16 +203,8 @@
 }
 
 
--(UIScrollView*) testMethodForDrawing
-{
-    UIScrollView* testView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height)];
-    UIImageView* testImageView = [[UIImageView alloc] initWithImage:[self createFaceBookPostImage]];
-    [testView addSubview:testImageView];
- 
-    [testView setScrollEnabled:YES];
-    return testView;
-}
--(UIImage*) createFaceBookPostImage
+
+-(void) createFaceBookPostImage
 {    
     // The base canvas image
     UIImage* baseImage = [UIImage imageNamed:@"facebookPost01"];
@@ -214,30 +214,71 @@
     // Set the full canvas context
     CGRect aRectangle = CGRectMake(0,0, baseImage.size.width, baseImage.size.height);
     [baseImage drawInRect:aRectangle];
-   
-    // Set the individual slider button contexts
-    UIImageView* blankImage = [[UIImageView alloc] initWithFrame:CGRectMake(100, 50,self.button1.bounds.size.width , self.button1.bounds.size.height)];
-    [blankImage addSubview:self.button1];
-    [blankImage.layer renderInContext:UIGraphicsGetCurrentContext()];
     
-    UIImageView* blankImage2 = [[UIImageView alloc] initWithFrame:CGRectMake(100, 150,self.button2.bounds.size.width , self.button2.bounds.size.height)];
-    [blankImage2 addSubview:self.button2];
-    [blankImage2.layer renderInContext:UIGraphicsGetCurrentContext()];
+    int xPosition = 175;
+    int yStartPosition = 220;
+    int ySpacer = 100;
     
-    UIImageView* blankImage3 = [[UIImageView alloc] initWithFrame:CGRectMake(100, 250,self.button3.bounds.size.width , self.button3.bounds.size.height)];
-    [blankImage3 addSubview:self.button3];
-    [blankImage3.layer renderInContext:UIGraphicsGetCurrentContext()];
+//    NSInteger fontSize = 16;
+//    UIFont *font = [UIFont boldSystemFontOfSize: fontSize];     // set text font
+//     
+//    NSString* titleString = @"Clayton's Word Count";
+//
+//    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
+//    [titleLabel setBackgroundColor:[UIColor clearColor]];
+//    [titleLabel setTextColor:[UIColor greenColor]];
+//    [titleLabel setFont:font];
+//    [titleLabel setText:titleString];
+//    
+//    CGFloat titleStartPosition = aRectangle.size.width/2 - (titleLabel.bounds.size.width/2);
+//    
+//    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(titleStartPosition, 170, 150, 20), [self convertLayer: titleLabel.layer].CGImage);
+// 
+
+    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(xPosition, yStartPosition, self.button1.bounds.size.width, self.button1.bounds.size.height), [self convertLayer:self.button1.layer].CGImage);
     
-    UIImageView* blankImage4 = [[UIImageView alloc] initWithFrame:CGRectMake(100, 350,self.button4.bounds.size.width , self.button4.bounds.size.height)];
-    [blankImage4 addSubview:self.button4];
-    [blankImage4.layer renderInContext:UIGraphicsGetCurrentContext()];
+     CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(xPosition, yStartPosition += ySpacer, self.button1.bounds.size.width, self.button1.bounds.size.height), [self convertLayer:self.button2.layer].CGImage);
+    
+     CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(xPosition, yStartPosition += ySpacer, self.button1.bounds.size.width, self.button1.bounds.size.height), [self convertLayer:self.button3.layer].CGImage);
+    
+     CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(xPosition, yStartPosition += ySpacer, self.button1.bounds.size.width, self.button1.bounds.size.height), [self convertLayer:self.button4.layer].CGImage);
 
     UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
-    return screenshot;
+    // Save the PNG to user document directory
+    NSData* facebookPostPNG = UIImagePNGRepresentation(screenshot);
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *docDir = [paths objectAtIndex: 0];
+    NSString *docFile = [docDir stringByAppendingPathComponent: @"facebook.png"];
+    
+    // Delete any old files
+    if ([[NSFileManager defaultManager] fileExistsAtPath:docFile])
+    {
+        [[NSFileManager defaultManager] removeItemAtPath:docFile error:nil];
+    }
+    [facebookPostPNG writeToFile: docFile atomically: YES];
+    
 }
 
+/*
+    We need to convert the CALayer objects (The report buttons) into UIImages so that we can extract the CGImageRef, which is how we draw using CGContextDrawImage
+ */
+-(UIImage*) convertLayer:(CALayer*)layer 
+{
+    UIGraphicsBeginImageContext(layer.bounds.size);
+    
+    // These two lines of code flip the image, as it is rendered upside down (Quartz 2d uses a diff coordiante system)
+    CGContextTranslateCTM(UIGraphicsGetCurrentContext(), 0, layer.bounds.size.height);
+    CGContextScaleCTM(UIGraphicsGetCurrentContext(), 1.0, -1.0);
+    
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *returnImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+
+    return returnImage;
+}
 
 
 @end

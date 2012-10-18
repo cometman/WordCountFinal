@@ -72,6 +72,8 @@
 		B0BFD21B160E990600867705 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0BFD21A160E990600867705 /* Default-568h@2x.png */; };
 		B0DCC45A162A6B7D003954AE /* facebookPost01.png in Resources */ = {isa = PBXBuildFile; fileRef = B0DCC458162A6B7D003954AE /* facebookPost01.png */; };
 		B0DCC45B162A6B7D003954AE /* facebookPost02.png in Resources */ = {isa = PBXBuildFile; fileRef = B0DCC459162A6B7D003954AE /* facebookPost02.png */; };
+		B0DCC45F162B6933003954AE /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DCC45D162B6933003954AE /* CoreImage.framework */; };
+		B0DCC460162B6933003954AE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DCC45E162B6933003954AE /* QuartzCore.framework */; };
 		B0F606E515FC191000810431 /* ReportButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F606E415FC191000810431 /* ReportButton.m */; };
 		EE1ABAE615FBF30100C75E41 /* TDSemiModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1ABAE315FBF30100C75E41 /* TDSemiModalViewController.m */; };
 		EE1ABAE715FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = EE1ABAE515FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m */; };
@@ -181,6 +183,8 @@
 		B0BFD21A160E990600867705 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B0DCC458162A6B7D003954AE /* facebookPost01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookPost01.png; sourceTree = "<group>"; };
 		B0DCC459162A6B7D003954AE /* facebookPost02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookPost02.png; sourceTree = "<group>"; };
+		B0DCC45D162B6933003954AE /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		B0DCC45E162B6933003954AE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B0F606E315FC191000810431 /* ReportButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportButton.h; sourceTree = "<group>"; };
 		B0F606E415FC191000810431 /* ReportButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportButton.m; sourceTree = "<group>"; };
 		EE1ABAE215FBF30100C75E41 /* TDSemiModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDSemiModalViewController.h; sourceTree = "<group>"; };
@@ -223,6 +227,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0DCC45F162B6933003954AE /* CoreImage.framework in Frameworks */,
+				B0DCC460162B6933003954AE /* QuartzCore.framework in Frameworks */,
+				B09C693615E9251F00CF6560 /* CoreGraphics.framework in Frameworks */,
 				B0874F55162A3478006EEF29 /* AdSupport.framework in Frameworks */,
 				B0784BEE16058B1800EF1335 /* Accounts.framework in Frameworks */,
 				B0874F53162A3469006EEF29 /* Social.framework in Frameworks */,
@@ -230,7 +237,6 @@
 				B0784BEC160589A000EF1335 /* Twitter.framework in Frameworks */,
 				B09C693215E9251F00CF6560 /* UIKit.framework in Frameworks */,
 				B09C693415E9251F00CF6560 /* Foundation.framework in Frameworks */,
-				B09C693615E9251F00CF6560 /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,8 +260,6 @@
 		B09C692215E9251F00CF6560 = {
 			isa = PBXGroup;
 			children = (
-				B0874F54162A3478006EEF29 /* AdSupport.framework */,
-				B0874F52162A3469006EEF29 /* Social.framework */,
 				B0BFD21A160E990600867705 /* Default-568h@2x.png */,
 				B09C693715E9251F00CF6560 /* WordCountB1 */,
 				B09C693015E9251F00CF6560 /* Frameworks */,
@@ -274,6 +278,10 @@
 		B09C693015E9251F00CF6560 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0DCC45D162B6933003954AE /* CoreImage.framework */,
+				B0DCC45E162B6933003954AE /* QuartzCore.framework */,
+				B0874F54162A3478006EEF29 /* AdSupport.framework */,
+				B0874F52162A3469006EEF29 /* Social.framework */,
 				B0784BED16058B1700EF1335 /* Accounts.framework */,
 				B0784BEB160589A000EF1335 /* Twitter.framework */,
 				B0784BDD15FD508900EF1335 /* libsqlite3.0.dylib */,

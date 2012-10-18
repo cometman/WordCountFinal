@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "ReportButton.h"
 #import "WordListModel.h"
+#import "FaceBookViewController.h"
 
 @interface ReportViewController : UIViewController
 @property (nonatomic) ReportButton* button1;
 @property (nonatomic) ReportButton* button2;
 @property (nonatomic) ReportButton* button3;
 @property (nonatomic) ReportButton* button4;
+@property (nonatomic, strong) FaceBookViewController* faceBookViewController;
+
 
 
 - (IBAction)shareOnFacebook:(id)sender;

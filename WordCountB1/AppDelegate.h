@@ -21,11 +21,14 @@
 
 @property (strong, nonatomic) NSArray* permissions;
 
+@property (strong, nonatomic) NSData* facebookPostImage;
+
 extern NSString *const SCSessionStateChangedNotification;
 
 -(void) openSession;
 -(void)performLogin:(id)sender;
 -(void)showLoginView;
 -(void) postTweet:(NSString *)tweetText andImage:(UIImage *)tweetImage;
+
 
 @end
