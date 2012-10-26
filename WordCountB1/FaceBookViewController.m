@@ -35,7 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 }
 
 
@@ -58,6 +57,8 @@
 }
 - (void)viewDidUnload
 {
+    [self setPostIndicator:nil];
+    [self setPostIndicator:nil];
     [super viewDidUnload];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     // Release any retained subviews of the main view.
@@ -97,19 +98,10 @@
 
 -(void)postToFacebook
 {
-
-
-//    [[NSMutableDictionary alloc] initWithObjectsAndKeys:
-//     @"http://wordcount.jumpingbungee.com", @"link",
-//     @"https://developers.facebook.com/attachment/iossdk_logo.png", @"picture",
-//     @"Danielle posted a Word Count for Clay!", @"name",
-//     @"How many times can someone say 'like' in a sentence?", @"caption",
-//     @"The Facebook SDK for iOS makes it easier and faster to develop Facebook integrated iOS apps.", @"description",
-//     nil];
-
-    NSString* captionForPhoto = @"Check out how many times Brandon said Like! http://google.com (Word Count for iOS)";
-  
-//    NSString* userId = @"69101985";
+//    [self.postIndicator setHidden:FALSE];
+        [self.view addSubview:self.postIndicator];
+    [self.postIndicator startAnimating];
+    NSString* captionForPhoto = [NSString stringWithFormat:@"Check out %@ Word Count!  Have a friend who uses the same words constantly?  Word Count Em'!  http://jumpingbungee.com/wordcount", self.selectedUser.name];
     NSString* userId = @"100004512909286";
     
     // Retrieve the facebook photo to post from the file system
@@ -125,8 +117,6 @@
                                        captionForPhoto, @"caption",
                                        nil];
     // Code to post to a facebook wall
-  
-    NSLog(@"User %@", userId);
     [FBRequestConnection
      startWithGraphPath:[NSString stringWithFormat:@"me/photos"]
      parameters:params
@@ -145,8 +135,7 @@
         [self tagPicturewithId:[result objectForKey:@"id"] andUserId:userId];
 
      }];
-
-    [self dismissViewControllerAnimated:YES completion:nil];   
+ 
 }
 
 /*
@@ -157,9 +146,28 @@
     [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%@/tags/%@",pictureId, userId] parameters:nil HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection,
                                                                                                                                                                       id result,
                                                                                                                                                                       NSError *error) {
+        NSString* message = @"Great Success!  Go checkout your post!";
+        
         if (error) {
+            message = @"Uhoh...there was a problem.  Try again later please.";
             NSLog(@" Error in tagging %@", [error description]);
         }
+
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert setAlpha:1.0f];
+        [alert setBackgroundColor:[UIColor clearColor]];
+        
+            [UIView animateWithDuration:0.7 delay:0 options:UIViewAnimationCurveEaseInOut animations:^{
+
+                [alert show];
+                
+            } completion:^ (BOOL completed) {
+                
+                    [self.postIndicator stopAnimating];
+                    [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+
+        
     }];
 
 }

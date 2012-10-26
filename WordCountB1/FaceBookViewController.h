@@ -19,5 +19,7 @@
 - (IBAction)cancel:(id)sender;
 -(void) postToFacebook;
 -(void) createFriendController;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *postIndicator;
+
 
 @end

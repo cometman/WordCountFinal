@@ -116,10 +116,10 @@
 
 -(void) buildWordTitle:(NSString *)title
 {
-    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 400, 10)];
+    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 400, 20)];
     [titleLabel setText:title];
     [titleLabel setTextColor:[UIColor grayColor]];
-    [titleLabel setFont:[UIFont boldSystemFontOfSize:13]];
+    [titleLabel setFont:[UIFont boldSystemFontOfSize:18]];
     [titleLabel setBackgroundColor:[UIColor clearColor]];
     [self insertSubview:titleLabel aboveSubview:self.countSlider];
     //[self bringSubviewToFront:titleLabel];

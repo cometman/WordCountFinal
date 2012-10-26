@@ -218,22 +218,6 @@
     int xPosition = 175;
     int yStartPosition = 220;
     int ySpacer = 100;
-    
-//    NSInteger fontSize = 16;
-//    UIFont *font = [UIFont boldSystemFontOfSize: fontSize];     // set text font
-//     
-//    NSString* titleString = @"Clayton's Word Count";
-//
-//    UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
-//    [titleLabel setBackgroundColor:[UIColor clearColor]];
-//    [titleLabel setTextColor:[UIColor greenColor]];
-//    [titleLabel setFont:font];
-//    [titleLabel setText:titleString];
-//    
-//    CGFloat titleStartPosition = aRectangle.size.width/2 - (titleLabel.bounds.size.width/2);
-//    
-//    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(titleStartPosition, 170, 150, 20), [self convertLayer: titleLabel.layer].CGImage);
-// 
 
     CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(xPosition, yStartPosition, self.button1.bounds.size.width, self.button1.bounds.size.height), [self convertLayer:self.button1.layer].CGImage);
     
