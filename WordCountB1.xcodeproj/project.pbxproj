@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B03D1CEA163C7AF2008BFB93 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D1CE7163C7ADF008BFB93 /* iTunesArtwork@2x.png */; };
+		B03D1CEB163C7AF2008BFB93 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D1CE8163C7AE4008BFB93 /* Icon.png */; };
+		B03D1CEC163C7AF2008BFB93 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D1CE9163C7AED008BFB93 /* Icon@2x.png */; };
+		B03D1CEF163C7B0C008BFB93 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D1CEE163C7B0A008BFB93 /* Icon.png */; };
+		B03D1CF1163C7B13008BFB93 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D1CF0163C7B12008BFB93 /* Icon@2x.png */; };
+		B03D1CF5163CAF14008BFB93 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D1CF4163CAF14008BFB93 /* Default@2x.png */; };
+		B03D1CF6163CAF2C008BFB93 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D1CF2163C7B5C008BFB93 /* Default.png */; };
 		B0784BD615FD49AA00EF1335 /* FaceBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0784BD415FD49AA00EF1335 /* FaceBookViewController.m */; };
 		B0784BD715FD49AA00EF1335 /* FaceBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0784BD515FD49AA00EF1335 /* FaceBookViewController.xib */; };
 		B0784BEC160589A000EF1335 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0784BEB160589A000EF1335 /* Twitter.framework */; };
@@ -105,6 +112,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B03D1CE7163C7ADF008BFB93 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		B03D1CE8163C7AE4008BFB93 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		B03D1CE9163C7AED008BFB93 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		B03D1CEE163C7B0A008BFB93 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		B03D1CF0163C7B12008BFB93 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		B03D1CF2163C7B5C008BFB93 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		B03D1CF4163CAF14008BFB93 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		B0784BD115FD489F00EF1335 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		B0784BD315FD49AA00EF1335 /* FaceBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FaceBookViewController.h; sourceTree = "<group>"; };
 		B0784BD415FD49AA00EF1335 /* FaceBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FaceBookViewController.m; sourceTree = "<group>"; };
@@ -246,13 +260,12 @@
 		B095817015EEEF0900A5A85E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EE6D3C1815EF96210000362E /* WCWord.m */,
 				B095816C15EEEEEA00A5A85E /* WordListModel.h */,
 				B095816D15EEEEEA00A5A85E /* WordListModel.m */,
-				EE6D3C1715EF96210000362E /* WCWord.h */,
-				EE6D3C1815EF96210000362E /* WCWord.m */,
 				B095817115EEF46F00A5A85E /* SharedStore.h */,
+				EE6D3C1715EF96210000362E /* WCWord.h */,
 				B095817215EEF46F00A5A85E /* SharedStore.m */,
-				B09C695815E9280800CF6560 /* Images */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -260,6 +273,10 @@
 		B09C692215E9251F00CF6560 = {
 			isa = PBXGroup;
 			children = (
+				B03D1CF4163CAF14008BFB93 /* Default@2x.png */,
+				B03D1CF2163C7B5C008BFB93 /* Default.png */,
+				B03D1CF0163C7B12008BFB93 /* Icon@2x.png */,
+				B03D1CEE163C7B0A008BFB93 /* Icon.png */,
 				B0BFD21A160E990600867705 /* Default-568h@2x.png */,
 				B09C693715E9251F00CF6560 /* WordCountB1 */,
 				B09C693015E9251F00CF6560 /* Frameworks */,
@@ -298,6 +315,7 @@
 			children = (
 				B095817015EEEF0900A5A85E /* Models */,
 				B09C694015E9251F00CF6560 /* AppDelegate.h */,
+				B09C695815E9280800CF6560 /* Images */,
 				B09C694115E9251F00CF6560 /* AppDelegate.m */,
 				B09C694315E9251F00CF6560 /* ViewController.h */,
 				B09C694415E9251F00CF6560 /* ViewController.m */,
@@ -344,6 +362,9 @@
 		B09C695815E9280800CF6560 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				B03D1CE7163C7ADF008BFB93 /* iTunesArtwork@2x.png */,
+				B03D1CE8163C7AE4008BFB93 /* Icon.png */,
+				B03D1CE9163C7AED008BFB93 /* Icon@2x.png */,
 				B0B4BC9C160C105300BD8981 /* facebook.png */,
 				B0B4BC9D160C105300BD8981 /* facebook@2x.png */,
 				B0B4BC9E160C105300BD8981 /* navBarSquare.png */,
@@ -541,6 +562,13 @@
 				B0BFD21B160E990600867705 /* Default-568h@2x.png in Resources */,
 				B0DCC45A162A6B7D003954AE /* facebookPost01.png in Resources */,
 				B0DCC45B162A6B7D003954AE /* facebookPost02.png in Resources */,
+				B03D1CEA163C7AF2008BFB93 /* iTunesArtwork@2x.png in Resources */,
+				B03D1CEB163C7AF2008BFB93 /* Icon.png in Resources */,
+				B03D1CEC163C7AF2008BFB93 /* Icon@2x.png in Resources */,
+				B03D1CEF163C7B0C008BFB93 /* Icon.png in Resources */,
+				B03D1CF1163C7B13008BFB93 /* Icon@2x.png in Resources */,
+				B03D1CF5163CAF14008BFB93 /* Default@2x.png in Resources */,
+				B03D1CF6163CAF2C008BFB93 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -639,7 +667,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-lsqlite3.0";
-				PRODUCT_NAME = WordCount;
+				PRODUCT_NAME = "Word Count";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -681,7 +709,7 @@
 					"\"$(SRCROOT)/../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A\"",
 				);
 				OTHER_LDFLAGS = "-lsqlite3.0";
-				PRODUCT_NAME = WordCount;
+				PRODUCT_NAME = "Word Count";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};

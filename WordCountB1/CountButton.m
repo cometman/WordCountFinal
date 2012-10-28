@@ -43,6 +43,10 @@
 {
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 107, 100, 25)];
     [self.titleLabel setText:self.currentWord.word ];
+    
+    UIFont* labelFont = [[UIFont alloc] init];
+    labelFont= [UIFont boldSystemFontOfSize:18];
+    [self.titleLabel setFont:labelFont];
     [self.titleLabel setTextColor:[UIColor whiteColor]];
     [self.titleLabel setBackgroundColor:[UIColor clearColor]];
     [self addSubview: self.titleLabel];

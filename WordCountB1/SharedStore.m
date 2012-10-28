@@ -142,4 +142,27 @@
     return [NSKeyedArchiver archiveRootObject:allLists toFile:path];
 }
 
+/*
+ * Delete a word from the word list
+ */
+- (void) deleteWordList:(NSString *) wordListTitle
+{
+    // Loop through all of the word lists
+    for (int i = 0; i < [[self allLists] count]; i++)
+    {
+        WordListModel* wordListCheck = [[self allLists] objectAtIndex:i];
+
+        // Remember to remove the white space we added for formatting reasons.  We added whitespace to avoide creating a custom table view cell.  
+        NSRange range = [wordListTitle rangeOfString:@"^\\s*" options:NSRegularExpressionSearch];
+        NSString *strippedWhiteSpaceWordListTitle = [wordListTitle stringByReplacingCharactersInRange:range withString:@""];
+        
+        if ([wordListCheck.title rangeOfString:strippedWhiteSpaceWordListTitle].location != NSNotFound)
+        {
+            [[self allLists] removeObjectAtIndex:i];
+            [self saveChanges];
+        }
+        
+    }
+    NSLog(@"Right area");
+}
 @end

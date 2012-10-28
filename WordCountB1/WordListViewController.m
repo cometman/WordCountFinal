@@ -27,6 +27,8 @@
 @synthesize wordCountVC = _wordCountVC;
 
 NewListViewController *newListView;
+UIAlertView *deleteAlert;
+UITableViewCell* editingCell;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -134,20 +136,89 @@ NewListViewController *newListView;
             NSInteger targetList = [indexPath row] - 2;
             WordListModel *targetWordList = [_wordProfiles objectAtIndex:targetList];
             NSLog(@"%d",targetWordList.words.count);
-            cell.textLabel.text = [targetWordList title];
-            NSString *wordsListedOut = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@",
+            cell.textLabel.text = [NSString stringWithFormat:@"       %@", [targetWordList title]];
+            NSString *wordsListedOut = [NSString stringWithFormat:@"          %@  -  %@  -  %@  -  %@",
                                         [[[targetWordList words] objectAtIndex:0] word],
                                         [[[targetWordList words] objectAtIndex:1] word],
                                         [[[targetWordList words] objectAtIndex:2] word],
                                         [[[targetWordList words] objectAtIndex:3] word]];
             cell.detailTextLabel.text = wordsListedOut;
-            cell.imageView.image = [UIImage imageNamed:@"profileEdit"];
+            UIImage *buttonImage = [UIImage imageNamed:@"profileEdit"];
+            UIButton *editButton = [[UIButton alloc] initWithFrame:CGRectMake(12, cell.bounds.size.height/3, buttonImage.size.width, buttonImage.size.height)];
+            [editButton setImage:buttonImage forState:UIControlStateNormal];
+            [editButton addTarget:self action:@selector(deleteButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
+            [cell addSubview:editButton];
+            //.image = [UIImage imageNamed:@"profileEdit"];
             break;
+            
     }
-    
     return cell;
 }
 
+
+-(void)deleteButtonPushed:(id) sender
+{
+    UIButton* editingButton = (UIButton*) sender;
+    editingCell = (UITableViewCell*)[editingButton superview];
+//    NSLog(@"stuff %@", editingCell );
+    UIFont* yesNoFont = [[UIFont alloc] init];
+    yesNoFont= [UIFont boldSystemFontOfSize:18];
+
+    NSRange range = [editingCell.textLabel.text rangeOfString:@"^\\s*" options:NSRegularExpressionSearch];
+    NSString *strippedWhiteSpaceWordListTitle = [editingCell.textLabel.text stringByReplacingCharactersInRange:range withString:@""];
+    
+    NSString* message = [NSString stringWithFormat:@"Are you sure you want to delete the word list %@?", strippedWhiteSpaceWordListTitle];
+    deleteAlert = [[UIAlertView alloc] initWithTitle:@"Confirm Delete" message:message delegate:nil cancelButtonTitle:nil otherButtonTitles:nil];
+    UIImage* confirmImage = [UIImage imageNamed:@"popupConfirmButton"];
+    UIImage* deleteImage = [UIImage imageNamed:@"popupDeclineButton"];
+    [deleteAlert show];
+    NSLog(@"%i", (int)deleteAlert.bounds.size.width);
+    CGFloat xLocation = (deleteAlert.bounds.size.width-confirmImage.size.width)/2;
+    UIButton* confirmButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 100, confirmImage.size.width-20, confirmImage.size.height)];
+    UIButton* declineButton = [[UIButton alloc] initWithFrame:CGRectMake(150, 100, confirmImage.size.width-20, confirmImage.size.height)];
+    
+    CGFloat xLocationYesNo = 40;
+    CGFloat yLocationYesNo = 2;
+    
+    UILabel *yesLabel = [[UILabel alloc] initWithFrame:CGRectMake(xLocationYesNo, yLocationYesNo, confirmButton.bounds.size.width, confirmButton.bounds.size.height)];
+    [yesLabel setTextColor:[UIColor whiteColor]];
+    [yesLabel setBackgroundColor:[UIColor clearColor]];
+    [yesLabel setFont:yesNoFont];
+    [yesLabel setText:@"yes"];
+    
+    UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(xLocationYesNo, yLocationYesNo, confirmButton.bounds.size.width, confirmButton.bounds.size.height)];
+    [noLabel setTextColor:[UIColor whiteColor]];
+    [noLabel setBackgroundColor:[UIColor clearColor]];
+    [noLabel setFont:yesNoFont];
+    [noLabel setText:@"no"];
+    
+    
+    [confirmButton addSubview:yesLabel];
+    [declineButton addSubview:noLabel];
+    [confirmButton setImage:confirmImage forState:UIControlStateNormal];
+    [declineButton setImage:deleteImage forState:UIControlStateNormal];
+    [deleteAlert addSubview:confirmButton];
+    [deleteAlert addSubview:declineButton];
+    
+    
+    [confirmButton addTarget:self action:@selector(yesButtonPushedOnEditWindow:) forControlEvents:UIControlEventTouchUpInside];
+    [declineButton addTarget:self action:@selector(noButtonPushedOnEditWindow:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void) noButtonPushedOnEditWindow:(id) sender
+{
+    [deleteAlert dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+-(void) yesButtonPushedOnEditWindow:(id) sender
+{
+    [editingCell removeFromSuperview];
+    
+    // Find the list to delete in the store
+    
+    [[SharedStore sharedList] deleteWordList:editingCell.textLabel.text];
+    [deleteAlert dismissWithClickedButtonIndex:0 animated:YES];
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([indexPath row] == [_wordProfiles count] + 2) {
         return 145; // The height of the characters, plus a little padding
@@ -213,14 +284,14 @@ NewListViewController *newListView;
     
     // Show it with a transition effect
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.6];
+    [UIView setAnimationDuration:0.33];
     modalView.center = middleCenter;
     coverView.alpha = 0.7;
     [UIView commitAnimations];
 }
 
 - (void) dismissSemiModalViewController:(NewListViewController *)vc {
-    double animationDelay = 0.7;
+    double animationDelay = 0.33;
     UIView *modalView = vc.view;
     UIView *coverView = vc.coverView;
     

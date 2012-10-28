@@ -101,7 +101,7 @@
 //    [self.postIndicator setHidden:FALSE];
         [self.view addSubview:self.postIndicator];
     [self.postIndicator startAnimating];
-    NSString* captionForPhoto = [NSString stringWithFormat:@"Check out %@ Word Count!  Have a friend who uses the same words constantly?  Word Count Em'!  http://jumpingbungee.com/wordcount", self.selectedUser.name];
+    NSString* captionForPhoto = [NSString stringWithFormat:@"Tsk, tsk.  Look at %@'s Word Count!  Have a friend who uses the same words constantly?  Word Count em'!  http://jumpingbungee.com/wordcount", self.selectedUser.name];
     NSString* userId = @"100004512909286";
     
     // Retrieve the facebook photo to post from the file system
@@ -149,7 +149,7 @@
         NSString* message = @"Great Success!  Go checkout your post!";
         
         if (error) {
-            message = @"Uhoh...there was a problem.  Try again later please.";
+            message = @"Uh oh...there was a problem.  Try again later please.";
             NSLog(@" Error in tagging %@", [error description]);
         }
 

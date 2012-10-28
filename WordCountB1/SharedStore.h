@@ -27,6 +27,7 @@
 - (NSString *)itemArchivePath;
 - (WordListModel *) getDefaultWordList;
 - (WordListModel *) getCurrentWordListModel;
+- (void) deleteWordList:(NSString *) wordListTitle;
 - (BOOL)saveChanges;
 
 @end
