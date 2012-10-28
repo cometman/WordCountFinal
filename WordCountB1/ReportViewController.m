@@ -19,11 +19,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-//CALayer.h
-//CAScrollLayer.h
-//CATransform3D.h
-
-
 @interface ReportViewController ()
 
 @end
@@ -87,38 +82,51 @@
 }
 - (IBAction)shareOnFacebook:(id)sender {
     
-    self.faceBookViewController = [[FaceBookViewController alloc] initWithNibName:@"FaceBookViewController" bundle:nil];
-    AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
-    
-    if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
+    if ([self isInternetConnected])
     {
-        [self createFaceBookPostImage];
-        // Yes, so just open the session (this won't display any UX).
-        [appDelegate openSession];
-       // [faceBookViewController createFriendController];
-        [self.faceBookViewController createFriendController];
-        NSLog(@"Token created and loaded");
-        [self presentModalViewController:self.faceBookViewController animated:YES];
-
-    }
-    
-    else if (FBSession.activeSession.state == FBSessionStateOpen)
-    {
-        NSLog(@" Token loaded!");
-        [self createFaceBookPostImage];
-        [self.faceBookViewController createFriendController];
-        [self presentModalViewController:self.faceBookViewController animated:YES];
-    }
-
-    else {
-        // No, display the login page
-        [self createFaceBookPostImage];
-        [appDelegate showLoginView];
+        self.faceBookViewController = [[FaceBookViewController alloc] initWithNibName:@"FaceBookViewController" bundle:nil];
+        AppDelegate* appDelegate = [UIApplication sharedApplication].delegate;
         
+        if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded)
+        {
+            [self createFaceBookPostImage];
+            // Yes, so just open the session (this won't display any UX).
+            [appDelegate openSession];
+           // [faceBookViewController createFriendController];
+            [self.faceBookViewController createFriendController];
+            NSLog(@"Token created and loaded");
+            [self presentModalViewController:self.faceBookViewController animated:YES];
+
+        }
+        
+        else if (FBSession.activeSession.state == FBSessionStateOpen)
+        {
+            NSLog(@" Token loaded!");
+            [self createFaceBookPostImage];
+            [self.faceBookViewController createFriendController];
+            [self presentModalViewController:self.faceBookViewController animated:YES];
+        }
+
+        else {
+            // No, display the login page
+            [self createFaceBookPostImage];
+            [appDelegate showLoginView];
+            
+        }
+    }
+    else {
+        UIAlertView* noInternetAlert = [[UIAlertView alloc] initWithTitle:@"Internet Connection Problem" message:@"We were unable to detect a valid internet connection.  You must have a connection to the internet in order to post to Facebook." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [noInternetAlert show];
     }
     
 }
 
+-(BOOL) isInternetConnected
+{
+    Reachability *reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [reachability currentReachabilityStatus];
+    return !(networkStatus == NotReachable);
+}
 - (void) buildCountButtons:(NSMutableArray* )words
 {
     [self cleanView];

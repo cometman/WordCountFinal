@@ -22,7 +22,6 @@
 @synthesize friendPickerController = _friendPickerController;
 @synthesize selectedUser = _selectedUser;
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -99,10 +98,11 @@
 -(void)postToFacebook
 {
 //    [self.postIndicator setHidden:FALSE];
-        [self.view addSubview:self.postIndicator];
+    [self.view addSubview:self.postIndicator];
     [self.postIndicator startAnimating];
+
     NSString* captionForPhoto = [NSString stringWithFormat:@"Tsk, tsk.  Look at %@'s Word Count!  Have a friend who uses the same words constantly?  Word Count em'!  http://jumpingbungee.com/wordcount", self.selectedUser.name];
-    NSString* userId = @"100004512909286";
+    NSString* userId = self.selectedUser.id;
     
     // Retrieve the facebook photo to post from the file system
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

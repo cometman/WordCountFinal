@@ -239,8 +239,10 @@ UITableViewCell* editingCell;
         newListView.tableView = tableView;
         [self retrieveNewListFromPopup];
     } else {
-        NSLog(@"Current List (Before): %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"]);
-        [[NSUserDefaults standardUserDefaults] setObject:[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text] forKey:@"currentList"];
+        NSRange range = [[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text] rangeOfString:@"^\\s*" options:NSRegularExpressionSearch];
+        NSString *strippedWhiteSpaceWordListTitle = [[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text] stringByReplacingCharactersInRange:range withString:@""];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:strippedWhiteSpaceWordListTitle forKey:@"currentList"];
         NSString *listHelper= [[NSUserDefaults standardUserDefaults] objectForKey:@"currentList"];
         [[SharedStore sharedList]setCurrentList:listHelper];
         

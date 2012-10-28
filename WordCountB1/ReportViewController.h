@@ -10,6 +10,7 @@
 #import "ReportButton.h"
 #import "WordListModel.h"
 #import "FaceBookViewController.h"
+#import "Reachability.h"
 
 @interface ReportViewController : UIViewController
 @property (nonatomic) ReportButton* button1;
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) FaceBookViewController* faceBookViewController;
 
 
+-(BOOL) isInternetConnected;
 
 - (IBAction)shareOnFacebook:(id)sender;
 

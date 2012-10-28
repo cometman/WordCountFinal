@@ -14,7 +14,6 @@
 @property (strong, nonatomic) FBFriendPickerViewController *friendPickerController;
 @property (strong, nonatomic) id<FBGraphUser> selectedUser;
 
-
 - (IBAction)logOut:(id)sender;
 - (IBAction)cancel:(id)sender;
 -(void) postToFacebook;
