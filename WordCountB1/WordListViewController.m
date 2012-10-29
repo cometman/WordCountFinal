@@ -130,8 +130,6 @@ UITableViewCell* editingCell;
         case 5:
             _characterHolder.hidden = YES;
         default:
-//            cell.textLabel.text = [NSString stringWithFormat:@"%@", [[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:0]];
-//            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@  -  %@  -  %@  -  %@", [[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:1],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:2],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:3],[[_wordProfiles objectAtIndex:[indexPath row] - 2] objectAtIndex:4]];
             NSLog(@"Row #: %d", [indexPath row]);
             NSInteger targetList = [indexPath row] - 2;
             WordListModel *targetWordList = [_wordProfiles objectAtIndex:targetList];
@@ -148,7 +146,6 @@ UITableViewCell* editingCell;
             [editButton setImage:buttonImage forState:UIControlStateNormal];
             [editButton addTarget:self action:@selector(deleteButtonPushed:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:editButton];
-            //.image = [UIImage imageNamed:@"profileEdit"];
             break;
             
     }
@@ -160,7 +157,6 @@ UITableViewCell* editingCell;
 {
     UIButton* editingButton = (UIButton*) sender;
     editingCell = (UITableViewCell*)[editingButton superview];
-//    NSLog(@"stuff %@", editingCell );
     UIFont* yesNoFont = [[UIFont alloc] init];
     yesNoFont= [UIFont boldSystemFontOfSize:18];
 
@@ -172,8 +168,6 @@ UITableViewCell* editingCell;
     UIImage* confirmImage = [UIImage imageNamed:@"popupConfirmButton"];
     UIImage* deleteImage = [UIImage imageNamed:@"popupDeclineButton"];
     [deleteAlert show];
-    NSLog(@"%i", (int)deleteAlert.bounds.size.width);
-    CGFloat xLocation = (deleteAlert.bounds.size.width-confirmImage.size.width)/2;
     UIButton* confirmButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 100, confirmImage.size.width-20, confirmImage.size.height)];
     UIButton* declineButton = [[UIButton alloc] initWithFrame:CGRectMake(150, 100, confirmImage.size.width-20, confirmImage.size.height)];
     
@@ -184,13 +178,13 @@ UITableViewCell* editingCell;
     [yesLabel setTextColor:[UIColor whiteColor]];
     [yesLabel setBackgroundColor:[UIColor clearColor]];
     [yesLabel setFont:yesNoFont];
-    [yesLabel setText:@"yes"];
+    [yesLabel setText:@"Yes"];
     
     UILabel *noLabel = [[UILabel alloc] initWithFrame:CGRectMake(xLocationYesNo, yLocationYesNo, confirmButton.bounds.size.width, confirmButton.bounds.size.height)];
     [noLabel setTextColor:[UIColor whiteColor]];
     [noLabel setBackgroundColor:[UIColor clearColor]];
     [noLabel setFont:yesNoFont];
-    [noLabel setText:@"no"];
+    [noLabel setText:@"No"];
     
     
     [confirmButton addSubview:yesLabel];
