@@ -119,7 +119,6 @@
         if (self.word4Box.text == nil) {
             self.word4Box.text = @"You Know";
         }
-        NSLog(@"Save List");
         WCWord *word1 = [[WCWord alloc] initWithWord:_word1Box.text andCount:0];
         WCWord *word2 = [[WCWord alloc] initWithWord:_word2Box.text andCount:0];
         WCWord *word3 = [[WCWord alloc] initWithWord:_word3Box.text andCount:0];
@@ -134,7 +133,6 @@
         
         [self dismissSemiModalViewController:self];
         [self.tableView reloadData];
-        NSLog(@"Testing %d", [[self.tableView indexPathsForVisibleRows] count]);
     }
     
 }

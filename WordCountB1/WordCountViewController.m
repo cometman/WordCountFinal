@@ -176,9 +176,6 @@ HowToViewController* howToView;
     {
         [self.w1 incrementCount];
         [self animateOrangeButton: self.button1.buttonTrigger];
-       // self.w1.count++;
-        
-        NSLog(@"Count currently %i", self.w1.count);
         [self countHelperForButton:self.button1];
     }
     if (sender == self.button2 || sender == self.button2.buttonTrigger)

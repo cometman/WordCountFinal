@@ -54,10 +54,6 @@
                       [[WCWord alloc] initWithWord:@"You Know" andCount:23], nil];
     WordListModel *p = [[WordListModel alloc] initWithWords:[words mutableCopy] andTitle:@"WonderList"];
     [allLists addObject:p];
-//    BOOL success = [self saveChanges];
-//    if (success) NSLog(@"Successfully saved");
-//    else NSLog(@"Not successfully saved");
-    
     return p;
 }
 
@@ -76,10 +72,7 @@
 - (WordListModel *)createListWithList:(WordListModel *)newList {
     [allLists insertObject:newList atIndex:0];
     
-    BOOL success = [self saveChanges];
-    if (success) NSLog(@"Successfully saved");
-    else NSLog(@"Not successfully saved");
-    
+    [self saveChanges];
     return newList;
 }
 
@@ -88,7 +81,6 @@
     
     // Get one and only document directory from that list
     NSString *documentDirectory = [documentDirectories objectAtIndex:0];
-    NSLog(@"Called itemArchivePath: %@",documentDirectory);
     
     return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
 }
@@ -134,7 +126,6 @@
 - (BOOL)saveChanges {
     // Returns success or failure
     NSString *path = [self itemArchivePath];
-    NSLog(@"%@", path);
     NSFileManager* test = [NSFileManager defaultManager];
 //    NSError* myError = [[NSError alloc] init];
     [test removeItemAtPath:path error:nil];
@@ -163,6 +154,5 @@
         }
         
     }
-    NSLog(@"Right area");
 }
 @end

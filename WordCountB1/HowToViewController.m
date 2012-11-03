@@ -84,8 +84,6 @@
 
 -(void) slideHowToLeft:(id) sender
 {
-    NSLog(@"Weee!");
-    
     // Allow a slide to the left as long as we arent on the 3rd how to slide
     if (self.howToImageView.frame.origin.x > -640)
     {
@@ -109,7 +107,6 @@
     // Allow a slide to the right as long as we arent on the 1st how to slide
     if (self.howToImageView.frame.origin.x < 0)
         {
-            NSLog(@"Size %f", self.howToImageView.frame.origin.x);
         [UIView animateWithDuration:1.0 animations:^{
             self.howToImageView.frame = CGRectMake(self.howToImageView.frame.origin.x+320, 5, self.view.frame.size.width-35, 283);
         }];
@@ -135,12 +132,11 @@
 }
 -(void) userTappedScrollView:(UITapGestureRecognizer *)gestureRecognizer
 {
-    NSLog(@"Test");
+
 }
 
 -(void) userTappedBackground:(UITapGestureRecognizer *)gestureRecognizer
 {
-    NSLog(@"Background");
      [self.wordCountVCReference dismissSemiModalViewController:self];
 }
 - (void)viewDidUnload

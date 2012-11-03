@@ -91,7 +91,7 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if (buttonIndex != [alertView cancelButtonIndex])
     {
-        NSLog(@"Clicked submit!");
+       
     }
 }
 
@@ -129,7 +129,6 @@
              alertText = [NSString stringWithFormat:
                           @"error: domain = %@, code = %d",
                           error.domain, error.code];
-             NSLog(@"Error posting photo %@", [alertText description]);
          } 
        
         [self tagPicturewithId:[result objectForKey:@"id"] andUserId:userId];
@@ -150,7 +149,6 @@
         
         if (error) {
             message = @"Uh oh...there was a problem.  Try again later please.";
-            NSLog(@" Error in tagging %@", [error description]);
         }
 
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];

@@ -94,14 +94,12 @@
             [appDelegate openSession];
            // [faceBookViewController createFriendController];
             [self.faceBookViewController createFriendController];
-            NSLog(@"Token created and loaded");
             [self presentModalViewController:self.faceBookViewController animated:YES];
 
         }
         
         else if (FBSession.activeSession.state == FBSessionStateOpen)
         {
-            NSLog(@" Token loaded!");
             [self createFaceBookPostImage];
             [self.faceBookViewController createFriendController];
             [self presentModalViewController:self.faceBookViewController animated:YES];

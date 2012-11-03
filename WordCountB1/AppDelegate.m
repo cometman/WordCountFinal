@@ -93,7 +93,6 @@
         case FBSessionStateOpen: {
             FaceBookViewController* faceBookViewController = [[FaceBookViewController alloc] initWithNibName:@"FaceBookViewController" bundle:nil];
             [faceBookViewController createFriendController];
-            NSLog(@"Token created and loaded");
             [self.viewController presentModalViewController:faceBookViewController animated:YES];   
 
         }
@@ -145,7 +144,7 @@
             
             if (error)
             {
-                NSLog(@" problem making sessions %@", [error description]);
+                
             }
             
         }];
@@ -153,23 +152,10 @@
         [FBSession openActiveSessionWithPublishPermissions:self.permissions defaultAudience:FBSessionDefaultAudienceFriends allowLoginUI:NO completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
             if (error)
             {
-                NSLog(@"Error: %@", [error description]);
+               
             }
             [self sessionStateChanged:session state:status error:error];
         }];
-//        [FBSession openActiveSessionWithPermissions:nil
-//                                       allowLoginUI:YES
-//                                  completionHandler:
-//         ^(FBSession *session,
-//           FBSessionState state, NSError *error) {
-//             
-//             if (error)
-//             {
-//                 NSLog(@" problem making sessions %@", [error description]);
-//             }
-//             [self sessionStateChanged:session state:state error:error];
-//          
-//         }];
     }
  
 }
@@ -193,7 +179,7 @@
      {
          if (!granted)
          {
-             NSLog(@"User rejected account access");
+             
          }
          else
          {
@@ -213,7 +199,7 @@
                  
                  [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
                      NSDictionary *dict = (NSDictionary *)[NSJSONSerialization JSONObjectWithData:responseData options:0 error:nil];
-                     NSLog(@"%@", dict);
+
                      
                      dispatch_async(dispatch_get_main_queue(), ^{
                          // Do cool stuff

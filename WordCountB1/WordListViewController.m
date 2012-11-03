@@ -228,7 +228,6 @@ UITableViewCell* editingCell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Selected row: %@", [tableView indexPathForSelectedRow]);
     if ([indexPath row] == 0) {
         newListView.tableView = tableView;
         [self retrieveNewListFromPopup];
