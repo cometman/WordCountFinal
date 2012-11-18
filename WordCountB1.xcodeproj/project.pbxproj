@@ -80,7 +80,6 @@
 		B0B4F919163DE4AD00005EDE /* Reachability.h in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4F917163DE4AD00005EDE /* Reachability.h */; };
 		B0B4F91A163DE4AD00005EDE /* Reachability.m in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4F918163DE4AD00005EDE /* Reachability.m */; };
 		B0B4F91B163DE4DB00005EDE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4F911163DE36300005EDE /* SystemConfiguration.framework */; };
-		B0BFD21B160E990600867705 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0BFD21A160E990600867705 /* Default-568h@2x.png */; };
 		B0DCC45A162A6B7D003954AE /* facebookPost01.png in Resources */ = {isa = PBXBuildFile; fileRef = B0DCC458162A6B7D003954AE /* facebookPost01.png */; };
 		B0DCC45B162A6B7D003954AE /* facebookPost02.png in Resources */ = {isa = PBXBuildFile; fileRef = B0DCC459162A6B7D003954AE /* facebookPost02.png */; };
 		B0DCC45F162B6933003954AE /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0DCC45D162B6933003954AE /* CoreImage.framework */; };
@@ -116,6 +115,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B038CD6C1644E0920068889C /* ios_distribution (1).cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ios_distribution (1).cer"; sourceTree = "<group>"; };
 		B03D1CE7163C7ADF008BFB93 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		B03D1CE8163C7AE4008BFB93 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		B03D1CE9163C7AED008BFB93 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
@@ -201,7 +201,6 @@
 		B0B4F911163DE36300005EDE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B0B4F917163DE4AD00005EDE /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../../Downloads/Reachability/Classes/Reachability.h; sourceTree = "<group>"; };
 		B0B4F918163DE4AD00005EDE /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../../Downloads/Reachability/Classes/Reachability.m; sourceTree = "<group>"; };
-		B0BFD21A160E990600867705 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		B0DCC458162A6B7D003954AE /* facebookPost01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookPost01.png; sourceTree = "<group>"; };
 		B0DCC459162A6B7D003954AE /* facebookPost02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookPost02.png; sourceTree = "<group>"; };
 		B0DCC45D162B6933003954AE /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -283,13 +282,13 @@
 		B09C692215E9251F00CF6560 = {
 			isa = PBXGroup;
 			children = (
+				B038CD6C1644E0920068889C /* ios_distribution (1).cer */,
 				B0B4F917163DE4AD00005EDE /* Reachability.h */,
 				B0B4F918163DE4AD00005EDE /* Reachability.m */,
 				B03D1CF4163CAF14008BFB93 /* Default@2x.png */,
 				B03D1CF2163C7B5C008BFB93 /* Default.png */,
 				B03D1CF0163C7B12008BFB93 /* Icon@2x.png */,
 				B03D1CEE163C7B0A008BFB93 /* Icon.png */,
-				B0BFD21A160E990600867705 /* Default-568h@2x.png */,
 				B09C693715E9251F00CF6560 /* WordCountB1 */,
 				B09C693015E9251F00CF6560 /* Frameworks */,
 				B09C692E15E9251F00CF6560 /* Products */,
@@ -572,7 +571,6 @@
 				B0B4BCD9160C105300BD8981 /* Word-Count-iPhone-App-Design-Concept(Word-List)-copy.png in Resources */,
 				B0B4BCDA160C105300BD8981 /* wordCounterElement.png in Resources */,
 				B0B4BCDB160C105300BD8981 /* wordCounterElement@2x.png in Resources */,
-				B0BFD21B160E990600867705 /* Default-568h@2x.png in Resources */,
 				B0DCC45A162A6B7D003954AE /* facebookPost01.png in Resources */,
 				B0DCC45B162A6B7D003954AE /* facebookPost02.png in Resources */,
 				B03D1CEA163C7AF2008BFB93 /* iTunesArtwork@2x.png in Resources */,
@@ -711,6 +709,7 @@
 		B09C694D15E9251F00CF6560 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
@@ -724,6 +723,7 @@
 				);
 				OTHER_LDFLAGS = "-lsqlite3.0";
 				PRODUCT_NAME = "Word Count";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
 			};
