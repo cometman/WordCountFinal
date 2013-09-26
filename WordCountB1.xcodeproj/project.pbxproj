@@ -7,7 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B038CD02163DE5740068889C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B4F918163DE4AD00005EDE /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6F0A21F817EEC0D90007EBF2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F0A21F717EEC0D90007EBF2 /* Reachability.m */; };
+		6FFF592F17F3DDB500DB1994 /* Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFF592217F3DDB500DB1994 /* Object.m */; };
+		6FFF593017F3DDB500DB1994 /* OldCodeRepo in Resources */ = {isa = PBXBuildFile; fileRef = 6FFF592317F3DDB500DB1994 /* OldCodeRepo */; };
+		6FFF593117F3DDB500DB1994 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFF592517F3DDB500DB1994 /* Person.m */; };
+		6FFF593217F3DDB500DB1994 /* Profile.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFF592717F3DDB500DB1994 /* Profile.m */; };
+		6FFF593317F3DDB500DB1994 /* SocialAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFF592A17F3DDB500DB1994 /* SocialAPI.m */; };
+		6FFF593417F3DDB500DB1994 /* SRDataObjectConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFF592C17F3DDB500DB1994 /* SRDataObjectConstants.m */; };
+		6FFF593517F3DDB500DB1994 /* SRGlobalConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FFF592E17F3DDB500DB1994 /* SRGlobalConstants.m */; };
 		B03D1CEA163C7AF2008BFB93 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D1CE7163C7ADF008BFB93 /* iTunesArtwork@2x.png */; };
 		B03D1CEB163C7AF2008BFB93 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D1CE8163C7AE4008BFB93 /* Icon.png */; };
 		B03D1CEC163C7AF2008BFB93 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B03D1CE9163C7AED008BFB93 /* Icon@2x.png */; };
@@ -77,8 +84,6 @@
 		B0B4BCD9160C105300BD8981 /* Word-Count-iPhone-App-Design-Concept(Word-List)-copy.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCB9160C105300BD8981 /* Word-Count-iPhone-App-Design-Concept(Word-List)-copy.png */; };
 		B0B4BCDA160C105300BD8981 /* wordCounterElement.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCBA160C105300BD8981 /* wordCounterElement.png */; };
 		B0B4BCDB160C105300BD8981 /* wordCounterElement@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B0B4BCBB160C105300BD8981 /* wordCounterElement@2x.png */; };
-		B0B4F919163DE4AD00005EDE /* Reachability.h in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4F917163DE4AD00005EDE /* Reachability.h */; };
-		B0B4F91A163DE4AD00005EDE /* Reachability.m in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4F918163DE4AD00005EDE /* Reachability.m */; };
 		B0B4F91B163DE4DB00005EDE /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B4F911163DE36300005EDE /* SystemConfiguration.framework */; };
 		B0DCC45A162A6B7D003954AE /* facebookPost01.png in Resources */ = {isa = PBXBuildFile; fileRef = B0DCC458162A6B7D003954AE /* facebookPost01.png */; };
 		B0DCC45B162A6B7D003954AE /* facebookPost02.png in Resources */ = {isa = PBXBuildFile; fileRef = B0DCC459162A6B7D003954AE /* facebookPost02.png */; };
@@ -115,6 +120,22 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F0A21F617EEC0CA0007EBF2 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		6F0A21F717EEC0D90007EBF2 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		6FFF592117F3DDB500DB1994 /* Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Object.h; sourceTree = "<group>"; };
+		6FFF592217F3DDB500DB1994 /* Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Object.m; sourceTree = "<group>"; };
+		6FFF592317F3DDB500DB1994 /* OldCodeRepo */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OldCodeRepo; sourceTree = "<group>"; };
+		6FFF592417F3DDB500DB1994 /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		6FFF592517F3DDB500DB1994 /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		6FFF592617F3DDB500DB1994 /* Profile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Profile.h; sourceTree = "<group>"; };
+		6FFF592717F3DDB500DB1994 /* Profile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Profile.m; sourceTree = "<group>"; };
+		6FFF592817F3DDB500DB1994 /* SocialAPI-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocialAPI-Prefix.pch"; sourceTree = "<group>"; };
+		6FFF592917F3DDB500DB1994 /* SocialAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialAPI.h; sourceTree = "<group>"; };
+		6FFF592A17F3DDB500DB1994 /* SocialAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialAPI.m; sourceTree = "<group>"; };
+		6FFF592B17F3DDB500DB1994 /* SRDataObjectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRDataObjectConstants.h; sourceTree = "<group>"; };
+		6FFF592C17F3DDB500DB1994 /* SRDataObjectConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRDataObjectConstants.m; sourceTree = "<group>"; };
+		6FFF592D17F3DDB500DB1994 /* SRGlobalConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRGlobalConstants.h; sourceTree = "<group>"; };
+		6FFF592E17F3DDB500DB1994 /* SRGlobalConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRGlobalConstants.m; sourceTree = "<group>"; };
 		B038CD6C1644E0920068889C /* ios_distribution (1).cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ios_distribution (1).cer"; sourceTree = "<group>"; };
 		B03D1CE7163C7ADF008BFB93 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		B03D1CE8163C7AE4008BFB93 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
@@ -199,8 +220,6 @@
 		B0B4BCBA160C105300BD8981 /* wordCounterElement.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wordCounterElement.png; sourceTree = "<group>"; };
 		B0B4BCBB160C105300BD8981 /* wordCounterElement@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wordCounterElement@2x.png"; sourceTree = "<group>"; };
 		B0B4F911163DE36300005EDE /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		B0B4F917163DE4AD00005EDE /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ../../Downloads/Reachability/Classes/Reachability.h; sourceTree = "<group>"; };
-		B0B4F918163DE4AD00005EDE /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ../../Downloads/Reachability/Classes/Reachability.m; sourceTree = "<group>"; };
 		B0DCC458162A6B7D003954AE /* facebookPost01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookPost01.png; sourceTree = "<group>"; };
 		B0DCC459162A6B7D003954AE /* facebookPost02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebookPost02.png; sourceTree = "<group>"; };
 		B0DCC45D162B6933003954AE /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -248,8 +267,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0B4F91B163DE4DB00005EDE /* SystemConfiguration.framework in Frameworks */,
-				B0B4F919163DE4AD00005EDE /* Reachability.h in Frameworks */,
-				B0B4F91A163DE4AD00005EDE /* Reachability.m in Frameworks */,
 				B0DCC45F162B6933003954AE /* CoreImage.framework in Frameworks */,
 				B0DCC460162B6933003954AE /* QuartzCore.framework in Frameworks */,
 				B09C693615E9251F00CF6560 /* CoreGraphics.framework in Frameworks */,
@@ -266,6 +283,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6FFF592017F3DDB500DB1994 /* SocialAPI */ = {
+			isa = PBXGroup;
+			children = (
+				6FFF592117F3DDB500DB1994 /* Object.h */,
+				6FFF592217F3DDB500DB1994 /* Object.m */,
+				6FFF592317F3DDB500DB1994 /* OldCodeRepo */,
+				6FFF592417F3DDB500DB1994 /* Person.h */,
+				6FFF592517F3DDB500DB1994 /* Person.m */,
+				6FFF592617F3DDB500DB1994 /* Profile.h */,
+				6FFF592717F3DDB500DB1994 /* Profile.m */,
+				6FFF592817F3DDB500DB1994 /* SocialAPI-Prefix.pch */,
+				6FFF592917F3DDB500DB1994 /* SocialAPI.h */,
+				6FFF592A17F3DDB500DB1994 /* SocialAPI.m */,
+				6FFF592B17F3DDB500DB1994 /* SRDataObjectConstants.h */,
+				6FFF592C17F3DDB500DB1994 /* SRDataObjectConstants.m */,
+				6FFF592D17F3DDB500DB1994 /* SRGlobalConstants.h */,
+				6FFF592E17F3DDB500DB1994 /* SRGlobalConstants.m */,
+			);
+			name = SocialAPI;
+			path = "../social-ios-lib/SocialAPI";
+			sourceTree = "<group>";
+		};
 		B095817015EEEF0900A5A85E /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,9 +321,10 @@
 		B09C692215E9251F00CF6560 = {
 			isa = PBXGroup;
 			children = (
+				6FFF592017F3DDB500DB1994 /* SocialAPI */,
+				6F0A21F717EEC0D90007EBF2 /* Reachability.m */,
 				B038CD6C1644E0920068889C /* ios_distribution (1).cer */,
-				B0B4F917163DE4AD00005EDE /* Reachability.h */,
-				B0B4F918163DE4AD00005EDE /* Reachability.m */,
+				6F0A21F617EEC0CA0007EBF2 /* Reachability.h */,
 				B03D1CF4163CAF14008BFB93 /* Default@2x.png */,
 				B03D1CF2163C7B5C008BFB93 /* Default.png */,
 				B03D1CF0163C7B12008BFB93 /* Icon@2x.png */,
@@ -572,6 +612,7 @@
 				B0B4BCDA160C105300BD8981 /* wordCounterElement.png in Resources */,
 				B0B4BCDB160C105300BD8981 /* wordCounterElement@2x.png in Resources */,
 				B0DCC45A162A6B7D003954AE /* facebookPost01.png in Resources */,
+				6FFF593017F3DDB500DB1994 /* OldCodeRepo in Resources */,
 				B0DCC45B162A6B7D003954AE /* facebookPost02.png in Resources */,
 				B03D1CEA163C7AF2008BFB93 /* iTunesArtwork@2x.png in Resources */,
 				B03D1CEB163C7AF2008BFB93 /* Icon.png in Resources */,
@@ -590,12 +631,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B038CD02163DE5740068889C /* Reachability.m in Sources */,
+				6F0A21F817EEC0D90007EBF2 /* Reachability.m in Sources */,
+				6FFF593217F3DDB500DB1994 /* Profile.m in Sources */,
 				B09C693E15E9251F00CF6560 /* main.m in Sources */,
+				6FFF593117F3DDB500DB1994 /* Person.m in Sources */,
 				B09C694215E9251F00CF6560 /* AppDelegate.m in Sources */,
 				B09C694515E9251F00CF6560 /* ViewController.m in Sources */,
 				B09C695115E925EF00CF6560 /* WordListViewController.m in Sources */,
 				B09C695615E9271800CF6560 /* WordCountViewController.m in Sources */,
+				6FFF592F17F3DDB500DB1994 /* Object.m in Sources */,
+				6FFF593517F3DDB500DB1994 /* SRGlobalConstants.m in Sources */,
 				B095816615EB46B500A5A85E /* ReportViewController.m in Sources */,
 				B095816E15EEEEEA00A5A85E /* WordListModel.m in Sources */,
 				B095817315EEF46F00A5A85E /* SharedStore.m in Sources */,
@@ -605,8 +650,10 @@
 				EE6D3C2115F2D2F50000362E /* NewListViewController.m in Sources */,
 				EE1ABAE615FBF30100C75E41 /* TDSemiModalViewController.m in Sources */,
 				EE1ABAE715FBF30100C75E41 /* UIViewController+TDSemiModalExtension.m in Sources */,
+				6FFF593317F3DDB500DB1994 /* SocialAPI.m in Sources */,
 				B0F606E515FC191000810431 /* ReportButton.m in Sources */,
 				B0784BD615FD49AA00EF1335 /* FaceBookViewController.m in Sources */,
+				6FFF593417F3DDB500DB1994 /* SRDataObjectConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

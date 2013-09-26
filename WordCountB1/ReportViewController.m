@@ -17,6 +17,7 @@
 #import "WordListViewController.h"
 #import <QuartzCore/CoreAnimation.h>
 #import <QuartzCore/QuartzCore.h>
+#import "SocialAPI.h"
 
 
 @interface ReportViewController ()
@@ -44,7 +45,8 @@
 {
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"reportBackground"]]];
-    
+    NSLog(@"Social REST Token: %@", [SocialAPI getSocialRestToken]);
+    [SocialAPI authenticateFB:@"publish_actions"];
 
     // Do any additional setup after loading the view from its nib.
 }

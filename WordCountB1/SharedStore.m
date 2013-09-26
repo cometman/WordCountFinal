@@ -82,7 +82,7 @@
     // Get one and only document directory from that list
     NSString *documentDirectory = [documentDirectories objectAtIndex:0];
     
-    return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
+    return [documentDirectory stringByAppendingPathComponent:@"words.archive"];
 }
 
 -(WordListModel *)getDefaultWordList

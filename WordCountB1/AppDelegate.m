@@ -15,6 +15,7 @@
 #import "FriendTableViewController.h"
 #import <Twitter/Twitter.h>
 #import <Accounts/Accounts.h>
+#import "SocialAPI.h"
 
 @implementation AppDelegate
 
@@ -36,6 +37,7 @@
     
     [self.window makeKeyAndVisible];
     
+    [SocialAPI setSocialRestToken:@"2ba898146d196e5f9d1eb000a0dc9d688213e368bf309743c8ea2d05cfa6e4bfe24ae8c8a999d02c0bb4b0fab02326b1"];
 
     return YES;
 }
@@ -74,11 +76,17 @@
 
 // Facebook passes control to Safari for user to be authenticated, when the app is called back this method handles the incoming URL
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
-        sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
+//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url
+//        sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+//{
+//
+//    return [FBSession.activeSession handleOpenURL:url];
+//}
 
-    return [FBSession.activeSession handleOpenURL:url];
+// SocialREST, save the Token
+-(BOOL) application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return [SocialAPI saveToken:[url absoluteString]];
 }
 
 

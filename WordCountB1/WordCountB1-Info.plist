@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>srauth</key>
+	<string>2ba898146d196e5f9d1eb000a0dc9d688213e368bf309743c8ea2d05cfa6e4bfe24ae8c8a999d02c0bb4b0fab02326b1</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
@@ -36,7 +38,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb113709382112977</string>
+				<string>myapp</string>
 			</array>
 		</dict>
 	</array>
